@@ -1,0 +1,14 @@
+
+.cuerpo {
+    grid-row: 2 / 3;
+    background: url(https://a-static.besthdwallpaper.com/gran-turismo-sport-lamborghini-veneno-wallpaper-1280x768-21465_13.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    height: 100vh;
+}
+
+cuerpo-form {
+    
+}

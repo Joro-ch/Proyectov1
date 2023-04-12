@@ -12,7 +12,12 @@
         
         <div class = "cuerpo">
             <form class = "cuerpo-form">
-                <h1 class = "cuerpo-form__titulo cuerpo-form__item"> Registro </h1>
+                <div class = "cuerpo-form__DatosUsuario">
+                    
+                </div>
+                <div class = "cuerpo-form__DatosTarjeta">
+                    
+                </div>
             </form>
         </div>
         
