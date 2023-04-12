@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <%@ include file = "../Head.jsp" %>
+        <%@ include file = "../Head.jsp"%>
         <link rel="stylesheet" href="/Proyectov1/css/login.css"/>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title> Login </title>
