@@ -13,7 +13,7 @@ public class Controller extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("model", new Model()); 
+        request.setAttribute("model", new Model());
         
         String viewUrl="";
         switch(request.getServletPath()){
