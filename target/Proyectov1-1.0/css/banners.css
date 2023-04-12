@@ -6,7 +6,7 @@ body {
     display: grid;
     height: 100vh;
     background: #efeffe;
-    grid-template-rows: 100px 1fr 50px 50px;
+    grid-template-rows: 100px 1fr 50px;
 }
 
 /* Header */
