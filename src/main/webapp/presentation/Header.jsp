@@ -14,7 +14,7 @@
             </ul>
         </div>
         <div class = "nav-usuario">
-            <a href = "presentation/login/show"> <i class = "fas fa-user"></i> Usuario </a>
+            <a href = "presentation/login/show"> <i class = "fas fa-user"></i> Login </a>
         </div>
     </nav>
 </header>
