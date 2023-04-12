@@ -6,7 +6,6 @@ import java.util.List;
 public class Cliente extends Usuario {
     
     // Atributos
-    
     private String nombre;
     private String telefono;
     private String correo;
