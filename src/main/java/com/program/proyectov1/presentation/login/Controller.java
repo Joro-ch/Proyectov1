@@ -88,7 +88,6 @@ public class Controller extends HttpServlet {
             }
             return viewUrl;
         } catch (Exception ex) {
-            System.out.println("Entro en el error la contrasena esta mal");
             Map<String,String> errores = new HashMap<>();
             request.setAttribute("errores", errores);
             errores.put("cedulaFld","Usuario o clave incorrectos");
