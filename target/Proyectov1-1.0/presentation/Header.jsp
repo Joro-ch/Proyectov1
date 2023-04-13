@@ -10,7 +10,7 @@
         <% if (usuario != null && usuario.getTipo()==1){ %>
         <div class = "nav-menu">
             <ul class = "nav-menu__Items">
-                <li class = "nav-menu__item"> <a href = ""> Comprar </a> </li>
+                <li class = "nav-menu__item"> <a href = "presentation/cliente/polizas/nuevaPoliza/show"> Comprar </a> </li>
                 <li class = "nav-menu__item"> <a href = ""> Mi Cuenta </a> </li>
             </ul>
         </div>

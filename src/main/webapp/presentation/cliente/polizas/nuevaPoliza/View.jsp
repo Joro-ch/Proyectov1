@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/Proyectov1/css/poliza.css"/>
+        <link rel="stylesheet" href="/Proyectov1/css/polizas.css"/>
         <%@ include file = "../../../Head.jsp"%>
         <title> Poliza </title>
     </head>
@@ -51,7 +51,7 @@
                         <span class="checkmark">Anual</span>
                     </label>
                 </div>
-                <input class = "cuerpo-form__Submit" type="submit" value="Enviar">
+                <input class = "cuerpo-form__Submit" type="submit" value="Siguiente">
             </form>
         </div>
         <%@ include file = "../../../Footer.jsp" %>
