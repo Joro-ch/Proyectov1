@@ -21,7 +21,7 @@ public class DataBase {
             String server = "localhost";
             String port = "3306";
             String user = "root";
-            String password = "pepinobailarin06";
+            String password = "root";
             String database = "pageDB";
             
             String URL_conexion="jdbc:mysql://"+ server+":"+port+"/"+database+"?user="+user+"&password="+
