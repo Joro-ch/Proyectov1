@@ -10,9 +10,8 @@
         <% if (usuario != null && usuario.getTipo()==1){ %>
         <div class = "nav-menu">
             <ul class = "nav-menu__Items">
-                <li class = "nav-menu__item"> <a href = ""> Opcion1 </a> </li>
-                <li class = "nav-menu__item"> <a href = ""> Opcion2 </a> </li>
-                <li class = "nav-menu__item"> <a href = ""> Opcion3 </a> </li>
+                <li class = "nav-menu__item"> <a href = ""> Comprar </a> </li>
+                <li class = "nav-menu__item"> <a href = ""> Mi Cuenta </a> </li>
             </ul>
         </div>
         <% } 
@@ -20,9 +19,9 @@
         %>
         <div class = "nav-menu">
             <ul class = "nav-menu__Items">
-                <li class = "nav-menu__item"> <a href = ""> ADMIN1 </a> </li>
-                <li class = "nav-menu__item"> <a href = ""> ADMIN2 </a> </li>
-                <li class = "nav-menu__item"> <a href = ""> ADMIN3 </a> </li>
+                <li class = "nav-menu__item"> <a href = ""> Listado Clientes y Pólizas </a> </li>
+                <li class = "nav-menu__item"> <a href = ""> Modelos y Marcas </a> </li>
+                <li class = "nav-menu__item"> <a href = ""> Categorias y Coberturas </a> </li>
             </ul>
         </div>
         <% } 

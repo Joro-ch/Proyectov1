@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<link rel="stylesheet" href="/Proyectov1/css/banners.css"/>
+<link rel="stylesheet" href="/Proyectov1/css/banner.css"/>
 <link rel="stylesheet" href="/Proyectov1/css/normalize.css">
 <link rel="icon" href ="/Proyectov1/images/logo.png">
 <base href = "http://localhost:8080/Proyectov1/">
