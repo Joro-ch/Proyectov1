@@ -76,7 +76,8 @@ public class Controller extends HttpServlet {
             String viewUrl="";
             switch(real.getTipo()){ //Ahora vamos a determinar el tipo
                 case 1:
-                    viewUrl="/presentation/cliente/cuentas/show";//Esto es un usuario comun.
+                    System.out.print("Es usernormal");
+                    viewUrl="/presentation/cliente/cuenta/View.jsp";//Esto es un usuario comun.
                     break;
                 case 2:
                      System.out.print("Es admin");
