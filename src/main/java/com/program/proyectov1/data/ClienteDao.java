@@ -24,7 +24,7 @@ public class ClienteDao {
         stm.setString(2, c.getNombre());
         stm.setString(3, c.getTelefono());
         stm.setString(4, c.getCorreo());
-        stm.setString(5, c.getTarjeta().getCodigo());
+        stm.setString(5, c.getTarjeta().getNumTarjeta());
         
         db.executeUpdate(stm);
     }
@@ -52,7 +52,7 @@ public class ClienteDao {
         stm.setString(1, c.getNombre());
         stm.setString(2, c.getTelefono());
         stm.setString(3, c.getCorreo());
-        stm.setString(4, c.getTarjeta().getCodigo());
+        stm.setString(4, c.getTarjeta().getNumTarjeta());
         
         int count = db.executeUpdate(stm);
         

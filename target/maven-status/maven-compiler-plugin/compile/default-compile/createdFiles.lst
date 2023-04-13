@@ -7,6 +7,7 @@ com\program\proyectov1\logic\Cliente.class
 com\program\proyectov1\logic\Usuario.class
 com\program\proyectov1\data\VehiculoDao.class
 com\program\proyectov1\logic\Cobertura.class
+com\program\proyectov1\presentation\cliente\polizas\Controller.class
 com\program\proyectov1\logic\Pagina.class
 com\program\proyectov1\presentation\registro\Model.class
 com\program\proyectov1\logic\Service.class
@@ -14,6 +15,7 @@ com\program\proyectov1\logic\Categoria.class
 com\program\proyectov1\data\MetodoPagoDao.class
 com\program\proyectov1\data\CategoriaDao.class
 com\program\proyectov1\JakartaRestConfiguration.class
+com\program\proyectov1\presentation\cliente\polizas\Model.class
 com\program\proyectov1\logic\Vehiculo.class
 com\program\proyectov1\logic\Poliza.class
 com\program\proyectov1\data\UsuarioDao.class

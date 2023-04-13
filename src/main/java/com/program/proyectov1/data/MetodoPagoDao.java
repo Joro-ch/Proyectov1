@@ -18,16 +18,15 @@ public class MetodoPagoDao {
     // Métodos
     
     public void create(MetodoPago m) throws Exception {
-        String comando = "insert into metodosDePago (codigo, idCliente, titular, numTarjeta, fechaExp"
-                + "codigoSeguridad) values (?,?,?,?,?,?)";
+        String comando = "insert into metodosDePago (idCliente, titular, numTarjeta, fechaExp"
+                + "codigoSeguridad) values (?,?,?,?,?)";
         
         PreparedStatement stm = db.prepareStatement(comando);
-        stm.setString(1, m.getCodigo());
-        stm.setString(2, m.getIdCliente());
-        stm.setString(3, m.getTitular());
-        stm.setString(4, m.getNumTarjeta());
-        stm.setString(5, m.getFechaExp());
-        stm.setString(6, m.getCodigoSeguridad());
+        stm.setString(1, m.getIdCliente());
+        stm.setString(2, m.getTitular());
+        stm.setString(3, m.getNumTarjeta());
+        stm.setString(4, m.getFechaExp());
+        stm.setString(5, m.getCodigoSeguridad());
         
         db.executeUpdate(stm);
     }
@@ -49,16 +48,15 @@ public class MetodoPagoDao {
     } 
     
     public void update(MetodoPago m) throws Exception {
-        String comando = "update metodosDePago set idCliente=?, titular=?, numTarjeta=?, fechaExp=?,"
-                + "codigoSegurida=? where codigo=?";
+        String comando = "update metodosDePago set idCliente=?, titular=?, fechaExp=?,"
+                + "codigoSegurida=? where numTarjeta=?";
         
         PreparedStatement stm = db.prepareStatement(comando);
         stm.setString(1, m.getIdCliente());
         stm.setString(2, m.getTitular());
-        stm.setString(3, m.getNumTarjeta());
-        stm.setString(4, m.getFechaExp());
-        stm.setString(5, m.getCodigoSeguridad());
-        stm.setString(6, m.getCodigo());
+        stm.setString(3, m.getFechaExp());
+        stm.setString(4, m.getCodigoSeguridad());
+        stm.setString(5, m.getNumTarjeta());
         
         int count = db.executeUpdate(stm);
         
@@ -68,10 +66,10 @@ public class MetodoPagoDao {
     }
     
     public void delete(MetodoPago m) throws Exception {
-        String comando = "delete from metodosDePago where codigo=?";
+        String comando = "delete from metodosDePago where numTarjeta=?";
         
         PreparedStatement stm = db.prepareStatement(comando);
-        stm.setString(1, m.getCodigo());
+        stm.setString(1, m.getNumTarjeta());
         
         int count = db.executeUpdate(stm);
         
@@ -83,7 +81,6 @@ public class MetodoPagoDao {
     public MetodoPago from(ResultSet rs, String alias) throws Exception {
         MetodoPago m = new MetodoPago();
         
-        m.setCodigo(rs.getString(alias + ".codigo"));
         m.setIdCliente(rs.getString(alias + ".idCliente"));
         m.setTitular(rs.getString(alias + ".titular"));
         m.setNumTarjeta(rs.getString(alias + ".numTarjeta"));

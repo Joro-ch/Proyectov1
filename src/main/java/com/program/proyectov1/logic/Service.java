@@ -30,9 +30,17 @@ public class Service {
         return null;
         // Falta verificar clave
     }
+    
+    public void usuarioAdd(Usuario usuario) throws Exception {
+       usuarioDao.create(usuario);
+    }
 
     public Cliente clienteFind(Usuario usuario) throws Exception{
         return clienteDao.read(usuario.getId());
+    }
+    
+    public void clienteAdd(Cliente cliente) throws Exception {
+       clienteDao.create(cliente);
     }
 
     public void clienteUpdate(Cliente cliente) throws Exception{

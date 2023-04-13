@@ -67,7 +67,7 @@ public class Controller extends HttpServlet {
     
     public String loginAction(HttpServletRequest request){
         Model model= (Model) request.getAttribute("model"); //Se toma el objeto model creado en el processrequest y que ahora tiene un usuario temp
-        Service  service = Service.instance();//llamamos a la instancia de service
+        Service service = Service.instance();//llamamos a la instancia de service
         HttpSession session = request.getSession(true);//Se crea una sesion, esta se guarda hasta que se hace logout.
         try {
             
@@ -78,11 +78,9 @@ public class Controller extends HttpServlet {
             String viewUrl="";
             switch(real.getTipo()){ //Ahora vamos a determinar el tipo
                 case 1:
-                    System.out.print("Es usernormal");
                     viewUrl="/presentation/cliente/cuenta/View.jsp";//Esto es un usuario comun.
                     break;
                 case 2:
-                     System.out.print("Es admin");
                      viewUrl="/presentation/admin/dashboard/View.jsp"; //Esto es un admin. 
                     break;             
             }
@@ -124,8 +122,6 @@ public class Controller extends HttpServlet {
 //Creacion de un usuario momentaneo
     void updateModel(HttpServletRequest request){
        Model model= (Model) request.getAttribute("model");
-       System.out.print(request.getParameter("id"));
-       System.out.print(request.getParameter("pass"));
        model.getCurrent().setId(request.getParameter("id"));
        model.getCurrent().setClave(request.getParameter("pass"));
        //Se creo un usuario temporal para poder seguir con lo necesario

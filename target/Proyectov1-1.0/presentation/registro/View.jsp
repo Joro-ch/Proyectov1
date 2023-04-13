@@ -11,7 +11,7 @@
         <%@ include file = "../Header.jsp"%>
         
         <div class = "cuerpo">
-            <form class = "cuerpo-form">
+            <form class = "cuerpo-form" action = "./presentation/registro/registrar" method = "POST">
                 <div class = "cuerpo-form__DatosUsuario">
                     <h2 class ="cuerpo-form__DatosUsuario-titulo"> Datos del Cliente </h2>
                     <img class ="cuerpo-form__DatosUsuario-img" src="/Proyectov1/images/loginicon1.png" alt=""/>
