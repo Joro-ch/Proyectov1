@@ -70,7 +70,9 @@ public class Controller extends HttpServlet {
         Service  service = Service.instance();//llamamos a la instancia de service
         HttpSession session = request.getSession(true);//Se crea una sesion, esta se guarda hasta que se hace logout.
         try {
+            
             Usuario real = service.usuarioFind(model.getCurrent().getId(),model.getCurrent().getClave());//Buscamos el usuario con el id y pass igual a los del form
+            if(real == null){throw new Exception();}
             //utilizando el temporal.Si existe el usuario seguimos, sino una exepcion.
             session.setAttribute("usuario", real);//A la session le vamos a agregar un atributo con el nombre usuario que va a traer el objeto
             String viewUrl="";
@@ -86,6 +88,7 @@ public class Controller extends HttpServlet {
             }
             return viewUrl;
         } catch (Exception ex) {
+            System.out.println("Entro en el error la contrasena esta mal");
             Map<String,String> errores = new HashMap<>();
             request.setAttribute("errores", errores);
             errores.put("cedulaFld","Usuario o clave incorrectos");
