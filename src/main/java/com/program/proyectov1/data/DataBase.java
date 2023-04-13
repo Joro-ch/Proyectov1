@@ -51,7 +51,7 @@ public class DataBase {
             statement.executeUpdate();
             return statement.getUpdateCount();
         } catch (SQLIntegrityConstraintViolationException ex) {
-            throw new Exception("REGISTRO DUPLICADO");
+            throw ex;
         } catch (Exception ex) {
             throw new Exception("ERROR DE BASE DE DATOS");
         }

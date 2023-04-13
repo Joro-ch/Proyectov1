@@ -2,6 +2,7 @@ package com.program.proyectov1.logic;
 
 import com.program.proyectov1.data.ClienteDao;
 import com.program.proyectov1.data.DataBase;
+import com.program.proyectov1.data.MetodoPagoDao;
 import com.program.proyectov1.data.UsuarioDao;
 
 public class Service {
@@ -16,11 +17,12 @@ public class Service {
     DataBase Database;
     UsuarioDao usuarioDao;
     ClienteDao clienteDao;
-    
+    MetodoPagoDao mpDao;
     private Service(){
         Database = new DataBase();
         usuarioDao = new UsuarioDao(Database);
         clienteDao = new ClienteDao(Database);
+        mpDao = new MetodoPagoDao(Database);
     }
 
     public Usuario usuarioFind(String cedula,String clave) throws Exception{
@@ -46,5 +48,9 @@ public class Service {
     public void clienteUpdate(Cliente cliente) throws Exception{
         clienteDao.update(cliente);
     } 
+
+    public void tarjetaAdd(MetodoPago mp) throws Exception {
+        mpDao.create(mp);
+    }
 }
 

@@ -65,22 +65,18 @@ public class Controller extends HttpServlet {
         Service service = Service.instance();//llamamos a la instancia de service
         
         try {
+            
             Usuario user = new Usuario();
             
             user.setId(model.getCliente().getId());
             user.setClave(model.getCliente().getClave());
             user.setTipo(model.getCliente().getTipo());
-            
             service.usuarioAdd(user);
             
-            System.out.println("ANTESSSSSSSSSSSSSSSSSSSSS");
+            MetodoPago mp = model.getCliente().getTarjeta();
+            service.tarjetaAdd(mp);
             
-            service.clienteAdd(model.getCliente()); //Buscamos el usuario con el id y pass igual a los del form
-            
-            System.out.println("DESPUEEEEEEEEEEEEEEEEEES");
-            
-            
-            System.out.println("SI ENTRO AQUIIIIIIIIIIII");
+            service.clienteAdd(model.getCliente()); 
             
             return "/presentation/login/View.jsp";
         } catch (Exception ex) {
@@ -137,7 +133,6 @@ public class Controller extends HttpServlet {
         MetodoPago mp = new MetodoPago();
         
         mp.setTitular(request.getParameter("titular"));
-        mp.setIdCliente(request.getParameter("id"));
         mp.setNumTarjeta(request.getParameter("numTarjeta"));
         mp.setFechaExp(request.getParameter("fechaExp"));
         mp.setCodigoSeguridad(request.getParameter("codigoSeguridad"));

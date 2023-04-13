@@ -18,21 +18,18 @@ public class MetodoPagoDao {
     // Métodos
     
     public void create(MetodoPago m) throws Exception {
-        String comando = "insert into metodosDePago (idCliente, titular, numTarjeta, fechaExp"
-                + "codigoSeguridad) values (?,?,?,?,?)";
-        
+        String comando = "insert into metodosDePago (numTarjeta,titular, fechaExp, codigoSeguridad) values (?,?,?,?)";
         PreparedStatement stm = db.prepareStatement(comando);
-        stm.setString(1, m.getIdCliente());
+        stm.setString(1, m.getNumTarjeta());
         stm.setString(2, m.getTitular());
-        stm.setString(3, m.getNumTarjeta());
-        stm.setString(4, m.getFechaExp());
-        stm.setString(5, m.getCodigoSeguridad());
+        stm.setString(3, m.getFechaExp());
+        stm.setString(4, m.getCodigoSeguridad());
         
         db.executeUpdate(stm);
     }
 
     public MetodoPago read(String codigo) throws Exception {
-        String comando = "select * from metodosDePago m where m.codigo=?";
+        String comando = "select * from metodosDePago m where m.numTarjeta=?";
         
         PreparedStatement stm = db.prepareStatement(comando);
         stm.setString(1, codigo);
@@ -48,15 +45,14 @@ public class MetodoPagoDao {
     } 
     
     public void update(MetodoPago m) throws Exception {
-        String comando = "update metodosDePago set idCliente=?, titular=?, fechaExp=?,"
+        String comando = "update metodosDePago set titular=?, fechaExp=?,"
                 + "codigoSegurida=? where numTarjeta=?";
         
         PreparedStatement stm = db.prepareStatement(comando);
-        stm.setString(1, m.getIdCliente());
-        stm.setString(2, m.getTitular());
+        stm.setString(1, m.getTitular());
+        stm.setString(2, m.getNumTarjeta());
         stm.setString(3, m.getFechaExp());
         stm.setString(4, m.getCodigoSeguridad());
-        stm.setString(5, m.getNumTarjeta());
         
         int count = db.executeUpdate(stm);
         
@@ -80,10 +76,9 @@ public class MetodoPagoDao {
     
     public MetodoPago from(ResultSet rs, String alias) throws Exception {
         MetodoPago m = new MetodoPago();
-        
-        m.setIdCliente(rs.getString(alias + ".idCliente"));
         m.setTitular(rs.getString(alias + ".titular"));
         m.setNumTarjeta(rs.getString(alias + ".numTarjeta"));
+        m.setFechaExp(rs.getString(alias + ".fechaExp"));
         m.setCodigoSeguridad(rs.getString(alias + ".codigoSeguridad"));
         
         return m;

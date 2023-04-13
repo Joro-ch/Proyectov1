@@ -4,7 +4,6 @@ public class MetodoPago {
     
     // Atributos
     
-    private String idCliente;
     private String titular;
     private String numTarjeta;
     private String fechaExp;
@@ -13,7 +12,6 @@ public class MetodoPago {
     // Métodos
 
     public MetodoPago() {
-        this.idCliente = "";
         this.titular = "";
         this.numTarjeta = "";
         this.fechaExp = "";
@@ -21,20 +19,12 @@ public class MetodoPago {
     }
     
     public MetodoPago(String idCliente, String titular, String numTarjeta, String fechaExp, String codigoSeguridad) {
-        this.idCliente = idCliente;
         this.titular = titular;
         this.numTarjeta = numTarjeta;
         this.fechaExp = fechaExp;
         this.codigoSeguridad = codigoSeguridad;
     }
 
-    public String getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(String idCliente) {
-        this.idCliente = idCliente;
-    }
 
     public String getTitular() {
         return titular;
