@@ -24,7 +24,10 @@ public class Service {
     }
 
     public Usuario usuarioFind(String cedula,String clave) throws Exception{
-        return usuarioDao.read(cedula);
+        if (clave.equals(usuarioDao.read(cedula).getClave())){
+            return usuarioDao.read(cedula);
+        }
+        return null;
         // Falta verificar clave
     }
 
