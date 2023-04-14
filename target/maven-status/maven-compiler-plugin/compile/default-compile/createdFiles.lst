@@ -1,5 +1,6 @@
 com\program\proyectov1\data\PolizaDao.class
 com\program\proyectov1\data\DataBase.class
+com\program\proyectov1\presentation\admin\modelos\Model.class
 com\program\proyectov1\resources\JakartaEE10Resource.class
 com\program\proyectov1\logic\MetodoPago.class
 com\program\proyectov1\data\ModeloDao.class
@@ -15,6 +16,7 @@ com\program\proyectov1\logic\Service.class
 com\program\proyectov1\logic\Categoria.class
 com\program\proyectov1\data\MetodoPagoDao.class
 com\program\proyectov1\data\CategoriaDao.class
+com\program\proyectov1\presentation\admin\modelos\agregar\Controller.class
 com\program\proyectov1\JakartaRestConfiguration.class
 com\program\proyectov1\presentation\cliente\polizas\Model.class
 com\program\proyectov1\logic\Modelo.class

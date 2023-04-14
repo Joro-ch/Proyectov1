@@ -5,7 +5,7 @@
 package com.program.proyectov1.presentation.admin.modelos;
 
 import com.program.proyectov1.logic.Modelo;
-import com.program.proyectov1.presentation.login.Model;
+import com.program.proyectov1.presentation.admin.modelos.Model;
 import com.program.proyectov1.logic.Service;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,10 +14,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  *
  * @author Laptop Camilo
@@ -56,20 +54,25 @@ public class Controller extends HttpServlet {
         
     public String showAction(HttpServletRequest request){
         Model model = (Model) request.getAttribute("model");
-        model.getCurrent().setId("");
-        model.getCurrent().setClave("");
+        model.setModelos(new ArrayList<>());
         return "/presentation/admin/modelos/View.jsp"; 
     }
     
     public void RecuperarModelos(HttpServletRequest request){
         Service service = Service.instance();
-        List<Modelo> modelos;
+        Model model= (Model) request.getAttribute("model");
         try {
-            modelos = service.getModelos();
-            request.setAttribute("modelos", modelos);
+            model.setModelos(service.getModelos());
+            request.setAttribute("modelos", model.getModelos());
         } catch (Exception ex) {
         }
         
+    }
+    
+    public void updateModel(HttpServletRequest request){
+        Model model= (Model) request.getAttribute("model");
+        model.setModelos((List<Modelo>) request.getAttribute("modelos"));
+        System.out.println(model.getModelos().get(0).getModelo());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -110,5 +113,4 @@ public class Controller extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
