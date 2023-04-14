@@ -4,6 +4,8 @@ import com.program.proyectov1.data.ClienteDao;
 import com.program.proyectov1.data.DataBase;
 import com.program.proyectov1.data.MetodoPagoDao;
 import com.program.proyectov1.data.UsuarioDao;
+import com.program.proyectov1.data.ModeloDao;
+import java.util.List;
 
 public class Service {
     private static Service uniqueInstance;
@@ -18,11 +20,14 @@ public class Service {
     UsuarioDao usuarioDao;
     ClienteDao clienteDao;
     MetodoPagoDao mpDao;
+    ModeloDao moDao;
     private Service(){
         Database = new DataBase();
         usuarioDao = new UsuarioDao(Database);
         clienteDao = new ClienteDao(Database);
         mpDao = new MetodoPagoDao(Database);
+        moDao = new ModeloDao(Database);
+        
     }
 
     public Usuario usuarioFind(String cedula,String clave) throws Exception{
@@ -51,6 +56,14 @@ public class Service {
 
     public void tarjetaAdd(MetodoPago mp) throws Exception {
         mpDao.create(mp);
+    }
+    
+    public List<Modelo> getModelos() throws Exception{
+        return moDao.modelos();
+    }
+    
+    public void ModeloAdd(Modelo modelo) throws Exception{
+        moDao.create(modelo);
     }
 }
 
