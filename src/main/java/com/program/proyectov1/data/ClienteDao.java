@@ -78,9 +78,7 @@ public class ClienteDao {
         MetodoPagoDao m = new MetodoPagoDao(db);
         Cliente c = new Cliente();
         
-        c.setId(rs.getString(alias + ".id"));
-        c.setClave(rs.getString(alias + ".clave"));
-        c.setTipo(rs.getInt(alias + ".tipo"));
+        c.setId(rs.getString(alias + ".usuario"));
         c.setNombre(rs.getString(alias + ".nombre"));
         c.setTelefono(rs.getString(alias + ".telefono"));
         c.setCorreo(rs.getString(alias + ".correo"));
