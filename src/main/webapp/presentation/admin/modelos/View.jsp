@@ -5,9 +5,6 @@
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="com.program.proyectov1.logic.Modelo"%>
-<%@page import="java.util.List"%>
-<% List<Modelo> modelos = (List<Modelo>) request.getAttribute("modelos"); %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -42,7 +39,7 @@
                                                     <img src="data:image/jpg;base64, ${modelo.getImagen()}" alt="My Image">
                                                 </td>
                                         </tr>
-                                </c:forEach>
+                                </c:forEach>                                       
                         </tbody>
                 </table>
             </div>
