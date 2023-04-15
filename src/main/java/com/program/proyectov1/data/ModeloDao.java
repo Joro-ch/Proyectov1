@@ -24,7 +24,7 @@ public class ModeloDao {
         stm.setString(1, m.getModelo());
         stm.setString(2, m.getAnio());
         stm.setString(3, m.getMarca());
-        stm.setBytes(4, m.getImagen());
+        stm.setString(4, m.getImagen());
         
         db.executeUpdate(stm);
     }
@@ -55,7 +55,7 @@ public class ModeloDao {
             String modelo = rs.getString("modelo");
             String anio = rs.getString("anio");
             String marca = rs.getString("marca");
-            byte [] imagen = rs.getBytes("imagen");
+            String imagen = rs.getString("imagen");
             
             Modelo modeloTemp = new Modelo(modelo,anio,marca,imagen);
             modelos.add(modeloTemp);
