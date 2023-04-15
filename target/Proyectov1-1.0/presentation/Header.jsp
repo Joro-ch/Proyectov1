@@ -1,5 +1,5 @@
 <%@page import="com.program.proyectov1.logic.Usuario"%>
-<% Usuario usuario=  (Usuario) session.getAttribute("usuario");  %>
+<% Usuario usuario = (Usuario) session.getAttribute("usuario");  %>
 
 <header>
     <nav>

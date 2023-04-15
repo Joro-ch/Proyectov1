@@ -1,5 +1,6 @@
 package com.program.proyectov1.presentation.login;
 
+import com.program.proyectov1.logic.Cliente;
 import com.program.proyectov1.logic.Service;
 import com.program.proyectov1.logic.Usuario;
 import com.program.proyectov1.presentation.login.Model;
@@ -78,10 +79,14 @@ public class Controller extends HttpServlet {
             String viewUrl="";
             switch(real.getTipo()){ //Ahora vamos a determinar el tipo
                 case 1:
+                    model.setCurrentC(service.clienteFind(model.getCurrent()));
+                    
+                    request.setAttribute("cliente", model.getCurrentC());
+                    
                     viewUrl="/presentation/cliente/cuenta/View.jsp";//Esto es un usuario comun.
                     break;
                 case 2:
-                     viewUrl="/presentation/admin/dashboard/View.jsp"; //Esto es un admin. 
+                    viewUrl="/presentation/admin/dashboard/View.jsp"; //Esto es un admin. 
                     break;             
             }
             return viewUrl;
