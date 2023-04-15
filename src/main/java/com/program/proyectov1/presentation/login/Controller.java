@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(name = "LoginController", urlPatterns = {"/presentation/login/show","/presentation/login/login","/presentation/login/logout"})
+@WebServlet(name = "LoginController", urlPatterns = {"/presentation/login/show","/presentation/login/login","/presentation/login/logout", "/presentation/cliente/cuenta"})
 public class Controller extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -30,6 +30,9 @@ public class Controller extends HttpServlet {
                 break;
             case "/presentation/login/logout":
                 viewUrl = this.logout(request);
+                break;
+            case "/presentation/cliente/cuenta":
+                viewUrl = "/presentation/cliente/cuenta/View.jsp";
                 break;
         }
         request.getRequestDispatcher(viewUrl).forward( request, response); 
@@ -63,7 +66,7 @@ public class Controller extends HttpServlet {
         }
         catch(Exception e){
             return "/presentation/Error.jsp";//Si hay un error inesperado se envia a la pagina de error D:             
-        }    
+        }   
     }
     
     public String loginAction(HttpServletRequest request){
@@ -71,7 +74,6 @@ public class Controller extends HttpServlet {
         Service service = Service.instance();//llamamos a la instancia de service
         HttpSession session = request.getSession(true);//Se crea una sesion, esta se guarda hasta que se hace logout.
         try {
-            
             Usuario real = service.usuarioFind(model.getCurrent().getId(),model.getCurrent().getClave());//Buscamos el usuario con el id y pass igual a los del form
             if(real == null){throw new Exception();}
             //utilizando el temporal.Si existe el usuario seguimos, sino una exepcion.
@@ -80,10 +82,8 @@ public class Controller extends HttpServlet {
             switch(real.getTipo()){ //Ahora vamos a determinar el tipo
                 case 1:
                     model.setCurrentC(service.clienteFind(model.getCurrent()));
-                    
-                    request.setAttribute("cliente", model.getCurrentC());
-                    
-                    viewUrl="/presentation/cliente/cuenta/View.jsp";//Esto es un usuario comun.
+                    session.setAttribute("cliente", model.getCurrentC());
+                    viewUrl = "/presentation/cliente/cuenta/View.jsp";//Esto es un usuario comun.
                     break;
                 case 2:
                     viewUrl="/presentation/admin/dashboard/View.jsp"; //Esto es un admin. 
@@ -95,7 +95,7 @@ public class Controller extends HttpServlet {
             request.setAttribute("errores", errores);
             errores.put("cedulaFld","Usuario o clave incorrectos");
             errores.put("claveFld","Usuario o clave incorrectos");
-            return "/presentation/login/View.jsp"; 
+            return "/presentation/Error.jsp"; 
         }  
     }
 //Metodos para el logout
