@@ -4,6 +4,8 @@
  */
 package com.program.proyectov1.logic;
 
+import java.util.Base64;
+
 /**
  *
  * @author Laptop Camilo
@@ -13,9 +15,9 @@ public class Modelo {
     private String modelo;
     private String anio;
     private String marca;
-    private byte [] imagen;
+    private String imagen;
 
-    public Modelo(String modelo, String anio, String marca, byte[] imagen) {
+    public Modelo(String modelo, String anio, String marca, String imagen) {
         this.modelo = modelo;
         this.anio = anio;
         this.marca = marca;
@@ -34,7 +36,7 @@ public class Modelo {
         return marca;
     }
 
-    public byte[] getImagen() {
+    public String getImagen() {
         return imagen;
     }
     
@@ -50,7 +52,7 @@ public class Modelo {
         this.marca = marca;
     }
 
-    public void setImagen(byte[] imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
     

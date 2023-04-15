@@ -35,10 +35,12 @@
                         <tbody>
                                 <c:forEach var="modelo" items="${modelos}">
                                         <tr>
+                                                <td>${modelo.getMarca()}</td>
                                                 <td>${modelo.getModelo()}</td>
                                                 <td>${modelo.getAnio()}</td>
-                                                <td>${modelo.getMarca()}</td>
-                                                <td>${modelo.getImagen()}</td>
+                                                <td>
+                                                    <img src="data:image/jpg;base64, ${modelo.getImagen()}" alt="My Image">
+                                                </td>
                                         </tr>
                                 </c:forEach>
                         </tbody>
