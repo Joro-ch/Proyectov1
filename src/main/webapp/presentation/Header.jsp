@@ -1,5 +1,5 @@
 <%@page import="com.program.proyectov1.logic.Usuario"%>
-<% Usuario usuario=  (Usuario) session.getAttribute("usuario");  %>
+<% Usuario usuario = (Usuario) session.getAttribute("usuario");  %>
 
 <header>
     <nav>
@@ -11,7 +11,7 @@
         <div class = "nav-menu">
             <ul class = "nav-menu__Items">
                 <li class = "nav-menu__item"> <a href = "presentation/cliente/polizas/nuevaPoliza/show"> Comprar </a> </li>
-                <li class = "nav-menu__item"> <a href = ""> Mi Cuenta </a> </li>
+                <li class = "nav-menu__item"> <a href = "presentation/cliente/cuenta/miCuenta"> Mi Cuenta </a> </li>
             </ul>
         </div>
         <% } 

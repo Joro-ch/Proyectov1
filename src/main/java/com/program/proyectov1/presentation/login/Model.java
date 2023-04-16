@@ -1,24 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.program.proyectov1.presentation.login;
 
+import com.program.proyectov1.logic.Cliente;
 import com.program.proyectov1.logic.Usuario;
 
-/**
- *
- * @author gorki
- */
 public class Model {
     Usuario current;
+    Cliente currentC;
 
     public Model() {
         this.reset();
     }
     
     public void reset(){
-        setCurrent(new Usuario());        
+        setCurrent(new Usuario());  
+        setCurrentC(new Cliente());
     }
     
     public Usuario getCurrent() {
@@ -28,4 +23,13 @@ public class Model {
     public void setCurrent(Usuario current) {
         this.current = current;
     }
+
+    public Cliente getCurrentC() {
+        return currentC;
+    }
+
+    public void setCurrentC(Cliente currentC) {
+        this.currentC = currentC;
+    }
+    
 }
