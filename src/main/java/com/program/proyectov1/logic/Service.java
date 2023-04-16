@@ -58,6 +58,10 @@ public class Service {
         mpDao.create(mp);
     }
     
+    public void tarjetaUpdate(MetodoPago mp) throws Exception {
+        mpDao.update(mp);
+    }
+    
     public List<Modelo> getModelos() throws Exception{
         return moDao.modelos();
     }
