@@ -11,7 +11,7 @@
         <div class = "nav-menu">
             <ul class = "nav-menu__Items">
                 <li class = "nav-menu__item"> <a href = "presentation/cliente/polizas/nuevaPoliza/show"> Comprar </a> </li>
-                <li class = "nav-menu__item"> <a href = "presentation/cliente/cuenta"> Mi Cuenta </a> </li>
+                <li class = "nav-menu__item"> <a href = "presentation/cliente/cuenta/miCuenta"> Mi Cuenta </a> </li>
             </ul>
         </div>
         <% } 

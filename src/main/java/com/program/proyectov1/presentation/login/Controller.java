@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(name = "LoginController", urlPatterns = {"/presentation/login/show","/presentation/login/login","/presentation/login/logout", "/presentation/cliente/cuenta"})
+@WebServlet(name = "LoginController", urlPatterns = {"/presentation/login/show","/presentation/login/login","/presentation/login/logout", "/presentation/cliente/cuenta/miCuenta"})
 public class Controller extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -31,8 +31,8 @@ public class Controller extends HttpServlet {
             case "/presentation/login/logout":
                 viewUrl = this.logout(request);
                 break;
-            case "/presentation/cliente/cuenta":
-                viewUrl = "/presentation/cliente/cuenta/View.jsp";
+            case "/presentation/cliente/cuenta/miCuenta":
+                viewUrl = "/presentation/cliente/cuenta/miCuenta/View.jsp";
                 break;
         }
         request.getRequestDispatcher(viewUrl).forward( request, response); 
@@ -83,7 +83,7 @@ public class Controller extends HttpServlet {
                 case 1:
                     model.setCurrentC(service.clienteFind(model.getCurrent()));
                     session.setAttribute("cliente", model.getCurrentC());
-                    viewUrl = "/presentation/cliente/cuenta/View.jsp";//Esto es un usuario comun.
+                    viewUrl = "/presentation/cliente/cuenta/miCuenta/View.jsp";//Esto es un usuario comun.
                     break;
                 case 2:
                     viewUrl="/presentation/admin/dashboard/View.jsp"; //Esto es un admin. 
