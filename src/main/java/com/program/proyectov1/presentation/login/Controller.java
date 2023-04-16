@@ -55,6 +55,7 @@ public class Controller extends HttpServlet {
     public String login(HttpServletRequest request){
         try{
             Map<String,String> errores =  this.validar(request);//Revisamos que no hayan errores 
+            System.out.println("valido los errores ");
             if(errores.isEmpty()){//Si no hay errores vamos a crear darle a actualizar el model y crear un usuario temporal con los datos del form
                 this.updateModel(request);          
                 return this.loginAction(request);//Ahora que el model tiene un usuario temporal, vamos a ir a las acciones. 
@@ -65,6 +66,8 @@ public class Controller extends HttpServlet {
             }            
         }
         catch(Exception e){
+            System.out.println("en loginnom");
+            System.out.println(e.getMessage());
             return "/presentation/Error.jsp";//Si hay un error inesperado se envia a la pagina de error D:             
         }   
     }
@@ -91,6 +94,8 @@ public class Controller extends HttpServlet {
             }
             return viewUrl;
         } catch (Exception ex) {
+            System.out.println("en actions");
+            System.out.println(ex.getMessage());
             Map<String,String> errores = new HashMap<>();
             request.setAttribute("errores", errores);
             errores.put("cedulaFld","Usuario o clave incorrectos");
@@ -114,8 +119,8 @@ public class Controller extends HttpServlet {
 //Validacion de los espacios >>:
     Map<String,String> validar(HttpServletRequest request){
         Map<String,String> errores = new HashMap<>();//Se crea un hashmap con donde se da el error y el mensaje de error.
-        if (request.getParameter("marca").isEmpty()){//Si est[a vacia
-            errores.put("marca","marca requerida");
+        if (request.getParameter("id").isEmpty()){//Si est[a vacia
+            errores.put("id","id requerida");
         }
 
         if (request.getParameter("pass").isEmpty()){
