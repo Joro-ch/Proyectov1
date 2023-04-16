@@ -15,14 +15,22 @@ public class Modelo {
     private String modelo;
     private String anio;
     private String marca;
-    private String imagen;
+    private byte[] imagen;
 
-    public Modelo(String modelo, String anio, String marca, String imagen) {
+    public Modelo(String modelo, String anio, String marca, byte[] imagen) {
         this.modelo = modelo;
         this.anio = anio;
         this.marca = marca;
         this.imagen = imagen;
     }   
+
+    public Modelo() {
+        this.modelo = "";
+        this.anio = "";
+        this.marca = "";
+        this.imagen = new byte[0];;
+    }
+    
     
     public String getModelo(){
         return modelo;
@@ -36,7 +44,7 @@ public class Modelo {
         return marca;
     }
 
-    public String getImagen() {
+    public byte[] getImagen() {
         return imagen;
     }
     
@@ -52,11 +60,13 @@ public class Modelo {
         this.marca = marca;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(byte[] imagen) {
         this.imagen = imagen;
     }
     
     
-    
+    public String getImagenBase64(){
+        return Base64.getEncoder().encodeToString(imagen);//se pasa de bytes a base64 para mostrarlo en el jsp
+    }
     
 }

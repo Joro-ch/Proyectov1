@@ -63,6 +63,7 @@ public class Service {
     }
     
     public void ModeloAdd(Modelo modelo) throws Exception{
+        System.out.println("ENtro al service antes de modelo dao");
         moDao.create(modelo);
     }
 }
