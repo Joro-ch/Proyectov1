@@ -17,7 +17,7 @@
                 <i class = "fas fa-user cuerpo-form__input-Id-icon cuerpo-form__item"></i>
                 <input class = "cuerpo-form__input-Id cuerpo-form__item" autocomplete="off" type = "text" id = "id" placeholder="Ingrese su Cédula" name="id">
                 <i class = "fas fa-key cuerpo-form__input-Clave-icon cuerpo-form__item"></i>
-                <input class = "cuerpo-form__input-Clave cuerpo-form__item" autocomplete="off" type = "text" id = "clave" placeholder="Ingrese su Clave" name="pass">
+                <input class = "cuerpo-form__input-Clave cuerpo-form__item" autocomplete="off" type = "password" id = "clave" placeholder="Ingrese su Clave" name="pass">
                 <input class = "cuerpo-form__input-Sumit cuerpo-form__item" type="submit" value="Ingresar">
                 <h4 class = "cuerpo-form__MensajeRegistro cuerpo-form__item"> ¿No tienes cuenta? </h4>
                 <a href="presentation/registro/show" class = "cuerpo-form__input-RegistroButton cuerpo-form__item"> Registrarse </a>
