@@ -42,6 +42,7 @@ public class DataBase {
         try {
             return cnx.prepareStatement(statement);
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             throw new Exception("ERROR DE BASE DE DATOS");
         }
     }
@@ -53,6 +54,7 @@ public class DataBase {
         } catch (SQLIntegrityConstraintViolationException ex) {
             throw ex;
         } catch (Exception ex) {
+            System.out.println(ex.getMessage());
             throw new Exception("ERROR DE BASE DE DATOS");
         }
 
@@ -62,6 +64,7 @@ public class DataBase {
         try {
             return statement.executeQuery();
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             throw new Exception("ERROR DE BASE DE DATOS");
         }
     }

@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Model {
     private List<Modelo> modelos;
-
+    private Modelo current;
     public Model() {
         this.reset();
     }
@@ -27,6 +27,16 @@ public class Model {
     }
     
     public void reset(){
-        setModelos(new ArrayList<>());        
+        setModelos(new ArrayList<>());
+        setCurrent(new Modelo());
     }
+
+    public Modelo getCurrent() {
+        return current;
+    }
+
+    public void setCurrent(Modelo current) {
+        this.current = current;
+    }
+    
 }
