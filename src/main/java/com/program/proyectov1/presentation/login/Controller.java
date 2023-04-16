@@ -114,8 +114,8 @@ public class Controller extends HttpServlet {
 //Validacion de los espacios >>:
     Map<String,String> validar(HttpServletRequest request){
         Map<String,String> errores = new HashMap<>();//Se crea un hashmap con donde se da el error y el mensaje de error.
-        if (request.getParameter("id").isEmpty()){//Si est[a vacia
-            errores.put("cedulaFld","Cedula requerida");
+        if (request.getParameter("marca").isEmpty()){//Si est[a vacia
+            errores.put("marca","marca requerida");
         }
 
         if (request.getParameter("pass").isEmpty()){
