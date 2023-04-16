@@ -17,7 +17,7 @@
         <%@ include file = "../../Header.jsp"%>
         <div class = "fondo">
             <div class = "cuerpo">
-                <form action="./presentation/login/logout" method="post" class = "form_Boton">
+                <form action="./presentation/admin/modelos/agregar" method="post" class = "form_Boton">
                     <button type="submit" id = "agregar">Agregar</button>
                 </form>
                 <table>
@@ -36,7 +36,7 @@
                                                 <td>${modelo.getModelo()}</td>
                                                 <td>${modelo.getAnio()}</td>
                                                 <td>
-                                                    <img src="data:image/jpg;base64, ${modelo.getImagen()}" alt="My Image">
+                                                    <img src="data:image/jpg;base64,${modelo.getImagenBase64()}" alt="My Image">
                                                 </td>
                                         </tr>
                                 </c:forEach>                                       

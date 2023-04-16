@@ -3,7 +3,12 @@ package com.program.proyectov1.data;
 import jakarta.resource.cci.ResultSet;
 import java.sql.PreparedStatement;
 import com.program.proyectov1.logic.Modelo;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Base64;
 import java.util.List;
 
 public class ModeloDao {
@@ -19,13 +24,15 @@ public class ModeloDao {
     // Métodos
     
     public void create(Modelo m) throws Exception {
-        String comando = "insert into metodosDePago (modelo,anio,marca,imagen) values (?,?,?,?)";
+        System.out.println("modelo dao");
+        String comando = "insert into modelos(modelo,anio,marca,imagen) values (?,?,?,?)";
         PreparedStatement stm = db.prepareStatement(comando);
         stm.setString(1, m.getModelo());
         stm.setString(2, m.getAnio());
         stm.setString(3, m.getMarca());
-        stm.setString(4, m.getImagen());
-        
+        InputStream imageStream = new ByteArrayInputStream(m.getImagen());
+        stm.setBinaryStream(4, imageStream, m.getImagen().length);
+    
         db.executeUpdate(stm);
     }
 
@@ -55,9 +62,8 @@ public class ModeloDao {
             String modelo = rs.getString("modelo");
             String anio = rs.getString("anio");
             String marca = rs.getString("marca");
-            String imagen = rs.getString("imagen");
-            
-            Modelo modeloTemp = new Modelo(modelo,anio,marca,imagen);
+            byte[] imagenBytes = rs.getBytes("imagen");
+            Modelo modeloTemp = new Modelo(modelo, anio, marca, imagenBytes);
             modelos.add(modeloTemp);
         }
         return modelos; 
