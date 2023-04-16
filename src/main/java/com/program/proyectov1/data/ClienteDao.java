@@ -46,13 +46,13 @@ public class ClienteDao {
     } 
     
     public void update(Cliente c) throws Exception {
-        String comando = "update clientes set nombre=?, telefono=?, correo=?, metodoPago=? where usuario=?";
+        String comando = "update clientes set nombre=?, telefono=?, correo=? where usuario=?";
         
         PreparedStatement stm = db.prepareStatement(comando);
         stm.setString(1, c.getNombre());
         stm.setString(2, c.getTelefono());
         stm.setString(3, c.getCorreo());
-        stm.setString(4, c.getTarjeta().getNumTarjeta());
+        stm.setString(4, c.getId());
         
         int count = db.executeUpdate(stm);
         
