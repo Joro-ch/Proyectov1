@@ -46,13 +46,13 @@ public class MetodoPagoDao {
     
     public void update(MetodoPago m) throws Exception {
         String comando = "update metodosDePago set titular=?, fechaExp=?,"
-                + "codigoSegurida=? where numTarjeta=?";
+                + "codigoSeguridad=? where numTarjeta=?";
         
         PreparedStatement stm = db.prepareStatement(comando);
         stm.setString(1, m.getTitular());
-        stm.setString(2, m.getNumTarjeta());
-        stm.setString(3, m.getFechaExp());
-        stm.setString(4, m.getCodigoSeguridad());
+        stm.setString(2, m.getFechaExp());
+        stm.setString(3, m.getCodigoSeguridad());
+        stm.setString(4, m.getNumTarjeta());
         
         int count = db.executeUpdate(stm);
         
