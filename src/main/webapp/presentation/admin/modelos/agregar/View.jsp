@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,9 +20,9 @@
             <form action="./presentation/admin/modelos/agregar/new" method="POST" enctype="multipart/form-data">
             <label for="brand">Marca:</label>
             <select id="brand" name="marca">
-                <option value="Toyota">Toyota</option>
-                <option value="Honda">Honda</option>
-                <option value="Nissan">Nissan</option>
+                <c:forEach var="marca" items="${marcas}">
+                    <option value= "${marca}" >${marca}</option>
+                </c:forEach>
             </select>
             <label for="model">Modelo:</label>
             <input type="text" id="model" name="modelo">

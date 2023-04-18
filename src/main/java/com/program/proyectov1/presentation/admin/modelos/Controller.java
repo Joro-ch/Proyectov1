@@ -46,6 +46,7 @@ public class Controller extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             request.setAttribute("model", new Model());
+            RecuperarMarcas(request);
             RecuperarModelos(request);
             String viewUrl="";
             switch(request.getServletPath()){
@@ -79,6 +80,17 @@ public class Controller extends HttpServlet {
         Model model = (Model) request.getAttribute("model");
         model.setModelos(new ArrayList<>());
         return "/presentation/admin/modelos/View.jsp"; 
+    }
+    
+    public void RecuperarMarcas(HttpServletRequest request){
+        Service service = Service.instance();
+        Model model= (Model) request.getAttribute("model");
+        try {
+            model.setMarcas(service.getMarcas());
+            request.setAttribute("marcas", model.getMarcas());
+        } catch (Exception ex) {
+        }
+        
     }
     
     public void RecuperarModelos(HttpServletRequest request){
