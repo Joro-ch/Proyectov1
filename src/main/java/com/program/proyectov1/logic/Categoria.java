@@ -19,10 +19,10 @@ public class Categoria {
         this.coberturas = new ArrayList<>();
     }
     
-    public Categoria(String descripcion, List<Cobertura> coberturas) {
-        this.id = "";
+    public Categoria(String id, String descripcion) {
+        this.id = id;
         this.descripcion = descripcion;
-        this.coberturas = coberturas;
+        this.coberturas = new ArrayList<>();
     }
 
     public Categoria(String id, String descripcion, List<Cobertura> coberturas) {

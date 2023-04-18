@@ -4,6 +4,8 @@ import com.program.proyectov1.logic.Categoria;
 import com.program.proyectov1.logic.Cliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoriaDao {
     
@@ -69,6 +71,23 @@ public class CategoriaDao {
         if(count == 0) {
             throw new Exception("CATEGORIA NO ENCONTRADO");
         }
+    }
+    
+    public List<Categoria> categorias() throws Exception {
+        String comando = "select * from categorias";
+        
+        PreparedStatement stm = db.prepareStatement(comando);
+        
+        ResultSet rs = stm.executeQuery();
+        List<Categoria> categorias = new ArrayList<>();
+        
+        while(rs.next()){
+            String id = rs.getString("id");
+            String descripcion = rs.getString("descripcion");
+            Categoria categoriaTemp = new Categoria(id, descripcion);
+            categorias.add(categoriaTemp);
+        }
+        return categorias; 
     }
     
     public Categoria from(ResultSet rs, String alias) throws Exception {
