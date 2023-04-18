@@ -11,6 +11,7 @@
         <div class = "nav-menu">
             <ul class = "nav-menu__Items">
                 <li class = "nav-menu__item"> <a href = "presentation/cliente/polizas/nuevaPoliza/show"> Comprar </a> </li>
+                <li class = "nav-menu__item"> <a href = "presentation/cliente/polizas/misPolizas/show"> Mis Polizas </a> </li>
                 <li class = "nav-menu__item"> <a href = "presentation/cliente/cuenta/miCuenta"> Mi Cuenta </a> </li>
             </ul>
         </div>
@@ -21,7 +22,7 @@
             <ul class = "nav-menu__Items">
                 <li class = "nav-menu__item"> <a href = ""> Listado Clientes y Pólizas </a> </li>
                 <li class = "nav-menu__item"> <a href = "presentation/admin/modelos/show"> Modelos y Marcas </a> </li>
-                <li class = "nav-menu__item"> <a href = ""> Categorias y Coberturas </a> </li>
+                <li class = "nav-menu__item"> <a href = "presentation/admin/categorias/show"> Categorias y Coberturas </a> </li>
             </ul>
         </div>
         <% } 

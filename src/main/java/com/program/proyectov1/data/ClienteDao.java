@@ -75,10 +75,12 @@ public class ClienteDao {
     }
     
     public Cliente from(ResultSet rs, String alias) throws Exception {
+        UsuarioDao u = new UsuarioDao(db);
         MetodoPagoDao m = new MetodoPagoDao(db);
         Cliente c = new Cliente();
         
         c.setId(rs.getString(alias + ".usuario"));
+        c.setClave(u.read(c.getId()).getClave());
         c.setNombre(rs.getString(alias + ".nombre"));
         c.setTelefono(rs.getString(alias + ".telefono"));
         c.setCorreo(rs.getString(alias + ".correo"));

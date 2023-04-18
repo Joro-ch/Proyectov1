@@ -84,3 +84,7 @@
     justify-content: center;
     align-items: center;
 } 
+
+.cuerpo-EditarButton:hover {
+    filter: brightness(0.85);
+}

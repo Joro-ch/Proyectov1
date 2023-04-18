@@ -1,5 +1,6 @@
 package com.program.proyectov1.logic;
 
+import com.program.proyectov1.data.CategoriaDao;
 import com.program.proyectov1.data.ClienteDao;
 import com.program.proyectov1.data.DataBase;
 import com.program.proyectov1.data.MetodoPagoDao;
@@ -21,13 +22,15 @@ public class Service {
     ClienteDao clienteDao;
     MetodoPagoDao mpDao;
     ModeloDao moDao;
+    CategoriaDao caDao;
+    
     private Service(){
         Database = new DataBase();
         usuarioDao = new UsuarioDao(Database);
         clienteDao = new ClienteDao(Database);
         mpDao = new MetodoPagoDao(Database);
         moDao = new ModeloDao(Database);
-        
+        caDao = new CategoriaDao(Database);
     }
 
     public Usuario usuarioFind(String cedula,String clave) throws Exception{
@@ -62,7 +65,7 @@ public class Service {
         mpDao.update(mp);
     }
     
-    public List<Modelo> getModelos() throws Exception{
+    public List<Modelo> getModelos() throws Exception {
         return moDao.modelos();
     }
     
@@ -70,5 +73,14 @@ public class Service {
         System.out.println("ENtro al service antes de modelo dao");
         moDao.create(modelo);
     }
+    
+    public void categoriaAdd(Categoria c) throws Exception {
+        caDao.create(c);
+    }
+    
+    public List<Categoria> getCategorias() throws Exception {
+        return caDao.categorias();
+    }
+    
 }
 
