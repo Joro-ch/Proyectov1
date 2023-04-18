@@ -20,11 +20,10 @@ public class CategoriaDao {
     // Métodos
     
     public void create(Categoria c) throws Exception {
-        String comando = "insert into categorias (id, descripcion) values (?,?)";
+        String comando = "insert into categorias (descripcion) values (?)";
         
         PreparedStatement stm = db.prepareStatement(comando);
-        stm.setString(1, c.getId());
-        stm.setString(2, c.getDescripcion());
+        stm.setString(1, c.getDescripcion());
         
         db.executeUpdate(stm);
     }

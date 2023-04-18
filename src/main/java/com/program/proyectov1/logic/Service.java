@@ -74,6 +74,10 @@ public class Service {
         moDao.create(modelo);
     }
     
+    public void categoriaAdd(Categoria c) throws Exception {
+        caDao.create(c);
+    }
+    
     public List<Categoria> getCategorias() throws Exception {
         return caDao.categorias();
     }

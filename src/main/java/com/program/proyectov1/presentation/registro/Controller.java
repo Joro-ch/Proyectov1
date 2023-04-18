@@ -1,6 +1,5 @@
 package com.program.proyectov1.presentation.registro;
 
-import com.program.proyectov1.logic.Cliente;
 import com.program.proyectov1.logic.MetodoPago;
 import com.program.proyectov1.logic.Service;
 import com.program.proyectov1.logic.Usuario;

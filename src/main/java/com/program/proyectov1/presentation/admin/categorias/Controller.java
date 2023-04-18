@@ -1,5 +1,6 @@
 package com.program.proyectov1.presentation.admin.categorias;
 
+import com.program.proyectov1.logic.Categoria;
 import com.program.proyectov1.logic.Service;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,6 +8,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet(name = "CategoriasController", urlPatterns = {"/presentation/admin/categorias/show", "/presentation/admin/categorias/agregar/show", "/presentation/admin/categorias/agregar"})
 public class Controller extends HttpServlet {
@@ -55,7 +58,52 @@ public class Controller extends HttpServlet {
     } 
     
     public String agregar(HttpServletRequest request) {
+        try {
+            Map<String, String> map = this.validar(request);
+            
+            if (map.isEmpty()) {
+                this.update(request);
+                return agregarAction(request);
+            }
+            else {
+                request.setAttribute("ERRORES", map);
+            }
+        }
+        catch(Exception e) {
+        }
         return "";
+    }
+    
+    public String agregarAction(HttpServletRequest request) {
+        Model model = (Model) request.getAttribute("model"); //Se toma el objeto model creado en el processrequest y que ahora tiene un usuario temp
+        Service service = Service.instance();//llamamos a la instancia de service
+        
+        try {
+            service.categoriaAdd(model.getCurrentCat());
+            model.setCategorias(service.getCategorias());
+            return "/presentation/admin/categorias/View.jsp";
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return "/presentation/Error.jsp"; 
+        }  
+    }
+    
+    Map<String,String> validar(HttpServletRequest request){
+        Map<String,String> errores = new HashMap<>();//Se crea un hashmap con donde se da el error y el mensaje de error.
+        if (request.getParameter("descripcion").isEmpty()){//Si est[a vacia
+            errores.put("ERROR DESCRIPCION","DESCRIPCION REQUERIDA");
+        }
+        return errores;
+    }
+    
+    public void update(HttpServletRequest request) {
+        Model model = (Model)request.getAttribute("model");
+        
+        Categoria c = model.getCurrentCat();
+        
+        c.setDescripcion(request.getParameter("descripcion"));
+        
+        model.getCategorias().add(c);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
