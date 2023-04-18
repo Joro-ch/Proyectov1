@@ -12,11 +12,19 @@ import java.util.List;
  */
 public class Model {
     private List<Modelo> modelos;
+    private List<String> marcas;
     private Modelo current;
     public Model() {
         this.reset();
     }
 
+    public List<String> getMarcas() {
+        return marcas;
+    }
+
+    public void setMarcas(List<String> marcas) {
+        this.marcas = marcas;
+    }
     
     public void setModelos(List<Modelo> modelos) {
         this.modelos = modelos;
@@ -28,6 +36,7 @@ public class Model {
     
     public void reset(){
         setModelos(new ArrayList<>());
+        setMarcas(new ArrayList<>());
         setCurrent(new Modelo());
     }
 
