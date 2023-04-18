@@ -50,7 +50,7 @@
                         <% } %>
                     </tbody>
                 </table>  
-                <a class = "cuerpo-tabla__button" href=""> Agregar Categoria </a>
+                <a class = "cuerpo-tabla__button" href="presentation/admin/categorias/agregar/show"> Agregar Categoria </a>
                 
             </div>
         </div>

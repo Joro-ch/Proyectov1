@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "CategoriasController", urlPatterns = {"/presentation/admin/categorias/show"})
+@WebServlet(name = "CategoriasController", urlPatterns = {"/presentation/admin/categorias/show", "/presentation/admin/categorias/agregar/show", "/presentation/admin/categorias/agregar"})
 public class Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -19,6 +19,12 @@ public class Controller extends HttpServlet {
         switch(request.getServletPath()){
             case "/presentation/admin/categorias/show":
                 viewUrl = this.show(request);
+                break;
+            case "/presentation/admin/categorias/agregar/show":
+                viewUrl = this.agregarShow(request);
+                break;
+            case "/presentation/admin/categorias/agregar":
+                viewUrl = this.agregar(request);
                 break;
         }
         request.getRequestDispatcher(viewUrl).forward( request, response);
@@ -39,6 +45,18 @@ public class Controller extends HttpServlet {
             return "";
         }
     } 
+    
+    public String agregarShow(HttpServletRequest request){
+        return this.agregarShowAction(request);
+    }
+        
+    public String agregarShowAction(HttpServletRequest request) {
+        return "/presentation/admin/categorias/agregar/View.jsp";
+    } 
+    
+    public String agregar(HttpServletRequest request) {
+        return "";
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

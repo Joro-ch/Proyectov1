@@ -1,0 +1,9 @@
+
+.cuerpo {
+    grid-row: 2 / 3;
+    background-image: url(https://images5.alphacoders.com/834/834669.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    text-align: center;
+}
