@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,14 +22,18 @@
                 <i class="fas fa-hashtag cuerpo-form__icon cuerpo-form__item"></i>
                 <input class = "cuerpo-form__input cuerpo-form__item" autocomplete="off" type = "text" id = "id" placeholder="Ingrese la Placa" name="placa" required>    
                 <i class="fas fa-car cuerpo-form__icon cuerpo-form__item"></i>
-                <select class="cuerpo-form__item cuerpo-form__input" id = "marca" required>
-                    <option value="">Seleccione una marca</option>
-                    <option value="Toyota">Toyota-Hilux</option>
-                    <option value="Honda">Honda-Civic</option>
-                    <option value="Ford">Ford-Raptor</option>
-                    <option value="Chevrolet">Chevrolet-Camaro</option>
+                <select class="cuerpo-form__item cuerpo-form__input" id = "marca" required placeholder = "Selecciona un modelo">
+                    <option value="" disabled selected>Seleccione un modelo</option>
+                    <c:forEach var="marca" items="${marcas}">
+                    <optgroup label = ${marca}>
+                        <c:forEach var="modelo" items="${modelos}">
+                            <c:if test="${modelo.getMarca() eq marca}">
+                                <option value="${modelo.getModelo()}"> ${modelo.getMarca()} - ${modelo.getModelo()} </option>>
+                            </c:if>
+                        </c:forEach>
+                    </optgroup>
+                    </c:forEach>
                 </select>
-
                 <i class="fas fa-calendar cuerpo-form__icon cuerpo-form__item"></i>
                 <input type="number" min="1990" max="2023" class ="cuerpo-form__item cuerpo-form__input" placeholder="Escriba el año del vehiculo" required>
                 

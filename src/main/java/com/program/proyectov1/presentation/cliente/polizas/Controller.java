@@ -1,7 +1,8 @@
 package com.program.proyectov1.presentation.cliente.polizas;
 
-import com.program.proyectov1.presentation.login.Model;
+import com.program.proyectov1.logic.Service;
 import jakarta.servlet.ServletException;
+import com.program.proyectov1.presentation.cliente.polizas.Model;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -36,9 +37,8 @@ public class Controller extends HttpServlet {
     }
         
     public String showNuevaPolizaAction(HttpServletRequest request){
-        Model model = (Model) request.getAttribute("model");
-        model.getCurrent().setId("");
-        model.getCurrent().setClave("");
+        this.RecuperarMarcas(request);
+        this.RecuperarModelos(request);
         return "/presentation/cliente/polizas/nuevaPoliza/View.jsp"; 
     }  
     
@@ -47,9 +47,30 @@ public class Controller extends HttpServlet {
     }
         
     public String showMisPolizasAction(HttpServletRequest request){
-        Model model = (Model) request.getAttribute("model");
         return "/presentation/cliente/polizas/misPolizas/View.jsp"; 
     }  
+    
+    public void RecuperarMarcas(HttpServletRequest request){
+        Service service = Service.instance();
+        Model model= (Model) request.getAttribute("model");
+        try {
+            model.setMarcas(service.getMarcas());
+            request.setAttribute("marcas", model.getMarcas());
+        } catch (Exception ex) {
+        }
+        
+    }
+    
+    public void RecuperarModelos(HttpServletRequest request){
+        Service service = Service.instance();
+        Model model= (Model) request.getAttribute("model");
+        try {
+            model.setModelos(service.getModelos());
+            request.setAttribute("modelos", model.getModelos());
+        } catch (Exception ex) {
+        }
+        
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
