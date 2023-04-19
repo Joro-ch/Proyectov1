@@ -11,7 +11,10 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(name = "CategoriasController", urlPatterns = {"/presentation/admin/categorias/show", "/presentation/admin/categorias/agregar/show", "/presentation/admin/categorias/agregar"})
+@WebServlet(name = "CategoriasController", urlPatterns = {"/presentation/admin/categorias/show", 
+"/presentation/admin/categorias/agregarCat/show", "/presentation/admin/categorias/agregarCat",
+"/presentation/admin/categorias/agregarCob/show", "/presentation/admin/categorias/agregarCob"})
+
 public class Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -23,11 +26,17 @@ public class Controller extends HttpServlet {
             case "/presentation/admin/categorias/show":
                 viewUrl = this.show(request);
                 break;
-            case "/presentation/admin/categorias/agregar/show":
-                viewUrl = this.agregarShow(request);
+            case "/presentation/admin/categorias/agregarCat/show":
+                viewUrl = this.agregarCatShow(request);
                 break;
-            case "/presentation/admin/categorias/agregar":
-                viewUrl = this.agregar(request);
+            case "/presentation/admin/categorias/agregarCat":
+                viewUrl = this.agregarCat(request);
+                break;
+            case "/presentation/admin/categorias/agregarCob/show":
+                viewUrl = this.agregarCobShow(request);
+                break;
+            case "/presentation/admin/categorias/agregarCob":
+                viewUrl = this.agregarCob(request);
                 break;
         }
         request.getRequestDispatcher(viewUrl).forward( request, response);
@@ -49,21 +58,21 @@ public class Controller extends HttpServlet {
         }
     } 
     
-    public String agregarShow(HttpServletRequest request){
-        return this.agregarShowAction(request);
+    public String agregarCatShow(HttpServletRequest request){
+        return this.agregarCatShowAction(request);
     }
         
-    public String agregarShowAction(HttpServletRequest request) {
-        return "/presentation/admin/categorias/agregar/View.jsp";
+    public String agregarCatShowAction(HttpServletRequest request) {
+        return "/presentation/admin/categorias/agregarCat/View.jsp";
     } 
     
-    public String agregar(HttpServletRequest request) {
+    public String agregarCat(HttpServletRequest request) {
         try {
             Map<String, String> map = this.validar(request);
             
             if (map.isEmpty()) {
                 this.update(request);
-                return agregarAction(request);
+                return agregarCatAction(request);
             }
             else {
                 request.setAttribute("ERRORES", map);
@@ -74,7 +83,7 @@ public class Controller extends HttpServlet {
         return "";
     }
     
-    public String agregarAction(HttpServletRequest request) {
+    public String agregarCatAction(HttpServletRequest request) {
         Model model = (Model) request.getAttribute("model"); //Se toma el objeto model creado en el processrequest y que ahora tiene un usuario temp
         Service service = Service.instance();//llamamos a la instancia de service
         
@@ -86,6 +95,22 @@ public class Controller extends HttpServlet {
             System.out.println(ex.getMessage());
             return "/presentation/Error.jsp"; 
         }  
+    }
+    
+    public String agregarCobShow(HttpServletRequest request) {
+        return agregarCobShowAction(request);
+    } 
+    
+    public String agregarCobShowAction(HttpServletRequest request) {
+        return "/presentation/admin/categorias/agregarCob/View.jsp";
+    }
+    
+    public String agregarCob(HttpServletRequest request) {
+        return agregarCobAction(request);
+    }
+    
+     public String agregarCobAction(HttpServletRequest request) {
+        return "/presentation/admin/categorias/View.jsp";
     }
     
     Map<String,String> validar(HttpServletRequest request){
