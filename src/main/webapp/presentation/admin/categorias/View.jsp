@@ -43,14 +43,14 @@
                                 <h3> h1 </h3>
                             </td>
                             <td>
-                                <a href = ""> + </a>
+                                <a class = "cuerpo-tabla__add" href = "presentation/admin/categorias/agregarCob/show"> + </a>
                             </td>
                         </tr>
 
                         <% } %>
                     </tbody>
                 </table>  
-                <a class = "cuerpo-tabla__button" href="presentation/admin/categorias/agregar/show"> Agregar Categoria </a>
+                <a class = "cuerpo-tabla__button" href="presentation/admin/categorias/agregarCat/show"> Agregar Categoria </a>
                 
             </div>
         </div>
