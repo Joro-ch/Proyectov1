@@ -47,15 +47,8 @@ public class Controller extends HttpServlet {
     }
         
     public String showAction(HttpServletRequest request) {
-        Model model = (Model) request.getAttribute("model");
-        Service service = Service.instance();
- 
-        try {        
-            model.setCategorias(service.getCategorias());
-            return "/presentation/admin/categorias/View.jsp"; 
-        } catch (Exception ex) {
-            return "";
-        }
+        setearCategorias(request);
+        return "/presentation/admin/categorias/View.jsp"; 
     } 
     
     public String agregarCatShow(HttpServletRequest request){
@@ -63,15 +56,16 @@ public class Controller extends HttpServlet {
     }
         
     public String agregarCatShowAction(HttpServletRequest request) {
+        setearCategorias(request);
         return "/presentation/admin/categorias/agregarCat/View.jsp";
     } 
     
     public String agregarCat(HttpServletRequest request) {
         try {
-            Map<String, String> map = this.validar(request);
+            Map<String, String> map = this.validarCat(request);
             
             if (map.isEmpty()) {
-                this.update(request);
+                this.updateCat(request);
                 return agregarCatAction(request);
             }
             else {
@@ -102,18 +96,33 @@ public class Controller extends HttpServlet {
     } 
     
     public String agregarCobShowAction(HttpServletRequest request) {
+        setearCategorias(request);
         return "/presentation/admin/categorias/agregarCob/View.jsp";
     }
     
     public String agregarCob(HttpServletRequest request) {
-        return agregarCobAction(request);
+        try {
+            Map<String, String> map = this.validarCob(request);
+            
+            if (map.isEmpty()) {
+                this.updateCob(request);
+                return agregarCobAction(request);
+            }
+            else {
+                request.setAttribute("ERRORES", map);
+            }
+        }
+        catch(Exception e) {
+        }
+        return "";
     }
     
-     public String agregarCobAction(HttpServletRequest request) {
+    public String agregarCobAction(HttpServletRequest request) {
+        setearCategorias(request);
         return "/presentation/admin/categorias/View.jsp";
     }
     
-    Map<String,String> validar(HttpServletRequest request){
+    Map<String,String> validarCat(HttpServletRequest request){
         Map<String,String> errores = new HashMap<>();//Se crea un hashmap con donde se da el error y el mensaje de error.
         if (request.getParameter("descripcion").isEmpty()){//Si est[a vacia
             errores.put("ERROR DESCRIPCION","DESCRIPCION REQUERIDA");
@@ -121,7 +130,24 @@ public class Controller extends HttpServlet {
         return errores;
     }
     
-    public void update(HttpServletRequest request) {
+    Map<String,String> validarCob(HttpServletRequest request){
+        Map<String,String> errores = new HashMap<>();//Se crea un hashmap con donde se da el error y el mensaje de error.
+        if (request.getParameter("categoria").isEmpty()){//Si est[a vacia
+            errores.put("ERROR CATEGORIA","CATEGORIA REQUERIDA");
+        }
+        if (request.getParameter("descripcion").isEmpty()){//Si est[a vacia
+            errores.put("ERROR DESCRIPCION","DESCRIPCION REQUERIDA");
+        }
+        if (request.getParameter("costo minimo").isEmpty()){//Si est[a vacia
+            errores.put("ERROR COSTO MINIMO","COSTO MINIMO REQUERIDO");
+        }
+        if (request.getParameter("costo porcentual").isEmpty()){//Si est[a vacia
+            errores.put("ERROR COSTO PORCENTUAL","COSTO PORCENTUAL REQUERIDO");
+        }
+        return errores;
+    }
+    
+    public void updateCat(HttpServletRequest request) {
         Model model = (Model)request.getAttribute("model");
         
         Categoria c = model.getCurrentCat();
@@ -129,6 +155,27 @@ public class Controller extends HttpServlet {
         c.setDescripcion(request.getParameter("descripcion"));
         
         model.getCategorias().add(c);
+    }
+    
+    public void updateCob(HttpServletRequest request) {
+        Model model = (Model)request.getAttribute("model");
+        Service service = Service.instance();
+        
+        //Categoria c = service. request.getParameter("categoria");
+        
+        //c.setDescripcion(request.getParameter("descripcion"));
+        
+        // model.getCategorias().add(c);
+    }
+    
+    public void setearCategorias(HttpServletRequest request) {
+        Model model = (Model) request.getAttribute("model");
+        Service service = Service.instance();
+        
+        try {
+            model.setCategorias(service.getCategorias());
+        } catch (Exception ex) {
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
