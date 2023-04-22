@@ -23,15 +23,15 @@
                 <i class="fas fa-hashtag cuerpo-form__icon cuerpo-form__item"></i>
                 <input class = "cuerpo-form__input cuerpo-form__item" autocomplete="off" type = "text" id = "id" placeholder="Ingrese la Placa" name="placa" required>    
                 <i class="fas fa-car cuerpo-form__icon cuerpo-form__item"></i>
-                <select class="cuerpo-form__item cuerpo-form__input" id = "marca" required placeholder = "Selecciona un modelo">
+                <select class="cuerpo-form__item cuerpo-form__input" id = "marca">
                     <option value="" disabled selected>Seleccione un modelo</option>
                     <c:forEach var="marca" items="${marcas}">
-                        <optgroup label = ${marca}>
+                        <optgroup label = "${marca}">
                             <c:forEach var="modelo" items="${modelos}">
                                 <c:set var="opcion" value="${modelo.getModelo()}"/>
                                 <c:if test="${!selectOptions.contains(opcion)}">
                                     <c:if test="${modelo.getMarca() eq marca}">
-                                        <option value="${modelo.getModelo()}:${modelo.getMarca()}:${modelo.getAnio()}}" name="modelo"> ${modelo.getMarca()} ${modelo.getModelo()} </option>>
+                                        <option value="${modelo.getModelo()}:${modelo.getMarca()}:${modelo.getAnio()}}" name="modelo"> ${modelo.getMarca()} ${modelo.getModelo()} </option>
                                         <c:set var="selectOptions" value="${selectOptions},${opcion}"/>
                                     </c:if>
                                 </c:if>

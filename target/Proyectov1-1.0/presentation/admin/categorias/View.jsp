@@ -45,7 +45,7 @@
                                 <h3> <%= c.getDescripcion() %> </h3>
                             </td>
                             <td class = "table-coberturas">
-                                <% for(Cobertura co:coberturas) { %>
+                                <% for(Cobertura co:c.getCoberturas()) { %>
                                 <h3>  <%= co.getDescripcion() %> </h3>
                                 <% } %>
                             </td>
