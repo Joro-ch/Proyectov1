@@ -1,9 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.program.proyectov1.presentation.admin.categorias.Model" %>
 <%@page import="com.program.proyectov1.logic.Categoria" %>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 
 <%
     Model model = (Model) request.getAttribute("model");
+    List<Categoria> categorias = model.getCategorias();
 %>
 
 <!DOCTYPE html>
@@ -19,6 +22,13 @@
         <div class = "cuerpo">
             <form class = "cuerpo-form" action = "./presentation/admin/categorias/agregarCob" method = "POST" > 
                 <h1> Cobertura </h1>
+                <i class = "fas fa-user cuerpo-form__icon"></i>
+                <select>
+                    <option value="" disabled selected>Seleccione una Categoria</option>
+                    <% for(Categoria c:categorias) { %>
+                    <option value="categoria"> <%=c.getDescripcion()%> </option>
+                    <% } %>
+                </select>
                 <i class = "fas fa-user cuerpo-form__icon"></i>
                 <input type = "text" id = "id" name = "descripcion" placeholder = "Ingrese la Descripción" autocomplete = "off">
                 <i class = "fas fa-user cuerpo-form__icon"></i>
