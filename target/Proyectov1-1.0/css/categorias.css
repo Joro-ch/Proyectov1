@@ -46,7 +46,7 @@
     overflow: auto;
 }
 
-.cuerpo-tabla__button {
+.cuerpo-tabla__categoriaButton, .cuerpo-tabla__coberturaButton {
     text-decoration: none;
     display: flex;
     height: 30px;
@@ -61,17 +61,12 @@
     align-items: center;
 }
 
-.cuerpo-tabla__button:hover {
+.cuerpo-tabla__categoriaButton:hover, .cuerpo-tabla__coberturaButton:hover {
     filter: brightness(0.95);
 }
 
-.td-1, .td-4 {
+.td-1 {
     max-width: 50px;
-}
-
-.cuerpo-tabla__add {
-    text-decoration: none;
-    color: #fff;
 }
 
 /*----------------------------------------------------------------------------*/

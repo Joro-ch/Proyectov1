@@ -27,7 +27,7 @@
                 
                 <table class = "cuerpo-tabla">
                     <thead class = "cuerpo-tabla__encabezado">
-                        <tr> <td class = "td-1"> ID </td> <td> Descripcion </td>  <td> Coberturas </td> <td class = "td-4"> Agregar Cobertura </td> </tr>
+                        <tr> <td class = "td-1"> ID </td> <td> Descripcion </td>  <td> Coberturas </td> </tr>
                     </thead>
                     <tbody class = "cuerpo-tabla__cuerpo">
                         <% for(Categoria c:categorias) { %>
@@ -42,16 +42,13 @@
                             <td class = "table-coberturas">
                                 <h3> h1 </h3>
                             </td>
-                            <td>
-                                <a class = "cuerpo-tabla__add" href = "presentation/admin/categorias/agregarCob/show"> + </a>
-                            </td>
                         </tr>
 
                         <% } %>
                     </tbody>
                 </table>  
-                <a class = "cuerpo-tabla__button" href="presentation/admin/categorias/agregarCat/show"> Agregar Categoria </a>
-                
+                <a class = "cuerpo-tabla__categoriaButton" href="presentation/admin/categorias/agregarCat/show"> Agregar Categoria </a>
+                <a class = "cuerpo-tabla__coberturaButton" href = "presentation/admin/categorias/agregarCob/show">  Agregar Coberturas </a>
             </div>
         </div>
         

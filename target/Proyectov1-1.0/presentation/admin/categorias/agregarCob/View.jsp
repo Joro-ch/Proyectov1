@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="com.program.proyectov1.admin.categorias.Model" %>
+<%@page import="com.program.proyectov1.presentation.admin.categorias.Model" %>
 <%@page import="com.program.proyectov1.logic.Categoria" %>
 
 <%
