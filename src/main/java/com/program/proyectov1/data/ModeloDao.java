@@ -69,6 +69,19 @@ public class ModeloDao {
         return modelos; 
     }
     
+    public List<String> marcas() throws Exception{
+        String comando = "select * from marcas";
+        PreparedStatement stm = db.prepareStatement(comando);
+        java.sql.ResultSet rs = stm.executeQuery();
+        List<String> marcas = new ArrayList<>();
+        while(rs.next()){
+            String marca = rs.getString("marca");
+            System.out.println(marca);
+            marcas.add(marca);
+        }
+        return marcas; 
+    }
+    
     public void update(String u) throws Exception {
         
     }

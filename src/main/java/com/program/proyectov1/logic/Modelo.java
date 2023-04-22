@@ -31,6 +31,9 @@ public class Modelo {
         this.imagen = new byte[0];;
     }
     
+    public String toString(){
+        return this.getModelo() + " - año " + this.getAnio();
+    }
     
     public String getModelo(){
         return modelo;

@@ -69,6 +69,10 @@ public class Service {
         return moDao.modelos();
     }
     
+    public List<String> getMarcas() throws Exception {
+        return moDao.marcas();
+    }
+    
     public void ModeloAdd(Modelo modelo) throws Exception{
         System.out.println("ENtro al service antes de modelo dao");
         moDao.create(modelo);

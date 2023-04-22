@@ -2,6 +2,7 @@ package com.program.proyectov1.presentation.login;
 
 import com.program.proyectov1.logic.Cliente;
 import com.program.proyectov1.logic.Usuario;
+import java.util.List;
 
 public class Model {
     Usuario current;
@@ -30,6 +31,10 @@ public class Model {
 
     public void setCurrentC(Cliente currentC) {
         this.currentC = currentC;
+    }
+
+    public void setMarcas(List<String> marcas) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
