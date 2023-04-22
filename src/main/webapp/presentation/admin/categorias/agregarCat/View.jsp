@@ -1,11 +1,4 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<%
-    Usuario usuario2 = (Usuario) session.getAttribute("usuario");
-    if(usuario2 == null || usuario2.getTipo() != 2){
-        response.sendRedirect(request.getContextPath() + "/");
-    }
-%>
 <!DOCTYPE html>
 <html>
     <head>
