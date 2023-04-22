@@ -26,7 +26,7 @@
                 <select>
                     <option value="" disabled selected>Seleccione una Categoria</option>
                     <% for(Categoria c:categorias) { %>
-                    <option value="categoria"> <%=c.getDescripcion()%> </option>
+                    <option value="<%=c.getId()%>" name = "categoria"> <%=c.getId()%> - <%=c.getDescripcion()%> </option>
                     <% } %>
                 </select>
                 <i class = "fas fa-user cuerpo-form__icon"></i>

@@ -123,7 +123,7 @@ public class Controller extends HttpServlet {
     private String addNewVehiculo(HttpServletRequest request) {
          Map<String, String> errores = this.validaFormVehiculos(request);
          if(errores.isEmpty()){
-             this.updateModelVehiculo();
+             //this.updateModelVehiculo();
              return this.addNewVehiculoActions(request);
          }else{
              return "/presentation/Error.jsp";

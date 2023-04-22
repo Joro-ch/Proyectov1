@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.program.proyectov1.logic.Categoria"%>
+<%@page import="com.program.proyectov1.logic.Cobertura"%>
 <%@page import="com.program.proyectov1.presentation.admin.categorias.Model"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
@@ -40,7 +41,9 @@
                                 <h3> <%= c.getDescripcion() %> </h3>
                             </td>
                             <td class = "table-coberturas">
-                                <h3> h1 </h3>
+                                <% for(Cobertura co:coberturas) { %>
+                                <h3>  <%= co.getDescripcion() %> </h3>
+                                <% } %>
                             </td>
                         </tr>
 

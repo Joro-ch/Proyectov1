@@ -2,6 +2,7 @@ package com.program.proyectov1.logic;
 
 import com.program.proyectov1.data.CategoriaDao;
 import com.program.proyectov1.data.ClienteDao;
+import com.program.proyectov1.data.CoberturaDao;
 import com.program.proyectov1.data.DataBase;
 import com.program.proyectov1.data.MetodoPagoDao;
 import com.program.proyectov1.data.UsuarioDao;
@@ -23,6 +24,7 @@ public class Service {
     MetodoPagoDao mpDao;
     ModeloDao moDao;
     CategoriaDao caDao;
+    CoberturaDao coDao;
     
     private Service(){
         Database = new DataBase();
@@ -31,6 +33,7 @@ public class Service {
         mpDao = new MetodoPagoDao(Database);
         moDao = new ModeloDao(Database);
         caDao = new CategoriaDao(Database);
+        coDao = new CoberturaDao(Database);
     }
 
     public Usuario usuarioFind(String cedula,String clave) throws Exception{
@@ -82,8 +85,20 @@ public class Service {
         caDao.create(c);
     }
     
+    public Categoria categoriaFind(String id) throws Exception {
+        return caDao.read(id);
+    }
+    
     public List<Categoria> getCategorias() throws Exception {
         return caDao.categorias();
+    }
+    
+    public void coberturaAdd(Cobertura c) throws Exception {
+        coDao.create(c);
+    }
+    
+    public Cobertura coberturaFind(String id) throws Exception {
+        return coDao.read(id);
     }
     
     public Modelo getModelo() throws Exception{

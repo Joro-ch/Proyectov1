@@ -23,7 +23,7 @@ public class VehiculoDao {
         PreparedStatement stm = db.prepareStatement(comando);
         stm.setString(1, v.getNumPlaca());
         stm.setString(2, v.getIdPropietario());
-        stm.setString(3, v.getModelo());
+        //stm.setString(3, v.getModelo());
         stm.setString(4, v.getAnio());
         
         db.executeUpdate(stm);
@@ -51,7 +51,7 @@ public class VehiculoDao {
         PreparedStatement stm = db.prepareStatement(comando);
       
         stm.setString(1, v.getIdPropietario());
-        stm.setString(2, v.getModelo());
+        //stm.setString(2, v.getModelo());
         stm.setString(3, v.getAnio());
         stm.setString(4, v.getNumPlaca());
         
@@ -80,7 +80,7 @@ public class VehiculoDao {
         
         v.setNumPlaca(rs.getString(alias + ".numPlaca"));
         v.setIdPropietario(rs.getString(alias + ".idPropietario"));
-        v.setModelo(rs.getString(alias + ".modelo"));
+        //v.setModelo(rs.getString(alias + ".modelo"));
         v.setAnio(rs.getString(alias + ".anio"));
         
         return v;

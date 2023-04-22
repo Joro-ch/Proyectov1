@@ -1,6 +1,7 @@
 package com.program.proyectov1.presentation.admin.categorias;
 
 import com.program.proyectov1.logic.Categoria;
+import com.program.proyectov1.logic.Cobertura;
 import com.program.proyectov1.logic.Service;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -159,13 +160,20 @@ public class Controller extends HttpServlet {
     
     public void updateCob(HttpServletRequest request) {
         Model model = (Model)request.getAttribute("model");
-        Service service = Service.instance();
-        
-        //Categoria c = service. request.getParameter("categoria");
-        
-        //c.setDescripcion(request.getParameter("descripcion"));
-        
-        // model.getCategorias().add(c);
+        Cobertura cob = new Cobertura();
+        try {
+            Categoria c = model.getCategoria((String) request.getAttribute("descripcion"));
+            
+            cob.setDescripcion((String) request.getAttribute("descripcion"));
+            cob.setCostoMinimo((int) request.getAttribute("costo minimo"));
+            cob.setCostoPorcentual((int) request.getAttribute("costo porcentual"));
+            cob.setCategoria((int) request.getAttribute("categoria"));
+            
+            c.getCoberturas().add(cob);
+            setearCategorias(request);
+        }
+        catch(Exception ex) {
+        }
     }
     
     public void setearCategorias(HttpServletRequest request) {

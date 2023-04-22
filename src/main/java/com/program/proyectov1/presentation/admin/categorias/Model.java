@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Model {
     List<Categoria> categorias;
-    List<Cobertura> coberturas;
     Categoria currentCat;
 
     public Model() {
@@ -16,7 +15,6 @@ public class Model {
     
     public void reset() {
         this.setCategorias(new ArrayList<Categoria>());
-        this.setCoberturas(new ArrayList<Cobertura>());
         this.setCurrentCat(new Categoria());
     }
     
@@ -28,20 +26,21 @@ public class Model {
         this.categorias = categorias;
     }
 
-    public List<Cobertura> getCoberturas() {
-        return coberturas;
-    }
-
-    public void setCoberturas(List<Cobertura> coberturas) {
-        this.coberturas = coberturas;
-    }
-
     public Categoria getCurrentCat() {
         return currentCat;
     }
 
     public void setCurrentCat(Categoria currentCat) {
         this.currentCat = currentCat;
+    }
+    
+    public Categoria getCategoria(String cat) {
+        for (int i = 0; i < categorias.size(); i++) {
+            if (categorias.get(i).getDescripcion().equals(cat)) {
+                return categorias.get(i);
+            }
+        }
+        return null;
     }
     
 }
