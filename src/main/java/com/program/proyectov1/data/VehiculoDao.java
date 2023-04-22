@@ -1,5 +1,6 @@
 package com.program.proyectov1.data;
 
+import com.program.proyectov1.logic.Modelo;
 import com.program.proyectov1.logic.Usuario;
 import com.program.proyectov1.logic.Vehiculo;
 import java.sql.PreparedStatement;
@@ -23,8 +24,8 @@ public class VehiculoDao {
         PreparedStatement stm = db.prepareStatement(comando);
         stm.setString(1, v.getNumPlaca());
         stm.setString(2, v.getIdPropietario());
-        stm.setString(3, v.getModelo());
-        stm.setString(4, v.getAnio());
+        stm.setString(3, v.getModelo().getModelo());
+        stm.setString(4, v.getModelo().getAnio());
         
         db.executeUpdate(stm);
     }
@@ -51,8 +52,8 @@ public class VehiculoDao {
         PreparedStatement stm = db.prepareStatement(comando);
       
         stm.setString(1, v.getIdPropietario());
-        stm.setString(2, v.getModelo());
-        stm.setString(3, v.getAnio());
+        stm.setString(2, v.getModelo().getModelo());
+        stm.setString(3, v.getModelo().getAnio());
         stm.setString(4, v.getNumPlaca());
         
         int count = db.executeUpdate(stm);
@@ -77,12 +78,12 @@ public class VehiculoDao {
     
     public Vehiculo from(ResultSet rs, String alias) throws Exception {
         Vehiculo v = new Vehiculo();
-        
+        Modelo modelo = new Modelo();
+        modelo.setModelo(rs.getString(alias + ".modelo"));
+        modelo.setAnio(rs.getString(alias + ".anio"));
         v.setNumPlaca(rs.getString(alias + ".numPlaca"));
         v.setIdPropietario(rs.getString(alias + ".idPropietario"));
-        v.setModelo(rs.getString(alias + ".modelo"));
-        v.setAnio(rs.getString(alias + ".anio"));
-        
+        v.setModelo(modelo);
         return v;
     }
 }
