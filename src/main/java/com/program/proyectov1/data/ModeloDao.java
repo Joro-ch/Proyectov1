@@ -69,6 +69,8 @@ public class ModeloDao {
         return modelos; 
     }
     
+    
+    
     public List<String> marcas() throws Exception{
         String comando = "select * from marcas";
         PreparedStatement stm = db.prepareStatement(comando);

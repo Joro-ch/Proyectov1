@@ -7,7 +7,7 @@ public class Vehiculo {
     
     private String numPlaca;
     private String idPropietario;
-    private String modelo;
+    private Modelo modelo;
     private String anio;
     
     // Métodos
@@ -15,11 +15,11 @@ public class Vehiculo {
     public Vehiculo() {
         this.numPlaca = "";
         this.idPropietario = "";
-        this.modelo = "";
+        this.modelo = new Modelo();
         this.anio = "";
     }
     
-    public Vehiculo(String numPlaca, String idPropietario, String modelo, String anio) {
+    public Vehiculo(String numPlaca, String idPropietario, Modelo modelo, String anio) {
         this.numPlaca = numPlaca;
         this.idPropietario = idPropietario;
         this.modelo = modelo;
@@ -42,11 +42,11 @@ public class Vehiculo {
         this.idPropietario = idPropietario;
     }
 
-    public String getModelo() {
+    public Modelo getModelo() {
         return modelo;
     }
 
-    public void setModelo(String modelo) {
+    public void setModelo(Modelo modelo) {
         this.modelo = modelo;
     }
 

@@ -86,5 +86,9 @@ public class Service {
         return caDao.categorias();
     }
     
+    public Modelo getModelo() throws Exception{
+        return null;
+    }
+    
 }
 
