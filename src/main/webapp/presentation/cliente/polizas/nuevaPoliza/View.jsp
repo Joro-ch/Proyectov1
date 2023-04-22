@@ -28,7 +28,7 @@
                     <optgroup label = ${marca}>
                         <c:forEach var="modelo" items="${modelos}">
                             <c:if test="${modelo.getMarca() eq marca}">
-                                <option value="${modelo.getModelo()}"> ${modelo.getMarca()} - ${modelo.getModelo()} </option>>
+                                <option value="${modelo.getModelo()}"> ${modelo.getMarca()} - ${modelo.getModelo()} - ${modelo.getAnio()} </option>>
                             </c:if>
                         </c:forEach>
                     </optgroup>
