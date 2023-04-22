@@ -32,3 +32,4 @@ com\program\proyectov1\data\CoberturaDao.class
 com\program\proyectov1\data\ClienteDao.class
 com\program\proyectov1\presentation\login\Model.class
 com\program\proyectov1\data\CoberturasPolizasDao.class
+com\program\proyectov1\Inicio.class
