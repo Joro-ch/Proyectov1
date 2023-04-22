@@ -4,3 +4,4 @@ target/test-classes/.netbeans_automatic_build
 target/classes/com/program/proyectov1/data/DataBase.class
 target/classes/com/program/proyectov1/data/DataBase.class
 target/classes/com/program/proyectov1/data/DataBase.class
+*.class
