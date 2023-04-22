@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="alreadyAdded[]" value="{}"/>
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,13 +26,17 @@
                 <select class="cuerpo-form__item cuerpo-form__input" id = "marca" required placeholder = "Selecciona un modelo">
                     <option value="" disabled selected>Seleccione un modelo</option>
                     <c:forEach var="marca" items="${marcas}">
-                    <optgroup label = ${marca}>
-                        <c:forEach var="modelo" items="${modelos}">
-                            <c:if test="${modelo.getMarca() eq marca}">
-                                <option value="${modelo.getModelo()}"> ${modelo.getMarca()} - ${modelo.getModelo()} - ${modelo.getAnio()} </option>>
-                            </c:if>
-                        </c:forEach>
-                    </optgroup>
+                        <optgroup label = ${marca}>
+                            <c:forEach var="modelo" items="${modelos}">
+                                <c:set var="opcion" value="${modelo.getModelo()}"/>
+                                <c:if test="${!selectOptions.contains(opcion)}">
+                                    <c:if test="${modelo.getMarca() eq marca}">
+                                        <option value="${modelo.getModelo()}:${modelo.getMarca()}:${modelo.getAnio()}}" name="modelo"> ${modelo.getMarca()} ${modelo.getModelo()} </option>>
+                                        <c:set var="selectOptions" value="${selectOptions},${opcion}"/>
+                                    </c:if>
+                                </c:if>
+                            </c:forEach>
+                        </optgroup>
                     </c:forEach>
                 </select>
                 <i class="fas fa-calendar cuerpo-form__icon cuerpo-form__item"></i>
