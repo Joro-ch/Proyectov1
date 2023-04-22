@@ -23,18 +23,18 @@
             <form class = "cuerpo-form" action = "./presentation/admin/categorias/agregarCob" method = "POST" > 
                 <h1> Cobertura </h1>
                 <i class = "fas fa-user cuerpo-form__icon"></i>
-                <select>
+                <select id = "categoria" name = "categoria">
                     <option value="" disabled selected>Seleccione una Categoria</option>
                     <% for(Categoria c:categorias) { %>
-                    <option value="<%=c.getId()%>" name = "categoria"> <%=c.getId()%> - <%=c.getDescripcion()%> </option>
+                    <option id = "categoria" value="<%=c.getId()%>"> <%=c.getId()%> - <%=c.getDescripcion()%> </option>
                     <% } %>
                 </select>
                 <i class = "fas fa-user cuerpo-form__icon"></i>
-                <input type = "text" id = "id" name = "descripcion" placeholder = "Ingrese la Descripción" autocomplete = "off">
+                <input type = "text" id = "descripcion" name = "descripcion" placeholder = "Ingrese la Descripción" autocomplete = "off">
                 <i class = "fas fa-user cuerpo-form__icon"></i>
-                <input type = "text" id = "id" name = "costo minimo" placeholder = "Ingrese el Costo Mínimo" autocomplete = "off">
+                <input type = "text" id = "costoMinimo" name = "costo minimo" placeholder = "Ingrese el Costo Mínimo" autocomplete = "off">
                 <i class = "fas fa-user cuerpo-form__icon"></i>
-                <input type = "text" id = "id" name = "costo porcentual" placeholder = "Ingrese el Costo Porcentual" autocomplete = "off">
+                <input type = "text" id = "costoPorcentual" name = "costo porcentual" placeholder = "Ingrese el Costo Porcentual" autocomplete = "off">
                 <input type="submit" value = "Agregar">
             </form>
         </div>

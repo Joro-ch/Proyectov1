@@ -3,6 +3,8 @@ package com.program.proyectov1.data;
 import com.program.proyectov1.logic.Cobertura;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CoberturaDao {
     
@@ -72,6 +74,26 @@ public class CoberturaDao {
         if(count == 0) {
             throw new Exception("COBERTURA NO ENCONTRADA");
         }
+    }
+    
+    public List<Cobertura> coberturas() throws Exception {
+        String comando = "select * from coberturas";
+        
+        PreparedStatement stm = db.prepareStatement(comando);
+        
+        ResultSet rs = stm.executeQuery();
+        List<Cobertura> coberturas = new ArrayList<>();
+        
+        while(rs.next()){
+            String id = rs.getString("id");
+            String descripcion = rs.getString("descripcion");
+            int costoMinimo = rs.getInt("costoMinimo");
+            int costoPorcentual = rs.getInt("costoPorcentual");
+            int categoria = rs.getInt("categoria");
+            Cobertura coberturaTemp = new Cobertura(id, descripcion, costoMinimo, costoPorcentual, categoria);
+            coberturas.add(coberturaTemp);
+        }
+        return coberturas; 
     }
     
     public Cobertura from(ResultSet rs, String alias) throws Exception {
