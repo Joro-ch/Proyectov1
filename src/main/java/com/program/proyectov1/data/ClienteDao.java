@@ -3,6 +3,8 @@ package com.program.proyectov1.data;
 import com.program.proyectov1.logic.Cliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClienteDao {
     
@@ -27,6 +29,22 @@ public class ClienteDao {
         stm.setString(5, c.getTarjeta().getNumTarjeta());
         
         db.executeUpdate(stm);
+    }
+    
+    public List<Cliente> clientes() throws Exception{
+        String comando = "select * from clientes";
+        PreparedStatement stm = db.prepareStatement(comando); 
+        ResultSet rs = db.executeQuery(stm);
+        List<Cliente> clientes = new ArrayList<>();
+        while(rs.next()){
+            String telefono = rs.getString("telefono");
+            String correo = rs.getString("correo");
+            String tarjeta = rs.getString("tarjeta");
+            
+            Cliente clienteTemp = new Cliente(telefono, correo, tarjeta,new ArrayList<>());
+            modelos.add(modeloTemp);
+        }
+        return modelos;        
     }
 
     public Cliente read(String id) throws Exception {

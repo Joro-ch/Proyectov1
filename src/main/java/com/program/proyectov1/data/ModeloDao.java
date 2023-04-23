@@ -5,10 +5,7 @@ import java.sql.PreparedStatement;
 import com.program.proyectov1.logic.Modelo;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.sql.Blob;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Base64;
 import java.util.List;
 
 public class ModeloDao {
