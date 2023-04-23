@@ -1,7 +1,7 @@
 package com.program.proyectov1.data;
 
 import com.program.proyectov1.logic.MetodoPago;
-import jakarta.resource.cci.ResultSet;
+import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import com.program.proyectov1.logic.Modelo;
 import java.io.ByteArrayInputStream;
@@ -41,7 +41,7 @@ public class ModeloDao {
         stm.setString(1, modelo);
         stm.setString(2,anio);
         
-        ResultSet rs = (ResultSet) db.executeQuery(stm);
+        ResultSet rs = db.executeQuery(stm);
         
         if (rs.next()) {
             return from(rs, "m");
