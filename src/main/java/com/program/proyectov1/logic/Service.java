@@ -7,6 +7,7 @@ import com.program.proyectov1.data.DataBase;
 import com.program.proyectov1.data.MetodoPagoDao;
 import com.program.proyectov1.data.UsuarioDao;
 import com.program.proyectov1.data.ModeloDao;
+import com.program.proyectov1.data.VehiculoDao;
 import java.util.List;
 
 public class Service {
@@ -25,6 +26,7 @@ public class Service {
     ModeloDao moDao;
     CategoriaDao caDao;
     CoberturaDao coDao;
+    VehiculoDao veDao;
     
     private Service(){
         Database = new DataBase();
@@ -34,6 +36,7 @@ public class Service {
         moDao = new ModeloDao(Database);
         caDao = new CategoriaDao(Database);
         coDao = new CoberturaDao(Database);
+        veDao = new VehiculoDao(Database);
     }
 
     public Usuario usuarioFind(String cedula,String clave) throws Exception{
@@ -80,8 +83,11 @@ public class Service {
     }
     
     public void ModeloAdd(Modelo modelo) throws Exception{
-        System.out.println("ENtro al service antes de modelo dao");
         moDao.create(modelo);
+    }
+    
+    public Vehiculo vehiculoFind(String placa) throws Exception{
+        return veDao.read(placa);
     }
     
     public void categoriaAdd(Categoria c) throws Exception {
