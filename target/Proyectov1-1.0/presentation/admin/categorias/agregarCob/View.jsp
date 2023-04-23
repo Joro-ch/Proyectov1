@@ -24,18 +24,18 @@
             <form class = "cuerpo-form" action = "./presentation/admin/categorias/agregarCob" method = "POST" > 
                 <h1 class = "cuerpo-form__titulo"> Cobertura </h1>
                 <i class = "fas fa-list cuerpo-form__icon"></i>
-                <select class = "cuerpo-form__input" id = "categoria" name = "categoria">
+                <select class = "cuerpo-form__input" id = "categoria" name = "categoria" required>
                     <option value="" disabled selected>Seleccione una Categoria</option>
                     <% for(Categoria c:categorias) { %>
                     <option id = "categoria" value="<%=c.getId()%>"> <%=c.getId()%> - <%=c.getDescripcion()%> </option>
                     <% } %>
                 </select>
                 <i class = "fas fa-pen cuerpo-form__icon"></i>
-                <input class = "cuerpo-form__input" type = "text" id = "descripcion" name = "descripcion" placeholder = "Ingrese la Descripción" autocomplete = "off">
+                <input class = "cuerpo-form__input" type = "text" id = "descripcion" name = "descripcion" placeholder = "Ingrese la Descripción" autocomplete = "off" required>
                 <i class = "fas fa-dollar-sign cuerpo-form__icon"></i>
-                <input class = "cuerpo-form__input" type = "text" id = "costoMinimo" name = "costo minimo" placeholder = "Ingrese el Costo Mínimo" autocomplete = "off">
+                <input class = "cuerpo-form__input" type = "text" id = "costoMinimo" name = "costo minimo" placeholder = "Ingrese el Costo Mínimo" autocomplete = "off" required>
                 <i class = "fas fa-percent cuerpo-form__icon"></i>
-                <input class = "cuerpo-form__input" type = "text" id = "costoPorcentual" name = "costo porcentual" placeholder = "Ingrese el Costo Porcentual" autocomplete = "off">
+                <input class = "cuerpo-form__input" type = "text" id = "costoPorcentual" name = "costo porcentual" placeholder = "Ingrese el Costo Porcentual" autocomplete = "off" required>
                 <input class = "cuerpo-form__submit" type="submit" value = "Agregar">
             </form>
         </div>
