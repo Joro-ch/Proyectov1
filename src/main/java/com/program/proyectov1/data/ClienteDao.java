@@ -32,19 +32,15 @@ public class ClienteDao {
     }
     
     public List<Cliente> clientes() throws Exception{
-        String comando = "select * from clientes";
-        PreparedStatement stm = db.prepareStatement(comando); 
+        String sql = "select * from clientes c";
+        PreparedStatement stm = db.prepareStatement(sql);
         ResultSet rs = db.executeQuery(stm);
         List<Cliente> clientes = new ArrayList<>();
-        while(rs.next()){
-            String telefono = rs.getString("telefono");
-            String correo = rs.getString("correo");
-            String tarjeta = rs.getString("tarjeta");
-            
-            Cliente clienteTemp = new Cliente(telefono, correo, tarjeta,new ArrayList<>());
-            modelos.add(modeloTemp);
+        while (rs.next()) {
+            Cliente cliente = from(rs,"c");
+            clientes.add(cliente);
         }
-        return modelos;        
+        return clientes;       
     }
 
     public Cliente read(String id) throws Exception {
