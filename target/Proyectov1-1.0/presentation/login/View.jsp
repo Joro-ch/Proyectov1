@@ -24,6 +24,7 @@
             </form>
         </div>
         
-        <!-- <footer class = "footer"></footer> -->
+        <%@ include file = "../Footer.jsp"%>
+        
     </body>
 </html>
