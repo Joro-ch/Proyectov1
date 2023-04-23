@@ -31,6 +31,10 @@ public class VehiculoDao {
     }
 
     public Vehiculo read(String numPlaca) throws Exception {
+        try{
+            
+        
+        System.out.println("Entra a checkPlaca de vdao");
         String comando = "select * from vehiculos v where v.numPlaca=?";
         
         PreparedStatement stm = db.prepareStatement(comando);
@@ -42,6 +46,10 @@ public class VehiculoDao {
             return from(rs, "v");
         }
         else {
+            return null;
+        }
+        }catch(Exception ex){
+            System.out.println("La exception esta en el dao");
             return null;
         }
     } 

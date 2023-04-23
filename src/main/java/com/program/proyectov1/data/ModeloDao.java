@@ -1,5 +1,6 @@
 package com.program.proyectov1.data;
 
+import com.program.proyectov1.logic.MetodoPago;
 import jakarta.resource.cci.ResultSet;
 import java.sql.PreparedStatement;
 import com.program.proyectov1.logic.Modelo;
@@ -33,7 +34,7 @@ public class ModeloDao {
         db.executeUpdate(stm);
     }
 
-    public String read(String modelo, String anio) throws Exception {
+    public Modelo read(String modelo, String anio) throws Exception {
         String comando = "select * from modelos m where m.modelo=? and anio=?";
         
         PreparedStatement stm = db.prepareStatement(comando);
@@ -89,7 +90,13 @@ public class ModeloDao {
     
     }
     
-    public String from(ResultSet rs, String alias) throws Exception {
-        return new String();
+    public Modelo from(ResultSet rs, String alias) throws Exception {
+        Modelo m = new Modelo();
+        m.setModelo(rs.getString(alias + ".modelo"));
+        m.setAnio(rs.getString(alias + ".anio"));
+        m.setMarca(rs.getString(alias + ".marca"));
+        m.setImagen(rs.getBytes(alias + ".imagen"));
+        System.out.println("Entra al from modelo");
+        return m;
     }
 }

@@ -1,12 +1,7 @@
 package com.program.proyectov1.logic;
 
-import com.program.proyectov1.data.CategoriaDao;
-import com.program.proyectov1.data.ClienteDao;
-import com.program.proyectov1.data.CoberturaDao;
-import com.program.proyectov1.data.DataBase;
-import com.program.proyectov1.data.MetodoPagoDao;
-import com.program.proyectov1.data.UsuarioDao;
-import com.program.proyectov1.data.ModeloDao;
+import com.program.proyectov1.data.*;
+
 import java.util.List;
 
 public class Service {
@@ -25,7 +20,7 @@ public class Service {
     ModeloDao moDao;
     CategoriaDao caDao;
     CoberturaDao coDao;
-    
+    VehiculoDao vDao;
     private Service(){
         Database = new DataBase();
         usuarioDao = new UsuarioDao(Database);
@@ -34,6 +29,7 @@ public class Service {
         moDao = new ModeloDao(Database);
         caDao = new CategoriaDao(Database);
         coDao = new CoberturaDao(Database);
+        vDao = new VehiculoDao(Database);
     }
 
     public Usuario usuarioFind(String cedula,String clave) throws Exception{
@@ -108,9 +104,13 @@ public class Service {
         return coDao.coberturas();
     }
     
-    public Modelo getModelo() throws Exception{
-        return null;
+    public Modelo getModelo(String modelo,String anio) throws Exception{
+        System.out.println("Entra al get modelo");
+        return moDao.read(modelo,anio);
     }
-    
+    public Vehiculo checkPlaca(String placa)throws Exception{
+        System.out.println("Entra a checkPlaca de service");
+        return vDao.read(placa);
+    }
 }
 

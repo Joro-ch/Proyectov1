@@ -33,7 +33,19 @@ public class PolizaDao {
     }
     
     public void create(Poliza u) throws Exception {
-        
+        //El codigo es la cedula del asegurado+placa o sea 111999
+        String comando = "Insert into polizas values(?,?,?,?,?,?)";
+        PreparedStatement stm = db.prepareStatement(comando);
+        stm.setString(1, u.getCodigo());
+        stm.setString(2, u.getVehiculo().getIdPropietario());
+        stm.setString(3, u.getVehiculo().getNumPlaca());
+        stm.setString(4, Integer.toString(u.getValorSeguro()));
+        stm.setString(5, u.getPlazoPagos());
+        stm.setString(6, u.getFechaInicioVigencia());
+
+
+        db.executeUpdate(stm);
+
     }
 
     public Poliza read(String id) throws Exception {

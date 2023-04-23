@@ -17,13 +17,13 @@
     <body>
         <%@ include file = "../../../Header.jsp"%>
         <div class = "cuerpo">
-            <form class = "cuerpo-form" action="./presentation/cliente/poliza/agregar" method="POST">
+            <form class = "cuerpo-form" action="./presentation/cliente/polizas/misPolizas/agregar" method="POST">
                 <h1 class = "cuerpo-form__titulo"> Póliza </h1>
 
                 <i class="fas fa-hashtag cuerpo-form__icon cuerpo-form__item"></i>
                 <input class = "cuerpo-form__input cuerpo-form__item" autocomplete="off" type = "text" id = "id" placeholder="Ingrese la Placa" name="placa" required>    
                 <i class="fas fa-car cuerpo-form__icon cuerpo-form__item"></i>
-                <select class="cuerpo-form__item cuerpo-form__input" id = "marca">
+                <select class="cuerpo-form__item cuerpo-form__input" id = "marca" name="modelo">
                     <option value="" disabled selected>Seleccione un modelo</option>
                     <c:forEach var="marca" items="${marcas}">
                         <optgroup label = "${marca}">
@@ -31,7 +31,7 @@
                                 <c:set var="opcion" value="${modelo.getModelo()}"/>
                                 <c:if test="${!selectOptions.contains(opcion)}">
                                     <c:if test="${modelo.getMarca() eq marca}">
-                                        <option value="${modelo.getModelo()}:${modelo.getMarca()}:${modelo.getAnio()}}" name="modelo"> ${modelo.getMarca()} ${modelo.getModelo()} </option>
+                                        <option value="${modelo.getModelo()}:${modelo.getMarca()}:${modelo.getAnio()}" > ${modelo.getMarca()} ${modelo.getModelo()} </option>
                                         <c:set var="selectOptions" value="${selectOptions},${opcion}"/>
                                     </c:if>
                                 </c:if>
@@ -40,7 +40,7 @@
                     </c:forEach>
                 </select>
                 <i class="fas fa-calendar cuerpo-form__icon cuerpo-form__item"></i>
-                <input type="number" min="1990" max="2023" class ="cuerpo-form__item cuerpo-form__input" placeholder="Escriba el año del vehiculo" required>
+                <input type="number" min="1990" max="2023" class ="cuerpo-form__item cuerpo-form__input" name="anio" placeholder="Escriba el año del vehiculo" required>
                 
 
                 <i class="fas fa-dollar-sign cuerpo-form__icon cuerpo-form__item"></i>
@@ -49,15 +49,15 @@
                 <div class = "cuerpo-form__item cuerpo-form__radio">
                     <i class="fas fa-credit-card cuerpo-form__icon cuerpo-form__item" id="iconCheck"></i>
                     <label class="cuerpo-form__label cuerpo-form__item radio">
-                        <input type="radio" name="opcion">
+                        <input type="radio" name="opcion" value="trimestral">
                         <span class="checkmark">Trimestral</span>
                     </label>
                     <label class="cuerpo-form__label cuerpo-form__item radio">
-                        <input type="radio" name="opcion">
+                        <input type="radio" name="opcion" value="semestral">
                         <span class="checkmark">Semestral</span>
                     </label>
                     <label class="cuerpo-form__label cuerpo-form__item radio">
-                        <input type="radio" name="opcion">
+                        <input type="radio" name="opcion" value="anual">
                         <span class="checkmark">Anual</span>
                     </label>
                 </div>

@@ -1,37 +1,37 @@
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\presentation\admin\modelos\Controller.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\Inicio.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\presentation\cliente\polizas\Model.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\logic\Cobertura.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\logic\Categoria.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\logic\MetodoPago.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\presentation\cliente\cuenta\Model.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\presentation\login\Model.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\presentation\admin\categorias\Controller.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\data\CoberturaDao.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\presentation\cliente\cuenta\Controller.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\logic\Pagina.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\resources\JakartaEE10Resource.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\data\CoberturasPolizasDao.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\data\VehiculoDao.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\logic\Usuario.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\logic\Vehiculo.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\data\MetodoPagoDao.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\JakartaRestConfiguration.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\presentation\admin\clientes\Controller.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\logic\Modelo.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\data\UsuarioDao.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\logic\Service.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\presentation\admin\clientes\Model.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\data\ModeloDao.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\presentation\admin\modelos\Model.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\data\PolizaDao.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\data\ClienteDao.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\data\CategoriaDao.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\presentation\cliente\polizas\Controller.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\presentation\registro\Controller.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\presentation\registro\Model.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\logic\Poliza.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\data\DataBase.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\logic\Cliente.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\presentation\admin\categorias\Model.java
-C:\Users\Laptop Camilo\OneDrive - Universidad Nacional de Costa Rica\Desktop\Progra 4\Proyecto1\Proyectov1\src\main\java\com\program\proyectov1\presentation\login\Controller.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\presentation\login\Controller.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\data\CoberturasPolizasDao.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\presentation\admin\categorias\Controller.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\presentation\registro\Controller.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\presentation\admin\clientes\Model.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\presentation\cliente\polizas\Model.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\data\MetodoPagoDao.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\logic\Modelo.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\logic\Usuario.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\data\VehiculoDao.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\JakartaRestConfiguration.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\presentation\cliente\cuenta\Controller.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\data\ModeloDao.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\logic\MetodoPago.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\data\CategoriaDao.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\logic\Categoria.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\logic\Pagina.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\presentation\cliente\polizas\Controller.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\data\CoberturaDao.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\logic\Cobertura.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\presentation\admin\modelos\Controller.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\logic\Vehiculo.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\data\ClienteDao.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\presentation\login\Model.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\presentation\registro\Model.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\data\PolizaDao.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\logic\Poliza.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\logic\Service.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\presentation\admin\modelos\Model.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\presentation\homepage\Inicio.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\presentation\admin\clientes\Controller.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\resources\JakartaEE10Resource.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\data\UsuarioDao.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\presentation\cliente\cuenta\Model.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\data\DataBase.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\presentation\admin\categorias\Model.java
+D:\Universidad\l semestre 2023\Progra\Proyectos\Proyecto 1\Proyectov1\src\main\java\com\program\proyectov1\logic\Cliente.java
