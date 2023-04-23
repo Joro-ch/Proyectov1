@@ -77,7 +77,7 @@ public class CoberturaDao {
     }
     
     public List<Cobertura> coberturas() throws Exception {
-        String comando = "select * from coberturas";
+        String comando = "select * from coberturas c";
         
         PreparedStatement stm = db.prepareStatement(comando);
         
@@ -85,13 +85,7 @@ public class CoberturaDao {
         List<Cobertura> coberturas = new ArrayList<>();
         
         while(rs.next()){
-            String id = rs.getString("id");
-            String descripcion = rs.getString("descripcion");
-            int costoMinimo = rs.getInt("costoMinimo");
-            int costoPorcentual = rs.getInt("costoPorcentual");
-            int categoria = rs.getInt("categoria");
-            Cobertura coberturaTemp = new Cobertura(id, descripcion, costoMinimo, costoPorcentual, categoria);
-            coberturas.add(coberturaTemp);
+            coberturas.add(from(rs,"c"));
         }
         return coberturas; 
     }
