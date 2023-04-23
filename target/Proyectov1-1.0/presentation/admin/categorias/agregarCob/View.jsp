@@ -15,27 +15,28 @@
         <%@include file = "../../../Head.jsp" %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title> Agregar </title>
+        <link rel = "stylesheet" href = "/Proyectov1/css/agregarCobertura.css"/>
     </head>
     <body>
         <%@include file = "../../../Header.jsp" %>
         
         <div class = "cuerpo">
             <form class = "cuerpo-form" action = "./presentation/admin/categorias/agregarCob" method = "POST" > 
-                <h1> Cobertura </h1>
-                <i class = "fas fa-user cuerpo-form__icon"></i>
-                <select id = "categoria" name = "categoria">
+                <h1 class = "cuerpo-form__titulo"> Cobertura </h1>
+                <i class = "fas fa-list cuerpo-form__icon"></i>
+                <select class = "cuerpo-form__input" id = "categoria" name = "categoria">
                     <option value="" disabled selected>Seleccione una Categoria</option>
                     <% for(Categoria c:categorias) { %>
                     <option id = "categoria" value="<%=c.getId()%>"> <%=c.getId()%> - <%=c.getDescripcion()%> </option>
                     <% } %>
                 </select>
-                <i class = "fas fa-user cuerpo-form__icon"></i>
-                <input type = "text" id = "descripcion" name = "descripcion" placeholder = "Ingrese la Descripción" autocomplete = "off">
-                <i class = "fas fa-user cuerpo-form__icon"></i>
-                <input type = "text" id = "costoMinimo" name = "costo minimo" placeholder = "Ingrese el Costo Mínimo" autocomplete = "off">
-                <i class = "fas fa-user cuerpo-form__icon"></i>
-                <input type = "text" id = "costoPorcentual" name = "costo porcentual" placeholder = "Ingrese el Costo Porcentual" autocomplete = "off">
-                <input type="submit" value = "Agregar">
+                <i class = "fas fa-pen cuerpo-form__icon"></i>
+                <input class = "cuerpo-form__input" type = "text" id = "descripcion" name = "descripcion" placeholder = "Ingrese la Descripción" autocomplete = "off">
+                <i class = "fas fa-dollar-sign cuerpo-form__icon"></i>
+                <input class = "cuerpo-form__input" type = "text" id = "costoMinimo" name = "costo minimo" placeholder = "Ingrese el Costo Mínimo" autocomplete = "off">
+                <i class = "fas fa-percent cuerpo-form__icon"></i>
+                <input class = "cuerpo-form__input" type = "text" id = "costoPorcentual" name = "costo porcentual" placeholder = "Ingrese el Costo Porcentual" autocomplete = "off">
+                <input class = "cuerpo-form__submit" type="submit" value = "Agregar">
             </form>
         </div>
         

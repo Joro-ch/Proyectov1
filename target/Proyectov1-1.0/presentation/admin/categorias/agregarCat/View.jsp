@@ -14,7 +14,7 @@
         <div class = "cuerpo">
             <form class = "cuerpo-form" action = "./presentation/admin/categorias/agregarCat" method = "POST">
                 <h1 class = "cuerpo-form__titulo"> Categoria </h1>
-                <i class = "fas fa-user cuerpo-form__icon"></i>
+                <i class = "fas fa-pen cuerpo-form__icon"></i>
                 <input class = "cuerpo-form__input" type = "text" id = "id" placeholder = "Ingrese la Descripción" name = "descripcion" autocomplete = "off">
                 <input class = "cuerpo-form__submit" type = "submit" value = "Agregar">
             </form>
