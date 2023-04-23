@@ -6,13 +6,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
-import java.sql.Statement;
 
 public class DataBase {
     
     Connection cnx;
     
-    public DataBase(){
+    public DataBase() {
         cnx = this.getConnection();            
     }
     
@@ -23,7 +22,7 @@ public class DataBase {
             String port = "3306";
             String user = "root";
             String password = "root";
-            String database = "Guia";
+            String database = "pageDB";
             
             String URL_conexion="jdbc:mysql://"+ server+":"+port+"/"+database+"?user="+user+"&password="+
                     password+"&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
@@ -43,6 +42,7 @@ public class DataBase {
         try {
             return cnx.prepareStatement(statement);
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             throw new Exception("ERROR DE BASE DE DATOS");
         }
     }
@@ -52,8 +52,9 @@ public class DataBase {
             statement.executeUpdate();
             return statement.getUpdateCount();
         } catch (SQLIntegrityConstraintViolationException ex) {
-            throw new Exception("REGISTRO DUPLICADO");
+            throw ex;
         } catch (Exception ex) {
+            System.out.println(ex.getMessage());
             throw new Exception("ERROR DE BASE DE DATOS");
         }
 
@@ -63,6 +64,7 @@ public class DataBase {
         try {
             return statement.executeQuery();
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
             throw new Exception("ERROR DE BASE DE DATOS");
         }
     }

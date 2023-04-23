@@ -45,5 +45,9 @@ public class Usuario {
     public void setTipo(Integer tipo) {
         this.tipo = tipo;
     }
+
+    public boolean equal(Object object) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

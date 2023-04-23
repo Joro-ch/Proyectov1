@@ -1,9 +1,7 @@
-/*package com.program.proyectov1.logic;
+package com.program.proyectov1.logic;
 
-import com.program.proyectov1.data.ClienteDao;
-import com.program.proyectov1.data.DataBase;
-import com.program.proyectov1.data.UsuarioDao;
-import java.util.ArrayList;
+import com.program.proyectov1.data.*;
+
 import java.util.List;
 
 public class Service {
@@ -15,64 +13,104 @@ public class Service {
         }
         return uniqueInstance; 
     }
-    DataBase relDatabase;
+    DataBase Database;
     UsuarioDao usuarioDao;
     ClienteDao clienteDao;
-    
-//    HashMap<String,Usuario> usuarios;
-//    HashMap<String,Cliente> clientes;
-//    HashMap<String,Cuenta> cuentas;
-//    HashMap<String,List<String>> favoritas;
-    
-    
+    MetodoPagoDao mpDao;
+    ModeloDao moDao;
+    CategoriaDao caDao;
+    CoberturaDao coDao;
+    VehiculoDao vDao;
     private Service(){
-        relDatabase = new RelDatabase();
-        usuarioDao = new UsuarioDao(relDatabase);
-        clienteDao = new ClienteDao(relDatabase);
-        
-//        usuarios = new HashMap();
-//        usuarios.put("111", new Usuario("111","111",1));
-//        usuarios.put("222", new Usuario("222","222",1));
-//        usuarios.put("333", new Usuario("333","333",2));
-//        
-//        clientes = new HashMap(); 
-//        clientes.put("111", new Cliente("111","J.Perez",usuarios.get("111")));
-//        clientes.put("222", new Cliente("222","B.Banner",usuarios.get("222")));
-//        clientes.put("333", new Cliente("333","L.Kjero",usuarios.get("333")));
-//        
-//        cuentas = new HashMap(); 
-//        cuentas.put("1-111-11", new Cuenta("1-111-11",100.0,clientes.get("111")));
-//        cuentas.put("1-222-22", new Cuenta("1-222-22",200.0,clientes.get("111")));        
-//        cuentas.put("2-111-11", new Cuenta("2-111-11",150.0,clientes.get("222")));
-//
-//        //HashMap<String,List<String>> favoritas;
-//        favoritas = new HashMap(); 
-//        favoritas.put("111", Arrays.asList(new String[]{"2-111-11"}));
-//        favoritas.put("222", Arrays.asList(new String[]{"1-111-11","1-222-22"}));
+        Database = new DataBase();
+        usuarioDao = new UsuarioDao(Database);
+        clienteDao = new ClienteDao(Database);
+        mpDao = new MetodoPagoDao(Database);
+        moDao = new ModeloDao(Database);
+        caDao = new CategoriaDao(Database);
+        coDao = new CoberturaDao(Database);
+        vDao = new VehiculoDao(Database);
     }
 
     public Usuario usuarioFind(String cedula,String clave) throws Exception{
-        return usuarioDao.read(cedula);
+        if (clave.equals(usuarioDao.read(cedula).getClave())){
+            return usuarioDao.read(cedula);
+        }
+        return null;
         // Falta verificar clave
+    }
+    
+    public void usuarioAdd(Usuario usuario) throws Exception {
+       usuarioDao.create(usuario);
     }
 
     public Cliente clienteFind(Usuario usuario) throws Exception{
-        return clienteDao.read(usuario.getCedula());
+        return clienteDao.read(usuario.getId());
     }
     
-    public List<Cuenta> cuentasFind(Cliente cliente) throws Exception{
-        List<Cuenta> cuentas = cuentaDao.findByCliente(cliente);
-        for(Cuenta e:cuentas) e.setCliente(cliente);
-        cliente.setCuentas(cuentas);
-        return cuentas;
+    public void clienteAdd(Cliente cliente) throws Exception {
+       clienteDao.create(cliente);
     }
 
     public void clienteUpdate(Cliente cliente) throws Exception{
         clienteDao.update(cliente);
+    } 
+
+    public void tarjetaAdd(MetodoPago mp) throws Exception {
+        mpDao.create(mp);
     }
     
-    public Cuenta cuentaFind(String numero) throws Exception{
-        return cuentaDao.read(numero);
+    public void tarjetaUpdate(MetodoPago mp) throws Exception {
+        mpDao.update(mp);
+    }
+    
+    public List<Cliente> getClientes() throws Exception{
+        return clienteDao.clientes();
     }    
+    public List<Modelo> getModelos() throws Exception {
+        return moDao.modelos();
+    }
+    
+    public List<String> getMarcas() throws Exception {
+        return moDao.marcas();
+    }
+    
+    public void ModeloAdd(Modelo modelo) throws Exception{
+        System.out.println("ENtro al service antes de modelo dao");
+        moDao.create(modelo);
+    }
+    
+    public void categoriaAdd(Categoria c) throws Exception {
+        caDao.create(c);
+    }
+    
+    public Categoria categoriaFind(String id) throws Exception {
+        return caDao.read(id);
+    }
+    
+    public List<Categoria> getCategorias() throws Exception {
+        return caDao.categorias();
+    }
+    
+    public void coberturaAdd(Cobertura c) throws Exception {
+        coDao.create(c);
+    }
+    
+    public Cobertura coberturaFind(String id) throws Exception {
+        return coDao.read(id);
+    }
+    
+    public List<Cobertura> getCoberturas() throws Exception {
+        return coDao.coberturas();
+    }
+    
+    public Modelo getModelo(String modelo,String anio) throws Exception{
+        System.out.println("Entra al get modelo");
+        return moDao.read(modelo,anio);
+    }
+    public Vehiculo checkPlaca(String placa)throws Exception{
+        System.out.println("Entra a checkPlaca de service");
+        return vDao.read(placa);
+    }
 }
-*/
+

@@ -6,7 +6,7 @@ import java.util.List;
 public class Cliente extends Usuario {
     
     // Atributos
-    
+    private Usuario usuario;
     private String nombre;
     private String telefono;
     private String correo;
@@ -16,6 +16,7 @@ public class Cliente extends Usuario {
     // Métodos
 
     public Cliente() {
+        this.usuario = new Usuario();
         this.nombre = "";
         this.telefono = "";
         this.correo = "";
@@ -23,12 +24,21 @@ public class Cliente extends Usuario {
         this.polizas = new ArrayList<>();
     }
     
-    public Cliente(String nombre, String telefono, String correo, MetodoPago tarjeta, List<Poliza> polizas) {
+    public Cliente(Usuario usuario,String nombre, String telefono, String correo, MetodoPago tarjeta, List<Poliza> polizas) {
+        this.usuario = usuario;
         this.nombre = nombre;
         this.telefono = telefono;
         this.correo = correo;
         this.tarjeta = tarjeta;
         this.polizas = polizas;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public String getNombre() {

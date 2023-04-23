@@ -101,7 +101,6 @@ public class Pagina {
     }
     
     public void addMetodoPago(MetodoPago metodoPago) {
-        metodoPago.setCodigo(String.valueOf(metodosPago.size() + 1));
         metodosPago.add(metodoPago);
     }
     

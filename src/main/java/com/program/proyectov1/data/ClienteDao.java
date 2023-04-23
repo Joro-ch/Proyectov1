@@ -3,6 +3,8 @@ package com.program.proyectov1.data;
 import com.program.proyectov1.logic.Cliente;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClienteDao {
     
@@ -24,9 +26,21 @@ public class ClienteDao {
         stm.setString(2, c.getNombre());
         stm.setString(3, c.getTelefono());
         stm.setString(4, c.getCorreo());
-        stm.setString(5, c.getTarjeta().getCodigo());
+        stm.setString(5, c.getTarjeta().getNumTarjeta());
         
         db.executeUpdate(stm);
+    }
+    
+    public List<Cliente> clientes() throws Exception{
+        String sql = "select * from clientes c";
+        PreparedStatement stm = db.prepareStatement(sql);
+        ResultSet rs = db.executeQuery(stm);
+        List<Cliente> clientes = new ArrayList<>();
+        while (rs.next()) {
+            Cliente cliente = from(rs,"c");
+            clientes.add(cliente);
+        }
+        return clientes;       
     }
 
     public Cliente read(String id) throws Exception {
@@ -46,13 +60,13 @@ public class ClienteDao {
     } 
     
     public void update(Cliente c) throws Exception {
-        String comando = "update clientes set nombre=?, telefono=?, correo=?, metodoPago=? where usuario=?";
+        String comando = "update clientes set nombre=?, telefono=?, correo=? where usuario=?";
         
         PreparedStatement stm = db.prepareStatement(comando);
         stm.setString(1, c.getNombre());
         stm.setString(2, c.getTelefono());
         stm.setString(3, c.getCorreo());
-        stm.setString(4, c.getTarjeta().getCodigo());
+        stm.setString(4, c.getId());
         
         int count = db.executeUpdate(stm);
         
@@ -75,12 +89,12 @@ public class ClienteDao {
     }
     
     public Cliente from(ResultSet rs, String alias) throws Exception {
+        UsuarioDao u = new UsuarioDao(db);
         MetodoPagoDao m = new MetodoPagoDao(db);
         Cliente c = new Cliente();
         
-        c.setId(rs.getString(alias + ".id"));
-        c.setClave(rs.getString(alias + ".clave"));
-        c.setTipo(rs.getInt(alias + ".tipo"));
+        c.setId(rs.getString(alias + ".usuario"));
+        c.setClave(u.read(c.getId()).getClave());
         c.setNombre(rs.getString(alias + ".nombre"));
         c.setTelefono(rs.getString(alias + ".telefono"));
         c.setCorreo(rs.getString(alias + ".correo"));

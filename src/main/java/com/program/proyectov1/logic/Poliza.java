@@ -97,4 +97,16 @@ public class Poliza {
         coberturas.add(cobertura);
     }
     
+    public void precioTotal(){
+        Integer total =0;
+        for(Cobertura c: this.coberturas){
+            if(this.vehiculo.getValor()*(c.getCostoPorcentual()/100.0)>c.getCostoMinimo()){
+                total+=  Double.valueOf(this.vehiculo.getValor()*(c.getCostoPorcentual()/100.0)).intValue();
+            }else{
+                total+= c.getCostoMinimo();
+            }
+        }
+        this.setValorSeguro(total);
+    }
+    
 }

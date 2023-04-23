@@ -1,25 +1,24 @@
-
 package com.program.proyectov1.presentation.registro;
 
-import com.program.proyectov1.logic.Usuario;
+import com.program.proyectov1.logic.Cliente;
 
 
 public class Model {
-    Usuario current;
+    Cliente cliente;
 
     public Model() {
         this.reset();
     }
     
     public void reset(){
-        setCurrent(new Usuario());        
+        setCliente(new Cliente());        
     }
     
-    public Usuario getCurrent() {
-        return current;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setCurrent(Usuario current) {
-        this.current = current;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

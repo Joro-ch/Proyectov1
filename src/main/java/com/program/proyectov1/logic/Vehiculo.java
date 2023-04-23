@@ -7,23 +7,25 @@ public class Vehiculo {
     
     private String numPlaca;
     private String idPropietario;
-    private String modelo;
+    private Modelo modelo;
     private String anio;
-    
+    private Integer valor;
     // Métodos
 
     public Vehiculo() {
         this.numPlaca = "";
         this.idPropietario = "";
-        this.modelo = "";
+        this.modelo = new Modelo();
         this.anio = "";
+        this.valor = 0;
     }
     
-    public Vehiculo(String numPlaca, String idPropietario, String modelo, String anio) {
+    public Vehiculo(String numPlaca, String idPropietario, Modelo modelo, String anio, Integer valor) {
         this.numPlaca = numPlaca;
         this.idPropietario = idPropietario;
         this.modelo = modelo;
         this.anio = anio;
+        this.valor = valor;
     }
 
     public String getNumPlaca() {
@@ -42,11 +44,11 @@ public class Vehiculo {
         this.idPropietario = idPropietario;
     }
 
-    public String getModelo() {
+    public Modelo getModelo() {
         return modelo;
     }
 
-    public void setModelo(String modelo) {
+    public void setModelo(Modelo modelo) {
         this.modelo = modelo;
     }
 
@@ -57,5 +59,12 @@ public class Vehiculo {
     public void setAnio(String anio) {
         this.anio = anio;
     }
-    
+
+    public Integer getValor() {
+        return valor;
+    }
+
+    public void setValor(Integer valor) {
+        this.valor = valor;
+    }
 }
