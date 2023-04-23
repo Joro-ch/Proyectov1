@@ -8,6 +8,7 @@
 <%
     Model model = (Model) request.getAttribute("model");
     List<Categoria> categorias = model.getCategorias();
+    List<Cobertura> coberturas;
 %>
     
 <!DOCTYPE html>
@@ -31,7 +32,9 @@
                         <tr> <td class = "td-1"> ID </td> <td> Descripcion </td>  <td> Coberturas </td> </tr>
                     </thead>
                     <tbody class = "cuerpo-tabla__cuerpo">
-                        <% for(Categoria c:categorias) { %>
+                        <% for(Categoria c:categorias) { 
+                           coberturas = c.getCoberturas();
+                        %>
 
                         <tr>
                             <td class = "table-image">
@@ -41,7 +44,7 @@
                                 <h3> <%= c.getDescripcion() %> </h3>
                             </td>
                             <td class = "table-coberturas">
-                                <% for(Cobertura co:c.getCoberturas()) { %>
+                                <% for(Cobertura co:coberturas) { %>
                                 <h3>  <%= co.getDescripcion() %> </h3>
                                 <% } %>
                             </td>
