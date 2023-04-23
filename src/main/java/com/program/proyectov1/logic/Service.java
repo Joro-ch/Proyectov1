@@ -3,11 +3,14 @@ package com.program.proyectov1.logic;
 import com.program.proyectov1.data.CategoriaDao;
 import com.program.proyectov1.data.ClienteDao;
 import com.program.proyectov1.data.CoberturaDao;
+import com.program.proyectov1.data.CoberturasPolizasDao;
 import com.program.proyectov1.data.DataBase;
 import com.program.proyectov1.data.MetodoPagoDao;
 import com.program.proyectov1.data.UsuarioDao;
 import com.program.proyectov1.data.ModeloDao;
+import com.program.proyectov1.data.PolizaDao;
 import com.program.proyectov1.data.VehiculoDao;
+import java.sql.ResultSet;
 import java.util.List;
 
 public class Service {
@@ -26,7 +29,9 @@ public class Service {
     ModeloDao moDao;
     CategoriaDao caDao;
     CoberturaDao coDao;
+    CoberturasPolizasDao cpDao;
     VehiculoDao veDao;
+    PolizaDao poDao;
     
     private Service(){
         Database = new DataBase();
@@ -37,6 +42,8 @@ public class Service {
         caDao = new CategoriaDao(Database);
         coDao = new CoberturaDao(Database);
         veDao = new VehiculoDao(Database);
+        cpDao = new CoberturasPolizasDao(Database);
+        poDao = new PolizaDao(Database);
     }
 
     public Usuario usuarioFind(String cedula,String clave) throws Exception{
@@ -70,6 +77,7 @@ public class Service {
     public void tarjetaUpdate(MetodoPago mp) throws Exception {
         mpDao.update(mp);
     }
+   
     
     public List<Cliente> getClientes() throws Exception{
         return clienteDao.clientes();
@@ -88,6 +96,17 @@ public class Service {
     
     public Vehiculo vehiculoFind(String placa) throws Exception{
         return veDao.read(placa);
+    }
+    
+    public Cobertura coberturaFrom(ResultSet rs,String alias) throws Exception{
+        return coDao.from(rs, alias);
+    }
+    public List<Cobertura> coberturasPoliza(String codigoP) throws Exception{
+         return cpDao.coberturasPoliza(codigoP);
+    }
+    
+    public List<Poliza> polizasCliente(String cliente) throws Exception{
+        return poDao.polizas(cliente);
     }
     
     public void categoriaAdd(Categoria c) throws Exception {
