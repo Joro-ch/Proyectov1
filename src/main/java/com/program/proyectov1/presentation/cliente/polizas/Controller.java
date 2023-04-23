@@ -35,6 +35,15 @@ public class Controller extends HttpServlet {
                 case "/presentation/cliente/polizas/misPolizas/agregar":
                     viewUrl = this.addNewVehiculo(request);
                     break;
+                case "/presentation/cliente/polizas/misPolizas/agregar/part2":
+                    viewUrl = this.addNewVehiculo(request);
+                    break;
+                case "/presentation/cliente/polizas/misPolizas/agregar/final":
+                    viewUrl = this.addNewVehiculo(request);
+                    break;
+                case "/presentation/cliente/polizas/misPolizas/agregar/final/submit":
+                    viewUrl = this.addNewVehiculo(request);
+                    break;
             }
             request.getRequestDispatcher(viewUrl).forward( request, response); 
         }
@@ -122,6 +131,7 @@ public class Controller extends HttpServlet {
 
     private String addNewVehiculo(HttpServletRequest request) {
          Map<String, String> errores = this.validaFormVehiculos(request);
+         
          if(errores.isEmpty()){
              this.updateModelVehiculo(request);
              return this.addNewVehiculoActions(request);
@@ -135,6 +145,8 @@ public class Controller extends HttpServlet {
         Map<String, String> errores = new HashMap<>();
         if(request.getParameter("placa").isBlank()){
             errores.put("placa","Debe de ingresar la placa");
+        }else if(this.validaPlaca(request)){
+            errores.put("placa", "Placa existente");
         }
         if(request.getParameter("modelo").isBlank()){
             errores.put("modelo","Debe de ingresar el modelo");
@@ -170,6 +182,16 @@ public class Controller extends HttpServlet {
 
     private String addNewVehiculoActions(HttpServletRequest request) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private Boolean validaPlaca(HttpServletRequest request) {
+        
+            Service service = Service.instance();
+            try{
+                int count = 
+            }catch(Exception ex){
+                System.out.println(ex.getMessage());
+            }
     }
 
    
