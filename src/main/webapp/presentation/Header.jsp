@@ -4,8 +4,8 @@
 <header>
     <nav>
         <div class = "nav-logo">
-            <a class = "nav-logo__imagen" href = "/Proyectov1/presentation/index.jsp">  <img src="/Proyectov1/images/logo.png" alt=""> </a>
-            <a class = "nav-logo__titulo" href = "/Proyectov1/presentation/index.jsp"> Seguros Infinitos </a>
+            <a class = "nav-logo__imagen" href = "/Proyectov1/Inicio">  <img src="/Proyectov1/images/logo.png" alt=""> </a>
+            <a class = "nav-logo__titulo" href = "/Proyectov1/Inicio"> Seguros Infinitos </a>
         </div>
         <% if (usuario != null && usuario.getTipo()==1){ %>
         <div class = "nav-menu">

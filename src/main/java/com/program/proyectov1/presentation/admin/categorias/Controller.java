@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @WebServlet(name = "CategoriasController", urlPatterns = {"/presentation/admin/categorias/show", 
@@ -40,6 +41,9 @@ public class Controller extends HttpServlet {
                 viewUrl = this.agregarCob(request);
                 break;
         }
+        setearCategorias(request);
+        setearCoberturas(request);
+        agregarCoberturas(request);
         request.getRequestDispatcher(viewUrl).forward( request, response);
     }
     
@@ -48,7 +52,6 @@ public class Controller extends HttpServlet {
     }
         
     public String showAction(HttpServletRequest request) {
-        setearCategorias(request);
         return "/presentation/admin/categorias/View.jsp"; 
     } 
     
@@ -57,7 +60,6 @@ public class Controller extends HttpServlet {
     }
         
     public String agregarCatShowAction(HttpServletRequest request) {
-        setearCategorias(request);
         return "/presentation/admin/categorias/agregarCat/View.jsp";
     } 
     
@@ -84,7 +86,6 @@ public class Controller extends HttpServlet {
         
         try {
             service.categoriaAdd(model.getCurrentCat());
-            model.setCategorias(service.getCategorias());
             return "/presentation/admin/categorias/View.jsp";
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
@@ -97,7 +98,6 @@ public class Controller extends HttpServlet {
     } 
     
     public String agregarCobShowAction(HttpServletRequest request) {
-        setearCategorias(request);
         return "/presentation/admin/categorias/agregarCob/View.jsp";
     }
     
@@ -114,13 +114,22 @@ public class Controller extends HttpServlet {
             }
         }
         catch(Exception e) {
+            System.out.println(e.getMessage());
+            return "";
         }
         return "";
     }
     
     public String agregarCobAction(HttpServletRequest request) {
-        setearCategorias(request);
-        return "/presentation/admin/categorias/View.jsp";
+        Model model = (Model) request.getAttribute("model"); //Se toma el objeto model creado en el processrequest y que ahora tiene un usuario temp
+        Service service = Service.instance();//llamamos a la instancia de service
+        try {
+            service.coberturaAdd(model.getCurrentCob());
+            return "/presentation/admin/categorias/View.jsp";
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+            return "/presentation/Error.jsp"; 
+        } 
     }
     
     Map<String,String> validarCat(HttpServletRequest request){
@@ -160,17 +169,15 @@ public class Controller extends HttpServlet {
     
     public void updateCob(HttpServletRequest request) {
         Model model = (Model)request.getAttribute("model");
-        Cobertura cob = new Cobertura();
+        Cobertura cob = model.getCurrentCob();
+        Categoria cat = model.getCategoria((String) request.getParameter("id"));
         try {
-            Categoria c = model.getCategoria((String) request.getAttribute("descripcion"));
-            
-            cob.setDescripcion((String) request.getAttribute("descripcion"));
-            cob.setCostoMinimo((int) request.getAttribute("costo minimo"));
-            cob.setCostoPorcentual((int) request.getAttribute("costo porcentual"));
-            cob.setCategoria((int) request.getAttribute("categoria"));
-            
-            c.getCoberturas().add(cob);
-            setearCategorias(request);
+            cob.setDescripcion((String) request.getParameter("descripcion"));
+            cob.setCostoMinimo(Integer.valueOf((String) request.getParameter("costo minimo")));
+            cob.setCostoPorcentual(Integer.valueOf((String) request.getParameter("costo porcentual")));
+            cob.setCategoria(Integer.valueOf((String) request.getParameter("categoria")));
+            cat.getCoberturas().add(cob);
+            model.getCoberturas().add(cob);
         }
         catch(Exception ex) {
         }
@@ -179,10 +186,33 @@ public class Controller extends HttpServlet {
     public void setearCategorias(HttpServletRequest request) {
         Model model = (Model) request.getAttribute("model");
         Service service = Service.instance();
-        
         try {
             model.setCategorias(service.getCategorias());
         } catch (Exception ex) {
+        }
+    }
+    
+    public void setearCoberturas(HttpServletRequest request) {
+        Model model = (Model) request.getAttribute("model");
+        Service service = Service.instance();
+        try {
+            model.setCoberturas(service.getCoberturas());
+        }
+        catch(Exception ex) {
+        }
+    }
+    
+    public void agregarCoberturas(HttpServletRequest request) {
+        Model model = (Model) request.getAttribute("model");
+        List<Categoria> categorias = model.getCategorias();
+        List<Cobertura> coberturas = model.getCoberturas();
+            
+        for(Categoria cat:categorias) {
+            for(Cobertura cob:coberturas) {
+                if(cob.getCategoria().equals(Integer.valueOf(cat.getId()))) {
+                    cat.addCobertura(cob);
+                }
+            }
         }
     }
 

@@ -101,6 +101,10 @@ public class Service {
         return coDao.read(id);
     }
     
+    public List<Cobertura> getCoberturas() throws Exception {
+        return coDao.coberturas();
+    }
+    
     public Modelo getModelo() throws Exception{
         return null;
     }
