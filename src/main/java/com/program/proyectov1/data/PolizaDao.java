@@ -2,6 +2,9 @@ package com.program.proyectov1.data;
 
 import com.program.proyectov1.logic.Poliza;
 import jakarta.resource.cci.ResultSet;
+import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PolizaDao {
     
@@ -14,6 +17,20 @@ public class PolizaDao {
     }
     
     // Métodos
+    
+    public List<Poliza> polizas(String cliente) throws Exception{
+        String comando = "SELECT * FROM polizas where asegurado = ?";
+        PreparedStatement stm = db.prepareStatement(comando);
+        stm.setString(1, cliente);
+        java.sql.ResultSet rs = db.executeQuery(stm);
+        List<Poliza> polizas = new ArrayList<>();
+        while (rs.next()) {
+            //String modelo = rs.getString("modelo");
+            //Poliza poliza = "";
+           // clientes.add(cliente);
+        }
+        return polizas;
+    }
     
     public void create(Poliza u) throws Exception {
         

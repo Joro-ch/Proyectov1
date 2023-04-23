@@ -1,3 +1,4 @@
+com\program\proyectov1\presentation\admin\clientes\Model.class
 com\program\proyectov1\data\PolizaDao.class
 com\program\proyectov1\data\DataBase.class
 com\program\proyectov1\presentation\admin\modelos\Model.class
@@ -17,6 +18,7 @@ com\program\proyectov1\logic\Service.class
 com\program\proyectov1\logic\Categoria.class
 com\program\proyectov1\data\MetodoPagoDao.class
 com\program\proyectov1\data\CategoriaDao.class
+com\program\proyectov1\presentation\admin\clientes\Controller.class
 com\program\proyectov1\presentation\admin\categorias\Model.class
 com\program\proyectov1\presentation\homepage\Inicio.class
 com\program\proyectov1\JakartaRestConfiguration.class

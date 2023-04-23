@@ -68,6 +68,9 @@ public class Service {
         mpDao.update(mp);
     }
     
+    public List<Cliente> getClientes() throws Exception{
+        return clienteDao.clientes();
+    }    
     public List<Modelo> getModelos() throws Exception {
         return moDao.modelos();
     }
