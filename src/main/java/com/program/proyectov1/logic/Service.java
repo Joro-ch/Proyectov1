@@ -67,6 +67,7 @@ public class Service {
     }
 
     public void clienteUpdate(Cliente cliente) throws Exception{
+        usuarioDao.update(cliente);
         clienteDao.update(cliente);
     } 
 
@@ -112,6 +113,10 @@ public class Service {
     
     public List<Poliza> polizasCliente(String cliente) throws Exception{
         return poDao.polizas(cliente);
+    }
+    
+    public List<Poliza> polizasPlaca(String cliente, String placa) throws Exception{
+        return poDao.polizasPlaca(cliente,placa);
     }
     
     public void categoriaAdd(Categoria c) throws Exception {

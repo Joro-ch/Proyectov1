@@ -13,9 +13,10 @@
     margin: 100px 0px;
     background-size: cover;
     background-position: center;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 75px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .form_Boton{
@@ -39,7 +40,8 @@
 }
 table {
   border-collapse: collapse;
-  width: 100%;
+  width: 75%;
+  overflow-y: scroll;
   min-width: 400px;
   grid-column: 2/4;
 }
@@ -70,6 +72,14 @@ tr:nth-child(odd) {
 /* Estilos para las filas pares */
 tr:nth-child(even) {
   background-color: #e9f2f9;
+}
+
+.cuerpo-form {
+    grid-row: 1 / 2; 
+}
+
+.cuerpo-table {
+    grid-row: 2 / 3;
 }
 
 @Keyframes presentacion {

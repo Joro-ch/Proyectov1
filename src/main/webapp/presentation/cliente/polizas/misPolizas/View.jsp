@@ -20,7 +20,13 @@
         <%@ include file = "../../../Header.jsp"%>
         <div class = "fondo">
             <div class = "cuerpo">
-                <table>
+                <div class="busqueda">
+                    <form class = "cuerpo-form" action = "./presentation/cliente/polizas/misPolizas/busqueda" method = "POST"> 
+                        <input class = "busqueda_input" type="text" autocomplete="off" placeholder="Placa del Vehiculo" name="placa">
+                        <input class = "busqueda_boton" type="submit" value="Buscar">                    
+                    </form>
+                </div>
+                <table class = "cuerpo-table">
                         <thead>
                                 <tr>
                                         <th>Numero</th>

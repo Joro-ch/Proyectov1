@@ -18,7 +18,7 @@ import java.util.Map;
 @WebServlet(name = "PolizasController", urlPatterns = {"/presentation/cliente/polizas/nuevaPoliza/show" , "/presentation/cliente/polizas/misPolizas/show",
 "/presentation/cliente/poliza/agregar","/presentation/cliente/polizas/misPolizas/agregar","/presentation/cliente/polizas/misPolizas/agregar/part2",
 "/presentation/cliente/polizas/misPolizas/agregar/part2/submit","/presentation/cliente/polizas/misPolizas/agregar/final",
-"/presentation/cliente/polizas/misPolizas/agregar/final/submit","/presentation/cliente/polizas/misPolizas/datos"})
+"/presentation/cliente/polizas/misPolizas/agregar/final/submit","/presentation/cliente/polizas/misPolizas/datos","/presentation/cliente/polizas/misPolizas/busqueda"})
 public class Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -85,11 +85,20 @@ public class Controller extends HttpServlet {
                 case "/presentation/cliente/polizas/misPolizas/datos":
                     viewUrl = this.showDatosPoliza(request);
                     break;
+                case "/presentation/cliente/polizas/misPolizas/busqueda":
+                    viewUrl = this.showPolizaPlaca(request);
             }
             request.getRequestDispatcher(viewUrl).forward( request, response); 
         }
     }
-
+    private String showPolizaPlaca(HttpServletRequest request){
+        return showPolizaPlacaAction(request);
+    }
+    
+    private String showPolizaPlacaAction(HttpServletRequest request){
+        this.RecuperarPolizaPlaca(request);
+        return "/presentation/cliente/polizas/misPolizas/View.jsp";
+    }
     private String selectMetododePago(HttpServletRequest request) {
         //Este metodo realmente solo simula la seleccion del metodo de pago, además de esto va a mostrar lo que se va a pagar.
         return "/presentation/cliente/polizas/nuevaPoliza/metodoDePago/View.jsp";
@@ -211,6 +220,19 @@ public class Controller extends HttpServlet {
       }catch (Exception ex) {
       } 
     }
+    
+    public void RecuperarPolizaPlaca(HttpServletRequest request){
+      Service service = Service.instance();
+      HttpSession session = request.getSession(true);
+      Model model= (Model) request.getAttribute("model");
+      model.setCurrent((Usuario)session.getAttribute("usuario"));
+      try {
+          model.setPolizas(service.polizasPlaca((String)model.getCurrent().getId(), (String)request.getParameter("placa")));
+          request.setAttribute("polizas", model.getPolizas());
+      }catch (Exception ex) {
+      } 
+    }
+    
     public void RecuperarPolizaCliente(HttpServletRequest request){
       Service service = Service.instance();
       Model model= (Model) request.getAttribute("model");
