@@ -21,7 +21,6 @@
                     <h4 class = "cuerpo-Datos__item"> Cédula: <%=usuario.getId()%> </h4>
                     <i class = "fas fa-key cuerpo-Datos__icon"></i>
                     <h4 class = "cuerpo-Datos__item"> Clave: <%=usuario.getClave()%> </h4>
-                    <a class = "cuerpo-Datos__button" href = "presentation/"> Cambiar Clave </a>
                 </div>
                 <% } else { %>
                 
