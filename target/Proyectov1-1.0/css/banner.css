@@ -116,6 +116,7 @@ nav {
     align-items: center;
     flex-direction: column;
     position: relative;
+    row-gap: 7px;
 }
 .error-message{
     display: none;
@@ -127,7 +128,6 @@ nav {
     border-color: #f5c6cb;
     padding: 10px;
     border-radius: 5px;
-    position: absolute;
 }
 /* Footer */
 /* -------------------------------------------------------- */

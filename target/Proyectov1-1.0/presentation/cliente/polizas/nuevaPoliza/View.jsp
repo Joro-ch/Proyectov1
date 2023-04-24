@@ -69,6 +69,8 @@
             </form>
             <div class="errores-container">
                     <div class="error-message <%=erroneo("anio_null",errores)%>"> <%= title("anio_null",errores)%></div>
+                    <div class="error-message <%=erroneo("placa",errores)%>"> <%= title("placa",errores)%></div>
+                    
             </div>
         </div>
         <%@ include file = "../../../Footer.jsp" %>

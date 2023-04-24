@@ -292,16 +292,17 @@ public class Controller extends HttpServlet {
             errores.put("anio","Debe de ingresar el anio");
         }else if(this.validaAnio(request)){
             this.RecuperarModelos(request);
-            String anios ="";
+            String anios ="Los anios disponibles para ese modelo son: ";
             String valores = request.getParameter("modelo");
+            System.out.println(valores);
             String[] valoresArreglo = valores.split(":");
             String modelo = valoresArreglo[0];
             String marca = valoresArreglo[1];
             String anio = valoresArreglo[2];
+            System.out.println(modelo);
             for(Modelo m: model.getModelos()){
                 if(m.getModelo().equals(modelo)){
-                    System.out.println("el modelo es: " + m.getModelo());
-                    anios.concat(m.getAnio()+" ");
+                    anios = anios + m.getAnio() + " ";
                 }
             }
             errores.put("anio_null", anios);
@@ -389,11 +390,12 @@ public class Controller extends HttpServlet {
     private Boolean validaAnio(HttpServletRequest request){
         Service service = Service.instance();
         try{
-                
-                Modelo m = service.getModelo(request.getParameter("modelo"),request.getParameter("anio") );
+                String valores = request.getParameter("modelo");
+                String[] valoresArreglo = valores.split(":");
+                String modelo = valoresArreglo[0];
+                Modelo m = service.getModelo(modelo,request.getParameter("anio") );
                 
                 if(m == null) {
-                    
                     return true;
                 }else{
                     return false;
