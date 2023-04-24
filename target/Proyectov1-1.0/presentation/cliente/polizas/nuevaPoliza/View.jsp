@@ -3,11 +3,15 @@
     Created on : Apr 12, 2023, 10:23:53 AM
     Author     : Laptop Camilo
 --%>
-
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="alreadyAdded[]" value="{}"/>
 <!DOCTYPE html>
+<%  Map<String,String> errores = (Map<String,String>) session.getAttribute("errores");
+    session.removeAttribute("errores");
+%>
 <html>
     <head>
         <link rel="stylesheet" href="/Proyectov1/css/polizas.css"/>
@@ -63,7 +67,25 @@
                 </div>
                 <input class = "cuerpo-form__Submit" type="submit" value="Siguiente">
             </form>
+            <div class="errores-container">
+                    <div class="error-message <%=erroneo("anio_null",errores)%>"> <%= title("anio_null",errores)%></div>
+            </div>
         </div>
         <%@ include file = "../../../Footer.jsp" %>
     </body>
 </html>
+<%!
+    private String erroneo(String campo, Map<String,String>errores){
+        if ( (errores!=null) && (errores.get(campo)!=null) )
+            return "is-invalid";
+        else
+            return "";
+    }
+    private String title(String campo, Map<String,String> errores){
+      if ( (errores!=null) && (errores.get(campo)!=null) )
+        return errores.get(campo);
+      else
+        return "";
+    }
+
+%>
