@@ -19,23 +19,24 @@ public class VehiculoDao {
     // Métodos
     
     public void create(Vehiculo v) throws Exception {
-        String comando = "insert into vehiculos (numPlaca, idPropietario, modelo, anio) values (?,?,?,?)";
-        
+        String comando = "insert into vehiculos (numPlaca, idPropietario, modelo, anio,valor) values (?,?,?,?,?)";
+        System.out.println(v.getModelo().getModelo());
+        System.out.println(v.getModelo().getAnio());
         PreparedStatement stm = db.prepareStatement(comando);
         stm.setString(1, v.getNumPlaca());
         stm.setString(2, v.getIdPropietario());
         stm.setString(3, v.getModelo().getModelo());
         stm.setString(4, v.getModelo().getAnio());
+        stm.setString(5,Double.toString(v.getValor()));
         
         db.executeUpdate(stm);
     }
 
     public Vehiculo read(String numPlaca) throws Exception {
-        try{
-            
         
-        System.out.println("Entra a checkPlaca de vdao");
-        String comando = "select * from vehiculos v where v.numPlaca=?";
+        String comando = "SELECT v.*, m.modelo, m.anio, m.marca, m.imagen FROM vehiculos v "
+            + "INNER JOIN modelos m ON v.modelo = m.modelo AND v.anio = m.anio "
+            + "WHERE v.numPlaca = ?";
         
         PreparedStatement stm = db.prepareStatement(comando);
         stm.setString(1, numPlaca);
@@ -43,13 +44,20 @@ public class VehiculoDao {
         ResultSet rs = db.executeQuery(stm);
         
         if (rs.next()) {
-            return from(rs, "v");
+            Vehiculo v = new Vehiculo();
+            v.setAnio(rs.getString( "v.anio"));
+            v.setIdPropietario(rs.getString( "v.idPropietario"));
+            v.setNumPlaca(rs.getString( "v.numPlaca"));
+            v.setValor(Double.parseDouble(rs.getString( "v.valor")));
+            Modelo m = new Modelo();
+            m.setAnio(v.getAnio());
+            m.setModelo(rs.getString( "m.modelo"));
+            m.setMarca(rs.getString( "m.marca"));
+            m.setImagen(rs.getBytes("m.imagen"));
+            v.setModelo(m);
+            return v;
         }
         else {
-            return null;
-        }
-        }catch(Exception ex){
-            System.out.println("La exception esta en el dao");
             return null;
         }
     } 
@@ -90,6 +98,7 @@ public class VehiculoDao {
         modelo.setModelo(rs.getString(alias + ".modelo"));
         modelo.setAnio(rs.getString(alias + ".anio"));
         v.setNumPlaca(rs.getString(alias + ".numPlaca"));
+        v.setValor(Double.parseDouble(rs.getString(alias + ".valor")));
         v.setIdPropietario(rs.getString(alias + ".idPropietario"));
         v.setModelo(modelo);
         return v;

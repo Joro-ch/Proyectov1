@@ -39,7 +39,7 @@ public class PolizaDao {
         stm.setString(1, u.getCodigo());
         stm.setString(2, u.getVehiculo().getIdPropietario());
         stm.setString(3, u.getVehiculo().getNumPlaca());
-        stm.setString(4, Integer.toString(u.getValorSeguro()));
+        stm.setString(4, Double.toString(u.getValorSeguro()));
         stm.setString(5, u.getPlazoPagos());
         stm.setString(6, u.getFechaInicioVigencia());
 

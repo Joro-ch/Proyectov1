@@ -2,6 +2,7 @@ package com.program.proyectov1.data;
 
 import com.program.proyectov1.logic.Cobertura;
 import jakarta.resource.cci.ResultSet;
+import java.sql.PreparedStatement;
 
 public class CoberturasPolizasDao {
     
@@ -15,8 +16,14 @@ public class CoberturasPolizasDao {
     
     // Métodos
     
-    public void create(Cobertura u) throws Exception {
+    public void create(String cId, String pId) throws Exception {
+          String comando = "insert into coberturasPolizas (codigoPoliza,idCobertura) values (?,?)";
+          PreparedStatement stm = db.prepareStatement(comando);
+          stm.setString(1, pId);
+          stm.setString(2, cId);
         
+        
+          db.executeUpdate(stm);
     }
 
     public Cobertura read(String id) throws Exception {

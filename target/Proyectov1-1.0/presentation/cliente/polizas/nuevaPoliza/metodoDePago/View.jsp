@@ -22,6 +22,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <base href = "http://localhost:8080/Proyectov1/">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Check out</title>
     </head>
@@ -38,7 +39,7 @@
                 <tr>
                   <td><%= c.getDescripcion() %></td>
                   <%if(poliza.getVehiculo().getValor()*(c.getCostoPorcentual()/100.0)>c.getCostoMinimo()){%>
-                        <td><%= Double.valueOf(poliza.getVehiculo().getValor()*(c.getCostoPorcentual()/100.0)).intValue(); %></td>
+                        <td><%= poliza.getVehiculo().getValor()*(c.getCostoPorcentual()/100.0) %></td>
                  <% }else{%>
                         <td><%= c.getCostoMinimo()%></td>
                  <%   } %>

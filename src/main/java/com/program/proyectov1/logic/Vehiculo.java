@@ -9,7 +9,7 @@ public class Vehiculo {
     private String idPropietario;
     private Modelo modelo;
     private String anio;
-    private Integer valor;
+    private Double valor;
     // Métodos
 
     public Vehiculo() {
@@ -17,10 +17,10 @@ public class Vehiculo {
         this.idPropietario = "";
         this.modelo = new Modelo();
         this.anio = "";
-        this.valor = 0;
+        this.valor = 0.0;
     }
     
-    public Vehiculo(String numPlaca, String idPropietario, Modelo modelo, String anio, Integer valor) {
+    public Vehiculo(String numPlaca, String idPropietario, Modelo modelo, String anio, Double valor) {
         this.numPlaca = numPlaca;
         this.idPropietario = idPropietario;
         this.modelo = modelo;
@@ -60,11 +60,11 @@ public class Vehiculo {
         this.anio = anio;
     }
 
-    public Integer getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(Integer valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 }

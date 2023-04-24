@@ -72,7 +72,12 @@ public class Controller extends HttpServlet {
                     viewUrl = this.selectMetododePago(request);
                     break;
                 case "/presentation/cliente/polizas/misPolizas/agregar/final/submit":
-                    viewUrl = this.addNewVehiculo(request);
+                    System.out.println("Entra al fina guardar");
+                    viewUrl = this.guardaPoliza(request);
+                    if(viewUrl == "success"){
+                        response.sendRedirect(request.getContextPath()+"/presentation/cliente/polizas/misPolizas/show");//Si no existe una poliza iniciada, lo envia al inicio.
+                        return;
+                    }
                     break;
             }
             request.getRequestDispatcher(viewUrl).forward( request, response); 
@@ -283,7 +288,7 @@ public class Controller extends HttpServlet {
             System.out.println("mete el usuario");
             model.getVehiculo().setIdPropietario(user.getId());
             System.out.println("agarra los valores");
-            model.getVehiculo().setValor(Integer.parseInt(request.getParameter("valor")));
+            model.getVehiculo().setValor(Double.parseDouble(request.getParameter("valor")));
             String valores = request.getParameter("modelo");
             String[] valoresArreglo = valores.split(":");
             String modelo = valoresArreglo[0];
@@ -297,6 +302,7 @@ public class Controller extends HttpServlet {
             if(m == null){
                 System.out.println("es nulo F");
             }
+            System.out.println(m.getModelo());
             model.getVehiculo().setModelo(m);
             System.out.println("Logra hacer update al modelo");
 
@@ -338,6 +344,23 @@ public class Controller extends HttpServlet {
                 System.out.println(ex.getMessage());
                 return true;
             }
+    }
+
+    private String guardaPoliza(HttpServletRequest request) {
+        try{
+            Service service = Service.instance();
+            HttpSession session = request.getSession(true);
+            Poliza poliza = (Poliza)session.getAttribute("poliza");
+            System.out.println(poliza.getVehiculo().getModelo());
+            System.out.println(poliza.getVehiculo().getAnio());
+            
+            service.vehiculoAdd(poliza.getVehiculo());
+            service.polizaAdd(poliza);
+            return "success";
+        }catch(Exception ex){
+            System.out.println(ex.getMessage());
+            return "/presentation/Error.jsp";
+        }
     }
 
    
