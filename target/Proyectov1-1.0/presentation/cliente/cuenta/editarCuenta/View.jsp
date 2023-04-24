@@ -1,5 +1,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.program.proyectov1.logic.Cliente"%>
+<%@ page import="jakarta.servlet.http.HttpServletResponse" %>
+
+<%
+    Usuario usuario2 = (Usuario) session.getAttribute("usuario");
+    if(usuario2 == null || usuario2.getTipo() != 1){
+        response.sendRedirect(request.getContextPath() + "/Inicio");
+    }
+%>
 <% Cliente cliente = (Cliente) session.getAttribute("cliente"); %>
 
 

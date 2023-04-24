@@ -4,8 +4,13 @@
 <%@page import="com.program.proyectov1.presentation.admin.categorias.Model"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
+<%@ page import="jakarta.servlet.http.HttpServletResponse" %>
 
 <%
+    Usuario usuario2 = (Usuario) session.getAttribute("usuario");
+    if(usuario2 == null || usuario2.getTipo() != 2){
+        response.sendRedirect(request.getContextPath() + "/Inicio");
+    }
     Model model = (Model) request.getAttribute("model");
     List<Categoria> categorias = model.getCategorias();
     List<Cobertura> coberturas;

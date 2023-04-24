@@ -3,8 +3,13 @@
 <%@page import="com.program.proyectov1.logic.Cobertura"%>
 <%@page import="com.program.proyectov1.presentation.cliente.polizas.Model"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="jakarta.servlet.http.HttpServletResponse" %>
 
-<% 
+<%
+    Usuario usuario2 = (Usuario) session.getAttribute("usuario");
+    if(usuario2 == null || usuario2.getTipo() != 1){
+        response.sendRedirect(request.getContextPath() + "/Inicio");
+    }
     Model model = (Model)request.getAttribute("model");
     Map<String,String> errores = (Map<String,String>) session.getAttribute("errores");
     session.removeAttribute("errores");

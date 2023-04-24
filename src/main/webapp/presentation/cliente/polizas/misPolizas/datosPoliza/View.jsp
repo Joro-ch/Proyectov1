@@ -1,4 +1,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="jakarta.servlet.http.HttpServletResponse" %>
+
+<%
+    Usuario usuario2 = (Usuario) session.getAttribute("usuario");
+    if(usuario2 == null || usuario2.getTipo() != 1){
+        response.sendRedirect(request.getContextPath() + "/Inicio");
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>

@@ -1,4 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="jakarta.servlet.http.HttpServletResponse" %>
+
+<%
+    Usuario usuario2 = (Usuario) session.getAttribute("usuario");
+    if(usuario2 == null || usuario2.getTipo() != 2){
+        response.sendRedirect(request.getContextPath() + "/Inicio");
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
