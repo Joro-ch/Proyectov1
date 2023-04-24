@@ -111,7 +111,24 @@ nav {
 .nav-usuario a:hover, .nav-usuario a:hover > i {
     color: #ccc;
 }
-
+.errores-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    row-gap: 7px;
+}
+.error-message{
+    display: none;
+}
+.error-message.is-invalid{
+    display: block;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+}
 /* Footer */
 /* -------------------------------------------------------- */
 

@@ -35,11 +35,12 @@ public class Controller extends HttpServlet {
                     viewUrl = this.showMisPolizas(request);
                     break;
                 case "/presentation/cliente/polizas/misPolizas/agregar":
-                    System.out.println("Entra a agregar");
                     viewUrl = this.addNewVehiculo(request);
                     if(viewUrl == "success"){
-                        System.out.println("Entra a success");
                         response.sendRedirect(request.getContextPath()+"/presentation/cliente/polizas/misPolizas/agregar/part2");
+                        return;
+                    }else if(viewUrl == "error"){
+                        response.sendRedirect(request.getContextPath()+"/presentation/cliente/polizas/nuevaPoliza/show");
                         return;
                     }
                     break;
@@ -64,17 +65,14 @@ public class Controller extends HttpServlet {
                     }
                     break;
                 case "/presentation/cliente/polizas/misPolizas/agregar/final":
-                    System.out.println("Entra al final");
                     session = request.getSession(true);
                     if(session.getAttribute("poliza")==null){
                         response.sendRedirect(request.getContextPath()+"/presentation/cliente/polizas/nuevaPoliza/show");//Si no existe una poliza iniciada, lo envia al inicio.
                         return;
                     }
-                    System.out.println("va a entrar a select metodo de pago");
                     viewUrl = this.selectMetododePago(request);
                     break;
                 case "/presentation/cliente/polizas/misPolizas/agregar/final/submit":
-                    System.out.println("Entra al fina guardar");
                     viewUrl = this.guardaPoliza(request);
                     if(viewUrl == "success"){
                         response.sendRedirect(request.getContextPath()+"/presentation/cliente/polizas/misPolizas/show");//Si no existe una poliza iniciada, lo envia al inicio.
@@ -113,7 +111,6 @@ public class Controller extends HttpServlet {
                 }
             }
             poliza.precioTotal();
-            System.out.println(poliza.getValorSeguro());
             return "success";
         }else{
             return "/presentation/cliente/polizas/nuevaPoliza/coberturas/View.jsp";
@@ -261,17 +258,17 @@ public class Controller extends HttpServlet {
 
     private String addNewVehiculo(HttpServletRequest request) {
          Map<String, String> errores = this.validaFormVehiculos(request);
-         System.out.println("Termina de validar el form xd");
          try{
             if(errores.isEmpty()){
-                System.out.println("No hay errores en los input");
+                
                 this.updateModelVehiculo(request);
                 return this.addNewVehiculoActions(request);
             }else{
-                return "/presentation/Error.jsp";
+                request.getSession().setAttribute("errores", errores);
+                return "error";
             } 
          }catch(Exception ex){
-             System.out.println("Es el cathc de add new vehiculo");
+             
              System.out.println(ex.getMessage());
              return "/presentation/Error.jsp";
          }
@@ -279,28 +276,42 @@ public class Controller extends HttpServlet {
     }
 
     private Map<String, String> validaFormVehiculos(HttpServletRequest request) {
-        
+        Model model= (Model) request.getAttribute("model");
         Map<String, String> errores = new HashMap<>();
-        System.out.println(request.getParameter("placa"));
         if(request.getParameter("placa").isBlank()){
             errores.put("placa","Debe de ingresar la placa");
         }else if(this.validaPlaca(request)){
             errores.put("placa", "Placa existente");
         }
-        System.out.println("Salio del check placa setamos en valida");
-        System.out.println(request.getParameter("modelo"));
+       
         if(request.getParameter("modelo").isBlank()){
             errores.put("modelo","Debe de ingresar el modelo");
         }
-        System.out.println(request.getParameter("anio"));
+    
         if(request.getParameter("anio").isBlank()){
             errores.put("anio","Debe de ingresar el anio");
+        }else if(this.validaAnio(request)){
+            this.RecuperarModelos(request);
+            String anios ="Los anios disponibles para ese modelo son: ";
+            String valores = request.getParameter("modelo");
+            System.out.println(valores);
+            String[] valoresArreglo = valores.split(":");
+            String modelo = valoresArreglo[0];
+            String marca = valoresArreglo[1];
+            String anio = valoresArreglo[2];
+            System.out.println(modelo);
+            for(Modelo m: model.getModelos()){
+                if(m.getModelo().equals(modelo)){
+                    anios = anios + m.getAnio() + " ";
+                }
+            }
+            errores.put("anio_null", anios);
         }
-        System.out.println(request.getParameter("opcion"));
+        
         if(request.getParameter("opcion").isBlank()){
             errores.put("opcion","Debe de seleccionar un periodo");
         }
-        System.out.println(request.getParameter("valor"));
+        
         if(request.getParameter("valor").isBlank()){
             errores.put("valor","Debe de ingresar un valor");
         }
@@ -316,32 +327,22 @@ public class Controller extends HttpServlet {
             HttpSession session = request.getSession(true);
             Service service = Service.instance();
             Model model = (Model) request.getAttribute("model");
-            System.out.println("mete la placa");
             model.getVehiculo().setNumPlaca(request.getParameter("placa"));
-            System.out.println("mete el anio");
             model.getVehiculo().setAnio(request.getParameter("anio"));
             Usuario user = (Usuario)session.getAttribute("usuario");
-            System.out.println("mete el usuario");
-            model.getVehiculo().setIdPropietario(user.getId());
-            System.out.println("agarra los valores");
+            model.getVehiculo().setIdPropietario(user.getId());;
             model.getVehiculo().setValor(Double.parseDouble(request.getParameter("valor")));
             String valores = request.getParameter("modelo");
             String[] valoresArreglo = valores.split(":");
             String modelo = valoresArreglo[0];
-            System.out.println(modelo);
             String marca = valoresArreglo[1];
-            System.out.println(marca);
             String anio = valoresArreglo[2];
-            System.out.println(anio);
-            System.out.println("Va a insertar el modelo");
+           
             Modelo m = service.getModelo(modelo, anio);
-            if(m == null){
-                System.out.println("es nulo F");
-            }
-            System.out.println(m.getModelo());
-            System.out.println(m.getAnio());
+            
+            
             model.getVehiculo().setModelo(m);
-            System.out.println("Logra hacer update al modelo");
+            
 
         }catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -369,17 +370,35 @@ public class Controller extends HttpServlet {
     }
 
     private Boolean validaPlaca(HttpServletRequest request) {
-            System.out.println("Entra a valida placa");
+            
             Service service = Service.instance();
             try{
-                System.out.println("Entra a valida placa try");
+                
                 Vehiculo vehiculo = service.checkPlaca(request.getParameter("placa"));
-                System.out.println("ya sale de checkplaca");
+                
                 if(vehiculo == null) {
-                    System.out.println("No existe ese carro :O");
+                    
                     return false;
                 }else{
                     return true;
+                }
+            }catch(Exception ex){
+                System.out.println(ex.getMessage());
+                return true;
+            }
+    }
+    private Boolean validaAnio(HttpServletRequest request){
+        Service service = Service.instance();
+        try{
+                String valores = request.getParameter("modelo");
+                String[] valoresArreglo = valores.split(":");
+                String modelo = valoresArreglo[0];
+                Modelo m = service.getModelo(modelo,request.getParameter("anio") );
+                
+                if(m == null) {
+                    return true;
+                }else{
+                    return false;
                 }
             }catch(Exception ex){
                 System.out.println(ex.getMessage());
@@ -392,8 +411,6 @@ public class Controller extends HttpServlet {
             Service service = Service.instance();
             HttpSession session = request.getSession(true);
             Poliza poliza = (Poliza)session.getAttribute("poliza");
-            System.out.println(poliza.getVehiculo().getModelo());
-            System.out.println(poliza.getVehiculo().getAnio());
             
             service.vehiculoAdd(poliza.getVehiculo());
             service.polizaAdd(poliza);
