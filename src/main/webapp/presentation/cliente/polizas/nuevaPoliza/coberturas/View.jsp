@@ -4,6 +4,7 @@
 
 <% 
     Model model = (Model)request.getAttribute("model");
+    boolean first = true;
 %>
 
 <!DOCTYPE html>

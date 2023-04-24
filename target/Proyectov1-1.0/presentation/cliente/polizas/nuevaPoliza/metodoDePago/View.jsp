@@ -54,7 +54,7 @@
                 <span class = "cuerpo-table__span">Plazo de pago <%= poliza.getPlazoPagos()%></span>
                 <form class = "cuerpo-form" action="./presentation/cliente/polizas/misPolizas/agregar/final/submit" method="POST">
                     <label class = "form-label" for="metodoPago">Método de pago:</label>
-                    <select class = "form-input" id="metodoPago" name="metodoPago">
+                    <select class = "form-input" id="metodoPago" name="metodoPago" required>
                         <option value="" selected disabled>Seleccione un método de pago</option>
                         <option value="acepta">
                           <%= cliente.getTarjeta().getNumTarjeta() %>

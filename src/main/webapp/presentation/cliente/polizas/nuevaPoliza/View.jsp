@@ -53,15 +53,15 @@
                 <div class = "cuerpo-form__item cuerpo-form__radio">
                     <i class="fas fa-credit-card cuerpo-form__icon cuerpo-form__item" id="iconCheck"></i>
                     <label class="cuerpo-form__label cuerpo-form__item radio">
-                        <input type="radio" name="opcion" value="trimestral">
+                        <input type="radio" name="opcion" value="trimestral" required>
                         <span class="checkmark">Trimestral</span>
                     </label>
                     <label class="cuerpo-form__label cuerpo-form__item radio">
-                        <input type="radio" name="opcion" value="semestral">
+                        <input type="radio" name="opcion" value="semestral" required>
                         <span class="checkmark">Semestral</span>
                     </label>
                     <label class="cuerpo-form__label cuerpo-form__item radio">
-                        <input type="radio" name="opcion" value="anual">
+                        <input type="radio" name="opcion" value="anual" required>
                         <span class="checkmark">Anual</span>
                     </label>
                 </div>
