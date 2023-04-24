@@ -18,7 +18,7 @@ import java.util.Map;
 @WebServlet(name = "PolizasController", urlPatterns = {"/presentation/cliente/polizas/nuevaPoliza/show" , "/presentation/cliente/polizas/misPolizas/show",
 "/presentation/cliente/poliza/agregar","/presentation/cliente/polizas/misPolizas/agregar","/presentation/cliente/polizas/misPolizas/agregar/part2",
 "/presentation/cliente/polizas/misPolizas/agregar/part2/submit","/presentation/cliente/polizas/misPolizas/agregar/final",
-"/presentation/cliente/polizas/misPolizas/agregar/final/submit"})
+"/presentation/cliente/polizas/misPolizas/agregar/final/submit","/presentation/cliente/polizas/misPolizas/datos"})
 public class Controller extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -80,6 +80,9 @@ public class Controller extends HttpServlet {
                         response.sendRedirect(request.getContextPath()+"/presentation/cliente/polizas/misPolizas/show");//Si no existe una poliza iniciada, lo envia al inicio.
                         return;
                     }
+                    break;
+                case "/presentation/cliente/polizas/misPolizas/datos":
+                    viewUrl = this.showDatosPoliza(request);
                     break;
             }
             request.getRequestDispatcher(viewUrl).forward( request, response); 
@@ -153,8 +156,18 @@ public class Controller extends HttpServlet {
     }
         
     public String showMisPolizasAction(HttpServletRequest request){
+        this.RecuperarPolizasCliente(request);
         return "/presentation/cliente/polizas/misPolizas/View.jsp"; 
     }  
+    
+    public String showDatosPoliza(HttpServletRequest request){
+        return showDatosPolizaAction(request);
+    }
+    
+    public String showDatosPolizaAction(HttpServletRequest request){
+        this.RecuperarPolizasCliente(request);
+        return "/presentation/cliente/polizas/misPolizas/datosPoliza/View.jsp"; 
+    }
     
     public void RecuperarMarcas(HttpServletRequest request){
         Service service = Service.instance();
@@ -184,6 +197,18 @@ public class Controller extends HttpServlet {
         } catch (Exception ex) {
         }
         
+    }
+    
+    public void RecuperarPolizasCliente(HttpServletRequest request){
+      Service service = Service.instance();
+      HttpSession session = request.getSession(true);
+      Model model= (Model) request.getAttribute("model");
+      model.setCurrent((Usuario)session.getAttribute("usuario"));
+      try {
+          model.setPolizas(service.polizasCliente((String)model.getCurrent().getId()));
+          request.setAttribute("polizas", model.getPolizas());
+      }catch (Exception ex) {
+      } 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
