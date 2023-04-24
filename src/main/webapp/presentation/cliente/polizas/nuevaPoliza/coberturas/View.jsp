@@ -26,7 +26,7 @@
                     <tbody class = "cuerpo-form__table-cuerpo" > 
                         <%for(Cobertura c: model.getCoberturas()){ %>
                         <tr class = "tableRow">
-                            <td> <input class = "cuerpo-form__input" type="checkbox" name="coberturas" value=""> </td>
+                            <td> <input class = "cuerpo-form__input" type="checkbox" name="coberturas" value="<%= c.getId() %>"> </td>
                             <td> <span class = "cuerpo-form__info"> <%= c.getId() %> - <%= c.getDescripcion() %> </span> </td>
                         </tr>
                         <%}%>
