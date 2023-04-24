@@ -35,7 +35,7 @@ public class PolizaDao {
             String plazoPagos = rs.getString("plazoPagos");
             String fechaInicioVigencia = rs.getString("fechaInicioVigencia");
             List<Cobertura> coberturas = service.coberturasPoliza(codigo);
-            Poliza polizaTemo = new Poliza(vehiculo,valorSeguro,plazoPagos,fechaInicioVigencia,coberturas);
+            Poliza polizaTemo = new Poliza(codigo,vehiculo,valorSeguro,plazoPagos,fechaInicioVigencia,coberturas);
             polizas.add(polizaTemo);
         }
         return polizas;

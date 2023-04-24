@@ -1,3 +1,5 @@
+com\program\proyectov1\presentation\admin\clientes\Model.class
+com\program\proyectov1\data\PolizaDao.class
 com\program\proyectov1\data\DataBase.class
 com\program\proyectov1\presentation\admin\modelos\Model.class
 com\program\proyectov1\resources\JakartaEE10Resource.class
@@ -28,6 +30,7 @@ com\program\proyectov1\data\UsuarioDao.class
 com\program\proyectov1\presentation\cliente\cuenta\Model.class
 com\program\proyectov1\presentation\admin\categorias\Controller.class
 com\program\proyectov1\presentation\registro\Controller.class
+com\program\proyectov1\presentation\login\Controller.class
 com\program\proyectov1\data\CoberturaDao.class
 com\program\proyectov1\data\ClienteDao.class
 com\program\proyectov1\presentation\login\Model.class
