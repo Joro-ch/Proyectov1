@@ -28,6 +28,7 @@
         <%@include file = "../../../../Header.jsp" %>
         <div class = "cuerpo">
             <div class = "cuerpo-fondo">
+                <h1 class = "cuerpo-titulo">Si está de acuerdo seleccione un metodo de pago</h1>
                 <table class = "cuerpo-table">
                     <thead>
                         <tr>
@@ -49,18 +50,17 @@
                       <% } %>
                     </tbody>
                 </table>
-                    <span>Total: <%= poliza.getValorSeguro()%></span>
-                <form action="./presentation/cliente/polizas/misPolizas/agregar/final/submit">
-                    <h1>Si está de acuerdo seleccione un metodo de pago</h1>
-                        <label for="metodoPago">Método de pago:</label>
-                    <select id="metodoPago" name="metodoPago">
+                <span class = "cuerpo-table__span">Total: <%= poliza.getValorSeguro()%></span>
+                <form class = "cuerpo-form" action="./presentation/cliente/polizas/misPolizas/agregar/final/submit">
+                    <label class = "form-label" for="metodoPago">Método de pago:</label>
+                    <select class = "form-input" id="metodoPago" name="metodoPago">
                         <option value="" selected disabled>Seleccione un método de pago</option>
                         <option value="acepta">
                           <%= cliente.getTarjeta().getNumTarjeta() %>
                         </option>
                     </select>
-                    <input type="submit" value="Aceptar"/>
-                    <a href="/" class="cancelar">Cancelar</a>
+                    <input class = "form-submit" type="submit" value="Aceptar"/>
+                    <a class = "form-cancelar" href="/">Cancelar</a>
                 </form>
             </div>
         </div>  
