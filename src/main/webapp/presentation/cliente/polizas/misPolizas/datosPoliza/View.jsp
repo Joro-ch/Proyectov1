@@ -23,22 +23,20 @@
                                 </tr>
                         </thead>
                         <tbody>
-                                <c:forEach var="poliza" items="${polizas}">
-                                        <tr>
-                                                <td>${poliza.getCodigo()}</td>
-                                                <td>${poliza.getVehiculo().getModelo().getModelo()} - ${poliza.getVehiculo().getNumPlaca()}</td>
-                                                <td>${poliza.getValorSeguro()}</td>
-                                                <td>${poliza.getPlazoPagos()}</td>
-                                                <td>${poliza.getFechaInicioVigencia()}</td>
-                                                <td> 
-                                                    <ul>
-                                                        <c:forEach var="cobertura" items="${poliza.getCoberturas()}">
-                                                          <li><c:out value="${cobertura.getDescripcion()}"/></li>
-                                                        </c:forEach>
-                                                    </ul>
-                                                </td>
-                                        </tr>
-                                </c:forEach>                                       
+                                <tr>
+                                        <td>${poliza.getCodigo()}</td>
+                                        <td>${poliza.getVehiculo().getModelo().getModelo()} - ${poliza.getVehiculo().getNumPlaca()}</td>
+                                        <td>${poliza.getValorSeguro()}</td>
+                                        <td>${poliza.getPlazoPagos()}</td>
+                                        <td>${poliza.getFechaInicioVigencia()}</td>
+                                        <td> 
+                                            <ul>
+                                                <c:forEach var="cobertura" items="${poliza.getCoberturas()}">
+                                                  <li><c:out value="${cobertura.getDescripcion()}"/></li>
+                                                </c:forEach>
+                                            </ul>
+                                        </td>
+                                </tr>                                    
                         </tbody>
                 </table>
             </div>

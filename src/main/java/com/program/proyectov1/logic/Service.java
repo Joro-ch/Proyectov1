@@ -151,6 +151,9 @@ public class Service {
             cpDao.create(c.getId(), poliza.getCodigo());
         }
     }
+    public Poliza polizaFind(String codigo)throws Exception{
+        return poDao.read(codigo);
+    }
      public Vehiculo checkPlaca(String placa)throws Exception{
         System.out.println("Entra a checkPlaca de service");
         return veDao.read(placa);

@@ -30,11 +30,11 @@
                                                 <td>${poliza.getCodigo()}</td>
                                                 <td>${poliza.getVehiculo().getNumPlaca()}</td>
                                                 <td>${poliza.getFechaInicioVigencia()}</td>
-                                                <td>${poliza.getVehiculo().getModelo().getModelo()} ${poliza.getVehiculo().getModelo().getAnio()}</td>
+                                                <td>${poliza.getVehiculo().getModelo().getMarca()} ${poliza.getVehiculo().getModelo().getModelo()} ${poliza.getVehiculo().getModelo().getAnio()}</td>
                                                 <td><img src="data:image/jpg;base64,${poliza.getVehiculo().getModelo().getImagenBase64()}" alt="My Image"></td>
                                                 <td>${poliza.getValorSeguro()}</td>
                                                 <td>  
-                                                    <a href="./presentation/cliente/polizas/misPolizas/datos?id=${cliente.getId()}"><img src="/Proyectov1/images/ver.png" alt="My Image" height="30" width="30"></a>
+                                                    <a href="./presentation/cliente/polizas/misPolizas/datos?id=${cliente.getId()}&poliza=${poliza.getCodigo()}"><img src="/Proyectov1/images/ver.png" alt="My Image" height="30" width="30"></a>
                                                 </td>
                                                 
                                         </tr>

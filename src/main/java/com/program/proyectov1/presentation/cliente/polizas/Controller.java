@@ -165,7 +165,7 @@ public class Controller extends HttpServlet {
     }
     
     public String showDatosPolizaAction(HttpServletRequest request){
-        this.RecuperarPolizasCliente(request);
+        this.RecuperarPolizaCliente(request);
         return "/presentation/cliente/polizas/misPolizas/datosPoliza/View.jsp"; 
     }
     
@@ -207,6 +207,15 @@ public class Controller extends HttpServlet {
       try {
           model.setPolizas(service.polizasCliente((String)model.getCurrent().getId()));
           request.setAttribute("polizas", model.getPolizas());
+      }catch (Exception ex) {
+      } 
+    }
+    public void RecuperarPolizaCliente(HttpServletRequest request){
+      Service service = Service.instance();
+      Model model= (Model) request.getAttribute("model");
+      try {
+          model.setPoliza(service.polizaFind(request.getParameter("poliza")));
+          request.setAttribute("poliza", model.getPoliza());
       }catch (Exception ex) {
       } 
     }

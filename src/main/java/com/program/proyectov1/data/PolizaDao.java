@@ -4,10 +4,10 @@ import com.program.proyectov1.logic.Cobertura;
 import com.program.proyectov1.logic.Poliza;
 import com.program.proyectov1.logic.Service;
 import com.program.proyectov1.logic.Vehiculo;
-import jakarta.resource.cci.ResultSet;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.ResultSet;
 
 public class PolizaDao {
     
@@ -59,8 +59,17 @@ public class PolizaDao {
 
     }
 
-    public Poliza read(String id) throws Exception {
-        return new Poliza();
+    public Poliza read(String id) throws Exception {  
+        String comando = "SELECT * FROM polizas p where p.codigo=?";
+        PreparedStatement stm = db.prepareStatement(comando);
+        stm.setString(1, id);
+        java.sql.ResultSet rs = db.executeQuery(stm);
+        if (rs.next()) {
+            return from(rs, "p");
+        }
+        else {
+            return null;
+        }
     } 
     
     public void update(Poliza u) throws Exception {
@@ -72,6 +81,14 @@ public class PolizaDao {
     }
     
     public Poliza from(ResultSet rs, String alias) throws Exception {
-        return new Poliza();
+        Service service = Service.instance();
+        Poliza p = new Poliza();
+        p.setCodigo(rs.getString(alias + ".codigo"));
+        p.setValorSeguro(rs.getDouble(alias + ".valorSeguro"));
+        p.setVehiculo((Vehiculo)service.vehiculoFind(rs.getString(alias + ".placaVehiculo")));
+        p.setPlazoPagos(rs.getString(alias + ".plazoPagos"));
+        p.setFechaInicioVigencia(rs.getString(alias + ".fechaInicioVigencia"));
+        p.setCoberturas(service.coberturasPoliza(p.getCodigo()));
+        return p;
     }
 }
