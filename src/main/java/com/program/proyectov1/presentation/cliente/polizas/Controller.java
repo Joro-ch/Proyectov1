@@ -10,6 +10,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -319,6 +321,10 @@ public class Controller extends HttpServlet {
             poliza.setCodigo(model.getVehiculo().getNumPlaca()+model.getVehiculo().getIdPropietario());
             poliza.setPlazoPagos(request.getParameter("opcion"));
             poliza.setVehiculo(model.getVehiculo());
+            LocalDate fechaActual = LocalDate.now();
+            DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String fechaComoString = fechaActual.format(formatoFecha);
+            poliza.setFechaInicioVigencia(fechaComoString);
             HttpSession session = request.getSession(true);
             session.setAttribute("poliza",poliza);
             return "success";
