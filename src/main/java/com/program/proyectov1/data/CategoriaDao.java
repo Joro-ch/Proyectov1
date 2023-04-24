@@ -89,6 +89,17 @@ public class CategoriaDao {
         return categorias; 
     }
     
+    public boolean estaCategoria(String descripcion) throws Exception {
+        String comando = "select * from categorias c where c.descripcion=?";
+        
+        PreparedStatement stm = db.prepareStatement(comando);
+        stm.setString(1, descripcion);
+        
+        ResultSet rs = db.executeQuery(stm);
+        
+        return rs.next();
+    }
+    
     public Categoria from(ResultSet rs, String alias) throws Exception {
         Categoria c = new Categoria();
         
@@ -97,4 +108,5 @@ public class CategoriaDao {
         
         return c;
     }
+
 }

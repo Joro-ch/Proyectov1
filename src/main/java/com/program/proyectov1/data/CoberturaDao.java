@@ -90,6 +90,17 @@ public class CoberturaDao {
         return coberturas; 
     }
     
+    public boolean estaCobertura(String descripcion) throws Exception {
+        String comando = "select * from coberturas c where c.descripcion=?";
+        
+        PreparedStatement stm = db.prepareStatement(comando);
+        stm.setString(1, descripcion);
+        
+        ResultSet rs = db.executeQuery(stm);
+        
+        return rs.next();
+    }
+    
     public Cobertura from(ResultSet rs, String alias) throws Exception {
         Cobertura c = new Cobertura();
         

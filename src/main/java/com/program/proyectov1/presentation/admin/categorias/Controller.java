@@ -8,6 +8,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -64,6 +65,7 @@ public class Controller extends HttpServlet {
     } 
     
     public String agregarCat(HttpServletRequest request) {
+        //HttpSession session = request.getSession(true);//Se crea una sesion, esta se guarda hasta que se hace logout.
         try {
             Map<String, String> map = this.validarCat(request);
             
@@ -72,12 +74,15 @@ public class Controller extends HttpServlet {
                 return agregarCatAction(request);
             }
             else {
-                request.setAttribute("ERRORES", map);
+                request.setAttribute("ERROR", map);//.Si hay errores, o sea que hay campos vacios entonces hay que devolver los errores.
+                return "/presentation/Error.jsp";
             }
         }
         catch(Exception e) {
+            System.out.println("en loginnom");
+            System.out.println(e.getMessage());
+            return "/presentation/Error.jsp";
         }
-        return "";
     }
     
     public String agregarCatAction(HttpServletRequest request) {
@@ -110,14 +115,15 @@ public class Controller extends HttpServlet {
                 return agregarCobAction(request);
             }
             else {
-                request.setAttribute("ERRORES", map);
+                request.setAttribute("ERROR", map);//.Si hay errores, o sea que hay campos vacios entonces hay que devolver los errores.
+                return "/presentation/Error.jsp";
             }
         }
         catch(Exception e) {
+            System.out.println("en loginnom");
             System.out.println(e.getMessage());
-            return "";
+            return "/presentation/Error.jsp";
         }
-        return "";
     }
     
     public String agregarCobAction(HttpServletRequest request) {
@@ -134,19 +140,37 @@ public class Controller extends HttpServlet {
     
     Map<String,String> validarCat(HttpServletRequest request){
         Map<String,String> errores = new HashMap<>();//Se crea un hashmap con donde se da el error y el mensaje de error.
-        if (request.getParameter("descripcion").isEmpty()){//Si est[a vacia
+        Service service = Service.instance();
+        String descripcion = request.getParameter("descripcion");
+        if (descripcion.isEmpty()){//Si est[a vacia
             errores.put("ERROR DESCRIPCION","DESCRIPCION REQUERIDA");
+        }
+        try {
+            if(service.isCategoria(descripcion)) {
+                errores.put("EDR","ERROR DESCRIPCION REPETIDA");
+            }
+        }
+        catch(Exception ex) {
         }
         return errores;
     }
     
     Map<String,String> validarCob(HttpServletRequest request){
         Map<String,String> errores = new HashMap<>();//Se crea un hashmap con donde se da el error y el mensaje de error.
+        Service service = Service.instance();
+        String descripcion = request.getParameter("descripcion");
         if (request.getParameter("categoria").isEmpty()){//Si est[a vacia
             errores.put("ERROR CATEGORIA","CATEGORIA REQUERIDA");
         }
         if (request.getParameter("descripcion").isEmpty()){//Si est[a vacia
             errores.put("ERROR DESCRIPCION","DESCRIPCION REQUERIDA");
+        }
+        try {
+            if(service.isCobertura(descripcion)) {
+                errores.put("EDR","ERROR DESCRIPCION REPETIDA");
+            }
+        }
+        catch(Exception ex) {
         }
         if (request.getParameter("costo minimo").isEmpty()){//Si est[a vacia
             errores.put("ERROR COSTO MINIMO","COSTO MINIMO REQUERIDO");
