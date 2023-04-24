@@ -101,8 +101,13 @@ public class Service {
     public Cobertura coberturaFrom(ResultSet rs,String alias) throws Exception{
         return coDao.from(rs, alias);
     }
+    
+    public boolean isCobertura(String descripcion) throws Exception {
+        return coDao.estaCobertura(descripcion);
+    } 
+    
     public List<Cobertura> coberturasPoliza(String codigoP) throws Exception{
-         return cpDao.coberturasPoliza(codigoP);
+        return cpDao.coberturasPoliza(codigoP);
     }
     
     public List<Poliza> polizasCliente(String cliente) throws Exception{
@@ -119,6 +124,10 @@ public class Service {
     
     public List<Categoria> getCategorias() throws Exception {
         return caDao.categorias();
+    }
+    
+    public boolean isCategoria(String descripcion) throws Exception {
+        return caDao.estaCategoria(descripcion);
     }
     
     public void coberturaAdd(Cobertura c) throws Exception {
