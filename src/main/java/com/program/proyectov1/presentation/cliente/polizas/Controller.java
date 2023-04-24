@@ -303,6 +303,7 @@ public class Controller extends HttpServlet {
                 System.out.println("es nulo F");
             }
             System.out.println(m.getModelo());
+            System.out.println(m.getAnio());
             model.getVehiculo().setModelo(m);
             System.out.println("Logra hacer update al modelo");
 

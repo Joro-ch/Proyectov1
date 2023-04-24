@@ -21,6 +21,8 @@ public class Service {
     CategoriaDao caDao;
     CoberturaDao coDao;
     VehiculoDao vDao;
+    PolizaDao pDao;
+    CoberturasPolizasDao cPolDao;
     private Service(){
         Database = new DataBase();
         usuarioDao = new UsuarioDao(Database);
@@ -30,6 +32,8 @@ public class Service {
         caDao = new CategoriaDao(Database);
         coDao = new CoberturaDao(Database);
         vDao = new VehiculoDao(Database);
+        pDao = new PolizaDao(Database);
+        cPolDao = new CoberturasPolizasDao(Database);
     }
 
     public Usuario usuarioFind(String cedula,String clave) throws Exception{
@@ -111,6 +115,20 @@ public class Service {
     public Vehiculo checkPlaca(String placa)throws Exception{
         System.out.println("Entra a checkPlaca de service");
         return vDao.read(placa);
+    }
+    
+    public void vehiculoAdd(Vehiculo v)throws Exception{
+        System.out.println("Entra a create de service");
+        System.out.println(v.getModelo().getModelo());
+        System.out.println(v.getModelo().getAnio());
+        vDao.create(v);
+    }
+
+    public void polizaAdd(Poliza poliza) throws Exception{
+        pDao.create(poliza);
+        for(Cobertura c: poliza.getCoberturas()){
+            cPolDao.create(c.getId(), poliza.getCodigo());
+        }
     }
 }
 

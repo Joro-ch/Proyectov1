@@ -22,6 +22,7 @@ public class VehiculoDao {
         String comando = "insert into vehiculos (numPlaca, idPropietario, modelo, anio,valor) values (?,?,?,?,?)";
         System.out.println(v.getModelo().getModelo());
         System.out.println(v.getModelo().getAnio());
+        System.out.println(v.getValor());
         PreparedStatement stm = db.prepareStatement(comando);
         stm.setString(1, v.getNumPlaca());
         stm.setString(2, v.getIdPropietario());
