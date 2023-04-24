@@ -1,16 +1,27 @@
 
 .cuerpo {
+    grid-row: 2 / 3;
     background: url(https://a-static.besthdwallpaper.com/gran-turismo-sport-lamborghini-veneno-wallpaper-1280x768-21465_13.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     display: flex;
-    height: 100vh;
+    height: 80vh;
+    color: #fff;
+}
+
+span {
+    color: #fff;
+}
+
+.cuerpo-form i {
+    display: grid;
+    align-content: center;
 }
 
 .cuerpo-form {
     display: grid; 
-    background: #dde;
+    background: rgba(0,0,0,0.8);
     width: 400px;
     height: 500px;
     margin: 50px auto;
@@ -18,7 +29,7 @@
     text-align: center;
     border-radius: 5px;
     outline: 2px solid #999;
-    grid-template-rows: 75px repeat(6, 1fr);
+    grid-template-rows: 75px repeat(5, 1fr) 75px;
     grid-template-columns: 50px 1fr;
 }
 
@@ -37,11 +48,11 @@
     color: #fff;
     width: 30px;
     height: 30px;
-    padding-top: 5px;
 }
 
-.cuerpo-form__input{
+.cuerpo-form__input {
     align-self: center;
+    outline: 1px solid #fff;
     margin-right: 20px;
     height: 30px;
     padding-left: 10px;
@@ -67,6 +78,8 @@
 
 #iconCheck {
     margin-right: 10px;
+    position: absolute;
+    translate: -35px -8px;
 }
 
 .cuerpo-form__Submit {
