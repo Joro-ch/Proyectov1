@@ -1,10 +1,13 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
 <%@page import="com.program.proyectov1.logic.Cobertura"%>
 <%@page import="com.program.proyectov1.presentation.cliente.polizas.Model"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <% 
     Model model = (Model)request.getAttribute("model");
-    boolean first = true;
+    Map<String,String> errores = (Map<String,String>) session.getAttribute("errores");
+    session.removeAttribute("errores");
 %>
 
 <!DOCTYPE html>
@@ -35,9 +38,28 @@
                 </table>
                 <input class = "cuerpo-form__submit" type="submit" value="Guardar">
             </form>
+            <div class="errores-container">
+                <div class="error-message <%=erroneo("coberturas",errores)%>"> <%= title("coberturas",errores)%></div>
+                    
+            </div>
         </div>
 
         <%@include file = "../../../../Footer.jsp" %>
             
     </body>
 </html>
+<%!
+    private String erroneo(String campo, Map<String,String>errores){
+        if ( (errores!=null) && (errores.get(campo)!=null) )
+            return "is-invalid";
+        else
+            return "";
+    }
+    private String title(String campo, Map<String,String> errores){
+      if ( (errores!=null) && (errores.get(campo)!=null) )
+        return errores.get(campo);
+      else
+        return "";
+    }
+
+%>

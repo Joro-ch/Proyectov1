@@ -62,6 +62,9 @@ public class Controller extends HttpServlet {
                     if(viewUrl =="success"){
                         response.sendRedirect(request.getContextPath()+"/presentation/cliente/polizas/misPolizas/agregar/final");
                         return;
+                    }else if(viewUrl == "error"){
+                        response.sendRedirect(request.getContextPath()+"/presentation/cliente/polizas/misPolizas/agregar/part2");
+                        return;
                     }
                     break;
                 case "/presentation/cliente/polizas/misPolizas/agregar/final":
@@ -113,7 +116,8 @@ public class Controller extends HttpServlet {
             poliza.precioTotal();
             return "success";
         }else{
-            return "/presentation/cliente/polizas/nuevaPoliza/coberturas/View.jsp";
+            request.getSession().setAttribute("errores", errores);
+            return "error";
         }
     }
 
