@@ -1,8 +1,11 @@
 package com.program.proyectov1.data;
 
 import com.program.proyectov1.logic.Cobertura;
+import com.program.proyectov1.logic.Service;
 import jakarta.resource.cci.ResultSet;
 import java.sql.PreparedStatement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CoberturasPolizasDao {
     
@@ -38,7 +41,16 @@ public class CoberturasPolizasDao {
     
     }
     
-    public Cobertura from(ResultSet rs, String alias) throws Exception {
-        return new Cobertura();
+    public List<Cobertura> coberturasPoliza(String codigoP) throws Exception{
+        Service service = Service.instance();
+        String comando = "select * FROM coberturas c JOIN coberturasPolizas cp ON cp.idCobertura = c.id where cp.codigoPoliza = ?";
+        PreparedStatement stm = db.prepareStatement(comando);
+        stm.setString(1, codigoP);
+        java.sql.ResultSet rs = stm.executeQuery();
+        List<Cobertura> coberturas = new ArrayList<>();
+        while(rs.next()){
+            coberturas.add(service.coberturaFrom(rs, "c"));
+        }
+        return coberturas; 
     }
 }

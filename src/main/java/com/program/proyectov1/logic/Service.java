@@ -1,7 +1,16 @@
 package com.program.proyectov1.logic;
 
-import com.program.proyectov1.data.*;
-
+import com.program.proyectov1.data.CategoriaDao;
+import com.program.proyectov1.data.ClienteDao;
+import com.program.proyectov1.data.CoberturaDao;
+import com.program.proyectov1.data.CoberturasPolizasDao;
+import com.program.proyectov1.data.DataBase;
+import com.program.proyectov1.data.MetodoPagoDao;
+import com.program.proyectov1.data.UsuarioDao;
+import com.program.proyectov1.data.ModeloDao;
+import com.program.proyectov1.data.PolizaDao;
+import com.program.proyectov1.data.VehiculoDao;
+import java.sql.ResultSet;
 import java.util.List;
 
 public class Service {
@@ -20,9 +29,10 @@ public class Service {
     ModeloDao moDao;
     CategoriaDao caDao;
     CoberturaDao coDao;
-    VehiculoDao vDao;
-    PolizaDao pDao;
-    CoberturasPolizasDao cPolDao;
+    CoberturasPolizasDao cpDao;
+    VehiculoDao veDao;
+    PolizaDao poDao;
+    
     private Service(){
         Database = new DataBase();
         usuarioDao = new UsuarioDao(Database);
@@ -31,9 +41,9 @@ public class Service {
         moDao = new ModeloDao(Database);
         caDao = new CategoriaDao(Database);
         coDao = new CoberturaDao(Database);
-        vDao = new VehiculoDao(Database);
-        pDao = new PolizaDao(Database);
-        cPolDao = new CoberturasPolizasDao(Database);
+        veDao = new VehiculoDao(Database);
+        cpDao = new CoberturasPolizasDao(Database);
+        poDao = new PolizaDao(Database);
     }
 
     public Usuario usuarioFind(String cedula,String clave) throws Exception{
@@ -67,6 +77,7 @@ public class Service {
     public void tarjetaUpdate(MetodoPago mp) throws Exception {
         mpDao.update(mp);
     }
+   
     
     public List<Cliente> getClientes() throws Exception{
         return clienteDao.clientes();
@@ -80,8 +91,22 @@ public class Service {
     }
     
     public void ModeloAdd(Modelo modelo) throws Exception{
-        System.out.println("ENtro al service antes de modelo dao");
         moDao.create(modelo);
+    }
+    
+    public Vehiculo vehiculoFind(String placa) throws Exception{
+        return veDao.read(placa);
+    }
+    
+    public Cobertura coberturaFrom(ResultSet rs,String alias) throws Exception{
+        return coDao.from(rs, alias);
+    }
+    public List<Cobertura> coberturasPoliza(String codigoP) throws Exception{
+         return cpDao.coberturasPoliza(codigoP);
+    }
+    
+    public List<Poliza> polizasCliente(String cliente) throws Exception{
+        return poDao.polizas(cliente);
     }
     
     public void categoriaAdd(Categoria c) throws Exception {
@@ -108,13 +133,8 @@ public class Service {
         return coDao.coberturas();
     }
     
-    public Modelo getModelo(String modelo,String anio) throws Exception{
-        System.out.println("Entra al get modelo");
-        return moDao.read(modelo,anio);
-    }
-    public Vehiculo checkPlaca(String placa)throws Exception{
-        System.out.println("Entra a checkPlaca de service");
-        return vDao.read(placa);
+    public Modelo getModelo() throws Exception{
+        return null;
     }
     
     public void vehiculoAdd(Vehiculo v)throws Exception{

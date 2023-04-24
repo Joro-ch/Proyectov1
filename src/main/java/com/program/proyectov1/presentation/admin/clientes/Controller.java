@@ -39,8 +39,7 @@ public class Controller extends HttpServlet {
                         viewUrl = this.show(request);
                         break;
                     case "/presentation/admin/clientes/polizas":
-                        System.out.println("a;slkdhkf;kajshdf;laksj;dlfasd               "+ request.getParameter("id"));
-                        viewUrl = "/presentation/admin/clientes/polizasCliente/View.jsp";
+                        viewUrl = this.polizas(request);
                         break;
             }
             request.getRequestDispatcher(viewUrl).forward( request, response);
@@ -54,9 +53,17 @@ public class Controller extends HttpServlet {
     }
         
     public String showAction(HttpServletRequest request){
-        Model model = (Model) request.getAttribute("model");
         this.RecuperarClientes(request);
         return "/presentation/admin/clientes/listaClientes/View.jsp"; 
+    }
+    
+    public String polizas(HttpServletRequest request){
+        return this.polizasAction(request);
+    }
+        
+    public String polizasAction(HttpServletRequest request){
+        this.RecuperarPolizasCliente(request);
+        return "/presentation/admin/clientes/polizasCliente/View.jsp"; 
     }
     
     public void RecuperarClientes(HttpServletRequest request){
@@ -66,7 +73,16 @@ public class Controller extends HttpServlet {
             model.setClientes(service.getClientes());
             request.setAttribute("clientes", model.getClientes());
         }catch (Exception ex) {
-            System.out.println(ex.getMessage());
+        } 
+    }
+    
+    public void RecuperarPolizasCliente(HttpServletRequest request){
+        Service service = Service.instance();
+        Model model= (Model) request.getAttribute("model");
+        try {
+            model.setPolizas(service.polizasCliente((String) request.getParameter("id")));
+            request.setAttribute("polizas", model.getPolizas());
+        }catch (Exception ex) {
         } 
     }
 
