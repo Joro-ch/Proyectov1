@@ -30,7 +30,7 @@ public class PolizaDao {
         List<Poliza> polizas = new ArrayList<>();
         while (rs.next()) {
             String codigo = rs.getString("codigo");
-            Integer valorSeguro = rs.getInt("valorSeguro");
+            Double valorSeguro = rs.getDouble("valorSeguro");
             Vehiculo vehiculo = service.vehiculoFind(rs.getString("placaVehiculo"));
             String plazoPagos = rs.getString("plazoPagos");
             String fechaInicioVigencia = rs.getString("fechaInicioVigencia");

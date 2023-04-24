@@ -133,22 +133,27 @@ public class Service {
         return coDao.coberturas();
     }
     
-    public Modelo getModelo() throws Exception{
-        return null;
+    public Modelo getModelo(String modelo,String anio) throws Exception{
+        System.out.println("Entra al get modelo");
+        return moDao.read(modelo,anio);
     }
     
     public void vehiculoAdd(Vehiculo v)throws Exception{
         System.out.println("Entra a create de service");
         System.out.println(v.getModelo().getModelo());
         System.out.println(v.getModelo().getAnio());
-        vDao.create(v);
+        veDao.create(v);
     }
 
     public void polizaAdd(Poliza poliza) throws Exception{
-        pDao.create(poliza);
+        poDao.create(poliza);
         for(Cobertura c: poliza.getCoberturas()){
-            cPolDao.create(c.getId(), poliza.getCodigo());
+            cpDao.create(c.getId(), poliza.getCodigo());
         }
+    }
+     public Vehiculo checkPlaca(String placa)throws Exception{
+        System.out.println("Entra a checkPlaca de service");
+        return veDao.read(placa);
     }
 }
 
