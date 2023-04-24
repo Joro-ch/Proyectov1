@@ -19,8 +19,14 @@ public class CoberturasPolizasDao {
     
     // Métodos
     
-    public void create(Cobertura u) throws Exception {
+    public void create(String cId, String pId) throws Exception {
+          String comando = "insert into coberturasPolizas (codigoPoliza,idCobertura) values (?,?)";
+          PreparedStatement stm = db.prepareStatement(comando);
+          stm.setString(1, pId);
+          stm.setString(2, cId);
         
+        
+          db.executeUpdate(stm);
     }
 
     public Cobertura read(String id) throws Exception {

@@ -8,7 +8,7 @@ public class Poliza {
     // Atributos
     private String codigo;
     private Vehiculo vehiculo;
-    private Integer valorSeguro;
+    private Double valorSeguro;
     private String plazoPagos;
     private String fechaInicioVigencia;
     private List<Cobertura> coberturas;
@@ -18,13 +18,13 @@ public class Poliza {
     public Poliza() {
         this.codigo = "";
         this.vehiculo = new Vehiculo();
-        this.valorSeguro = 0;
+        this.valorSeguro = 0.0;
         this.plazoPagos = "";
         this.fechaInicioVigencia = "";
         this.coberturas = new ArrayList<>();
     }
     
-    public Poliza(Vehiculo vehiculo, Integer valorSeguro, String plazoPagos, String fechaInicioVigencia, List<Cobertura> coberturas) {
+    public Poliza(Vehiculo vehiculo, Double valorSeguro, String plazoPagos, String fechaInicioVigencia, List<Cobertura> coberturas) {
         this.codigo = "";
         this.vehiculo = vehiculo;
         this.valorSeguro = valorSeguro;
@@ -33,7 +33,7 @@ public class Poliza {
         this.coberturas = coberturas;
     }
 
-    public Poliza(String codigo, Vehiculo vehiculo, Integer valorSeguro, String plazoPagos, String fechaInicioVigencia, List<Cobertura> coberturas) {
+    public Poliza(String codigo, Vehiculo vehiculo, Double valorSeguro, String plazoPagos, String fechaInicioVigencia, List<Cobertura> coberturas) {
         this.codigo = codigo;
         this.vehiculo = vehiculo;
         this.valorSeguro = valorSeguro;
@@ -58,11 +58,11 @@ public class Poliza {
         this.vehiculo = vehiculo;
     }
 
-    public Integer getValorSeguro() {
+    public Double getValorSeguro() {
         return valorSeguro;
     }
 
-    public void setValorSeguro(Integer valorSeguro) {
+    public void setValorSeguro(Double valorSeguro) {
         this.valorSeguro = valorSeguro;
     }
 
@@ -94,6 +94,18 @@ public class Poliza {
     
     public void addCobertura(Cobertura cobertura) {
         coberturas.add(cobertura);
+    }
+    
+    public void precioTotal(){
+        Double total =0.0;
+        for(Cobertura c: this.coberturas){
+            if(this.vehiculo.getValor()*(c.getCostoPorcentual()/100.0)>c.getCostoMinimo()){
+                total+= this.vehiculo.getValor()*(c.getCostoPorcentual()/100.0);
+            }else{
+                total+= c.getCostoMinimo();
+            }
+        }
+        this.setValorSeguro(total);
     }
     
 }

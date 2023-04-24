@@ -1,5 +1,6 @@
 package com.program.proyectov1.presentation.cliente.polizas;
 
+import com.program.proyectov1.logic.Cobertura;
 import com.program.proyectov1.logic.Modelo;
 import com.program.proyectov1.logic.Poliza;
 import com.program.proyectov1.logic.Vehiculo;
@@ -8,6 +9,7 @@ import java.util.List;
 
 
 public final class Model {
+    private List<Cobertura> coberturas;
     private List<Modelo> modelos;
     private List<String> marcas;
     private Vehiculo vehiculo;
@@ -37,6 +39,7 @@ public final class Model {
         setMarcas(new ArrayList<>());
         setVehiculo(new Vehiculo());
         setPoliza(new Poliza());
+        setCoberturas(new ArrayList<>());
     }
 
     public Vehiculo getVehiculo() {
@@ -54,5 +57,12 @@ public final class Model {
     public void setPoliza(Poliza poliza) {
         this.poliza = poliza;
     }
-    
+
+    public List<Cobertura> getCoberturas() {
+        return coberturas;
+    }
+
+    public void setCoberturas(List<Cobertura> coberturas) {
+        this.coberturas = coberturas;
+    }
 }

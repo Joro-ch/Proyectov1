@@ -27,9 +27,9 @@
                                 <c:forEach var="poliza" items="${polizas}">
                                         <tr>
                                                 <td>${poliza.getCodigo()}</td>
-                                                <td>${poliza.getVehiculo().getModelo().getModelo()} - ${poliza.getVehiculo().getPlaca()}</td>
+                                                <td>${poliza.getVehiculo().getModelo().getModelo()} - ${poliza.getVehiculo().getNumPlaca()}</td>
                                                 <td>${poliza.getValorSeguro()}</td>
-                                                <td>${poliza.getPlazoPago()}</td>
+                                                <td>${poliza.getPlazoPagos()}</td>
                                                 <td>${poliza.getFechaInicioVigencia()}</td>
                                                 <td> </td>
                                         </tr>

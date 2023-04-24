@@ -30,12 +30,12 @@ public class PolizaDao {
         List<Poliza> polizas = new ArrayList<>();
         while (rs.next()) {
             String codigo = rs.getString("codigo");
-            Integer valorSeguro = rs.getInt("valorSeguro");
+            Double valorSeguro = rs.getDouble("valorSeguro");
             Vehiculo vehiculo = service.vehiculoFind(rs.getString("placaVehiculo"));
             String plazoPagos = rs.getString("plazoPagos");
             String fechaInicioVigencia = rs.getString("fechaInicioVigencia");
             List<Cobertura> coberturas = service.coberturasPoliza(codigo);
-            Poliza polizaTemo = new Poliza(vehiculo,valorSeguro,plazoPagos,fechaInicioVigencia,coberturas);
+            Poliza polizaTemo = new Poliza(codigo,vehiculo,valorSeguro,plazoPagos,fechaInicioVigencia,coberturas);
             polizas.add(polizaTemo);
         }
         return polizas;
@@ -44,7 +44,19 @@ public class PolizaDao {
     
     
     public void create(Poliza u) throws Exception {
-        
+        //El codigo es la cedula del asegurado+placa o sea 111999
+        String comando = "Insert into polizas values(?,?,?,?,?,?)";
+        PreparedStatement stm = db.prepareStatement(comando);
+        stm.setString(1, u.getCodigo());
+        stm.setString(2, u.getVehiculo().getIdPropietario());
+        stm.setString(3, u.getVehiculo().getNumPlaca());
+        stm.setString(4, Double.toString(u.getValorSeguro()));
+        stm.setString(5, u.getPlazoPagos());
+        stm.setString(6, u.getFechaInicioVigencia());
+
+
+        db.executeUpdate(stm);
+
     }
 
     public Poliza read(String id) throws Exception {
