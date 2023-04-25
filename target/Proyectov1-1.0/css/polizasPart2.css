@@ -1,7 +1,7 @@
 
 .cuerpo {
     grid-row: 2 / 3;
-    background-image: url(https://vsthemes.org/uploads/posts/2017-08/1582031672_toyota-4k_vsthemes_ru-26.webp);
+    background-image: url(https://wieck-honda-production.s3.amazonaws.com/photos/a1a640b1c7fef62dd1d8d2c9de72e3ea21cf058f/preview-928x522.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -20,6 +20,7 @@
     display: grid;
     grid-template-rows: 100px 1fr 100px;
     overflow-x: auto;
+    color:white;
 }
 
 .cuerpo-form__titulo {

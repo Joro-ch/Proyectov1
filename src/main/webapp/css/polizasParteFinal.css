@@ -40,8 +40,11 @@
 
 .cuerpo-table__span {
     grid-row: 3 / 4;
+    grid-column: 1 / 2;
 }
-
+.pPago{
+    margin-top: 20px;
+}
 .cuerpo-form {
     grid-row: 4 / 5;
     display: grid;

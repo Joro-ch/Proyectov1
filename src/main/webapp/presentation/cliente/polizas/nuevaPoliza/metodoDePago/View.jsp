@@ -51,7 +51,7 @@
                     </tbody>
                 </table>
                 <span class = "cuerpo-table__span">Total: <%= poliza.getValorSeguro()%></span>
-                <span class = "cuerpo-table__span">Plazo de pago <%= poliza.getPlazoPagos()%></span>
+                <div class = "cuerpo-table__span pPago">Plazo de pago <%= poliza.getPlazoPagos()%></div>
                 <form class = "cuerpo-form" action="./presentation/cliente/polizas/misPolizas/agregar/final/submit" method="POST">
                     <label class = "form-label" for="metodoPago">Método de pago:</label>
                     <select class = "form-input" id="metodoPago" name="metodoPago" required>
